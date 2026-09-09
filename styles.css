@@ -125,13 +125,12 @@ body.index{ height:100dvh; overflow:hidden; }
 .mk--porto{ height:clamp(40px,5vh,58px); }   /* a badge, not a wordmark, so it needs more */
 
 /* ---------------------------------------------------------------- belt ---
-   Stripe Press stacks its books down a void with a tick ruler beside them.
+   Stripe Press stacks its books down a void, numbered and ruled off.
    This is that, upright, and built as an index: numbered, ruled, each entry
    carrying the headline of the page it opens. Scroll-snap on the y axis.     */
 .beltwrap{ min-height:0; display:flex; flex-direction:column; gap:clamp(.45rem,1.1vh,.8rem); }
-.belt__track{ flex:1 1 auto; min-height:0; display:flex; gap:clamp(.8rem,1.8vw,1.3rem); }
 .belt{
-  --plate: clamp(72px, 9.4vh, 116px);
+  --plate: clamp(74px, 9.6vh, 118px);
   flex:1 1 auto; min-width:0;
   overflow-y:auto; overflow-x:hidden;
   scroll-snap-type:y proximity; scroll-behavior:smooth; scroll-padding-top:1px;
@@ -143,62 +142,44 @@ body.index{ height:100dvh; overflow:hidden; }
   scroll-snap-align:start;
   display:grid;
   grid-template-columns:auto var(--plate) minmax(0,1fr) auto;
-  align-items:center; gap:clamp(.7rem,1.6vw,1.15rem);
-  padding:clamp(.55rem,1.3vh,.95rem) 0;
+  align-items:center; gap:clamp(.85rem,2vw,1.5rem);
+  padding:clamp(.5rem,1.15vh,.85rem) 0;
   border-top:1px solid var(--rule);
   color:var(--ink);
 }
 .frame:first-child{ border-top:0; }
 .frame__n{
   font-family:var(--f-agate); font-size:.62rem; font-weight:600; letter-spacing:.1em;
-  color:var(--ink-3); font-variant-numeric:tabular-nums; align-self:start; padding-top:.15rem;
+  color:var(--ink-3); font-variant-numeric:tabular-nums;
 }
 .frame__img{
   width:var(--plate); aspect-ratio:1/1; display:block; overflow:hidden;
   border:1px solid var(--ink); background:var(--wash);
 }
-.frame__img img{
-  width:100%; height:100%; object-fit:cover; display:block;
-  filter:grayscale(.12);
-}
-.frame__t{ display:flex; flex-direction:column; gap:.22rem; min-width:0; }
+.frame__img img{ width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(.12); }
+/* the title is the only text in the row now, so it gets to be the whole voice */
 .frame__k{
-  font-family:var(--f-agate); font-size:.6rem; font-weight:600;
-  letter-spacing:.15em; text-transform:uppercase; color:var(--ink-3);
+  font-family:var(--f-head); font-weight:600;
+  font-size:clamp(1.15rem,2.5vh,1.6rem); line-height:1.05; letter-spacing:-.015em;
+  min-width:0;
 }
-.frame__h{
-  font-family:var(--f-head); font-size:clamp(.95rem,1.95vh,1.24rem);
-  line-height:1.22; letter-spacing:-.005em; text-wrap:pretty;
-}
-.frame__go{
-  font-size:1rem; color:var(--ink-3); justify-self:end; padding-right:.15rem;
-}
+.frame__go{ font-size:1rem; color:var(--ink-3); justify-self:end; padding-right:.15rem; }
 
-/* hover is the whole row, because the whole row is the target */
 .frame:hover .frame__img img{ filter:grayscale(0); }
 .frame:hover .frame__img{ border-width:2px; }
-.frame:hover .frame__k{ color:var(--ink); }
-.frame:hover .frame__h{ text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; }
+.frame:hover .frame__k{ text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px; }
 .frame:hover .frame__go{ color:var(--ink); }
 .frame:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
 
-.frame--end{ grid-template-columns:auto minmax(0,1fr); }
-.frame--end .frame__h{ font-style:italic; color:var(--ink-2); }
-.frame__links{ display:flex; flex-wrap:wrap; gap:.25rem 1.1rem; margin-top:.35rem; }
+.frame--end{ grid-template-columns:auto minmax(0,1fr); align-items:baseline; }
+.frame--end .frame__k{ font-style:italic; color:var(--ink-2); font-size:clamp(1rem,2.1vh,1.3rem); }
+.frame__links{ display:flex; flex-wrap:wrap; gap:.25rem 1.1rem; margin-top:.35rem; grid-column:2; }
 .frame__links a{
   font-family:var(--f-agate); font-size:.7rem; color:var(--ink-2);
   border-bottom:1px solid var(--rule-2);
 }
 .frame__links a:hover{ color:var(--ink); border-bottom-color:var(--ink); }
 
-/* the ruler, lifted from the Stripe Press left rail and left standing */
-.ruler{
-  width:13px; flex:0 0 13px;
-  background:
-    repeating-linear-gradient(to bottom, var(--ink) 0 1px, transparent 1px 14px) top left / 8px 100% no-repeat,
-    linear-gradient(to bottom, var(--rule) 0 100%) top left / 1px 100% no-repeat;
-  opacity:.45;
-}
 .belt__hint{
   font-family:var(--f-agate); font-size:.63rem; letter-spacing:.17em; text-transform:uppercase;
   color:var(--ink-3); margin:0; text-align:right;
@@ -240,7 +221,7 @@ body.index{ height:100dvh; overflow:hidden; }
 .tags span{ font-family:var(--f-agate); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
   color:var(--ink-2); border:1px solid var(--rule); padding:.34em .7em; }
 .videos--one{ grid-template-columns:1fr; max-width:720px; }
-.loves{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:clamp(.8rem,2vw,1.4rem); margin:1.8rem 0 1rem; }
+
 .love{ margin:0; }
 .love__plate{ display:flex; flex-direction:column; justify-content:center; gap:.4rem;
   aspect-ratio:2/3; border:1px solid var(--ink); padding:1.2rem; text-align:center; background:var(--wash); }
@@ -343,7 +324,6 @@ body.index{ height:100dvh; overflow:hidden; }
   body.index{ height:auto; overflow:auto; }
   .cover{ height:auto; display:flex; flex-direction:column; gap:1.5rem; }
   .belt{ --plate: clamp(64px, 19vw, 92px); overflow:visible; scroll-snap-type:none; }
-  .ruler{ display:none; }
   .mast{ flex-direction:column-reverse; align-items:flex-start; gap:1rem; }
   .belt__hint{ text-align:left; }
 }
@@ -480,3 +460,108 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
 .ask p{ margin:0; font-size:1.05rem; font-style:italic; color:var(--ink-2); }
 .ask a{ font-style:normal; color:var(--ink); border-bottom:1px solid var(--ink-3); }
 .ask a:hover{ border-bottom-color:var(--ink); }
+
+/* ---------------------------------------------------------------- loves ---
+   Five objects laid out like a shelf. The book is its own 1813 title page and
+   the films are their release posters, so the artwork does the identifying and
+   the words underneath only have to say why it is here.                      */
+.loves{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+  gap:clamp(1.2rem,2.6vw,2.1rem);
+  margin:1.4rem 0 2.2rem; padding:0;
+}
+.love{ margin:0; display:flex; flex-direction:column; gap:.7rem; }
+.love__art{
+  display:block; border:1px solid var(--ink); background:var(--wash);
+  aspect-ratio:2/3; overflow:hidden;
+}
+.love__art img{ width:100%; height:100%; object-fit:cover; display:block; }
+.love__cap{ display:flex; flex-direction:column; gap:.2rem; }
+.love__kind{
+  font-family:var(--f-agate); font-size:.58rem; font-weight:600; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+.love__t{ font-family:var(--f-head); font-size:1.02rem; font-weight:600; line-height:1.15; }
+.love__c{ font-family:var(--f); font-style:italic; font-size:.82rem; color:var(--ink-2); }
+.love__n{ font-size:.88rem; line-height:1.45; color:var(--ink-2); margin-top:.3rem; text-wrap:pretty; }
+
+/* ----------------------------------------------------------------- cats ---
+   Three ways into one subject, set as a numbered rank across the top of the
+   page so a reader can choose before they commit to scrolling.               */
+.cats{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+  gap:0; margin:2rem 0 2.6rem; border-top:1px solid var(--ink);
+}
+.cat{
+  display:flex; flex-direction:column; gap:.34rem;
+  padding:1.05rem clamp(.9rem,2vw,1.5rem) 1.2rem 0;
+  border-bottom:1px solid var(--ink); color:var(--ink); position:relative;
+}
+.cat + .cat{ border-left:1px solid var(--rule); padding-left:clamp(.9rem,2vw,1.5rem); }
+.cat__n{
+  font-family:var(--f-agate); font-size:.6rem; font-weight:600; letter-spacing:.1em;
+  color:var(--ink-3); font-variant-numeric:tabular-nums;
+}
+.cat__k{
+  font-family:var(--f-agate); font-size:.6rem; font-weight:600; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+.cat__t{ font-family:var(--f-head); font-size:1.12rem; font-weight:600; line-height:1.18; text-wrap:pretty; }
+.cat__d{ font-size:.86rem; line-height:1.48; color:var(--ink-2); text-wrap:pretty; }
+.cat__go{ font-size:.95rem; color:var(--ink-3); margin-top:.2rem; }
+.cat:hover .cat__t{ text-decoration:underline; text-underline-offset:3px; }
+.cat:hover .cat__go{ color:var(--ink); }
+@media (max-width:720px){
+  .cat + .cat{ border-left:0; padding-left:0; }
+}
+
+/* =================================================== ARTICLE COMPOSITION ===
+   The reading column was pinned to the left of a 1080px container, which left a
+   third of every page empty on the right and made long pieces look unfinished.
+   The column is now centred and the wide objects (charts, grids, tables, plates,
+   figures) keep the full measure of the page and break out around it, which is
+   how a printed feature actually sits. Nothing here changes the words.        */
+@media (min-width: 900px){
+  .phead .eyebrow,
+  .phead h1,
+  .phead .lede,
+  .phead .meta,
+  .body > p,
+  .body > h2,
+  .body > h3,
+  .body > ul,
+  .body > ol,
+  .body > dl,
+  .body > .track,
+  .body > .ask,
+  .body > blockquote{
+    max-width:var(--measure);
+    margin-left:auto; margin-right:auto;
+  }
+  /* a heading earns a hairline, so a long read has visible joints */
+  .body > h2{
+    padding-top:.85rem; border-top:1px solid var(--rule);
+    margin-top:3rem;
+  }
+  .body > h2:first-of-type{ margin-top:2.4rem; }
+}
+
+/* the opening line of a piece, set a step up so the eye has somewhere to land */
+.body > .kicker{
+  max-width:var(--measure); margin-left:auto; margin-right:auto;
+  font-size:clamp(1.06rem,1rem+.5vw,1.32rem); line-height:1.45;
+  color:var(--ink); text-wrap:pretty;
+}
+@media (max-width: 899px){
+  .body > h2{ padding-top:.7rem; border-top:1px solid var(--rule); margin-top:2.2rem; }
+}
+
+/* Everything in a piece shares one centre line. Prose sits at the reading
+   measure; pictures, tables and grids are wider on purpose, so the page is
+   filled by the images rather than by over-long lines of text.              */
+@media (min-width: 900px){
+  .phead > *,
+  .body > *{ margin-left:auto; margin-right:auto; }
+  .videos--one{ max-width:860px; }
+  .lead{ max-width:420px; }
+}

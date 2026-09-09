@@ -101,17 +101,17 @@ def venn(w=900, h=700):
 
 # =============================================================== INDEX ======
 PYRAMID = [
-  # plate, section, destination, and the page's own headline, which is the best
-  # one-line description of it that exists. My why opens, Who is Francis closes.
-  ("my-why-title-sq.jpg",      "My why",                 "my-why.html",     "My Mother Works Nights"),
-  ("fight-on-sq.jpg",          "Fight on",               "fight-on.html",   "Nobody Came Until Nine"),
-  ("origin-relationships.jpg", "Finance",                "finance.html",    "What I Am Actually Trying to Learn"),
-  ("origin-curiosity.jpg",     "Intellectual curiosity", "curiosity.html",  "A Plate of What I Am Curious About"),
-  ("origin-engineer.jpg",      "Engineer",               "building.html",   "What I Have Built"),
-  ("origin-leadership.jpg",    "Leadership",             "leadership.html", "The Sideline Is a Vantage, Not a Consolation"),
-  ("awards.jpg",               "Awards",                 "awards.html",     "Everything, on One Page"),
-  ("origin-fun.jpg",           "The art of fun",         "fun.html",        "The Unserious Half"),
-  ("who-am-i-sq.jpg",          "So who is Francis",      "who-am-i.html",   "The Four Dimensional Answer"),
+  # One word where one word will do. The plate carries the feeling, the title only
+  # has to name the door. Why opens, I closes.
+  ("my-why-title-sq.jpg",      "Why",        "my-why.html"),
+  ("fight-on-sq.jpg",          "Fight On",   "fight-on.html"),
+  ("origin-relationships.jpg", "Finance",    "finance.html"),
+  ("origin-curiosity.jpg",     "Curiosity",  "curiosity.html"),
+  ("origin-engineer.jpg",      "Built",      "building.html"),
+  ("origin-leadership.jpg",    "Leadership", "leadership.html"),
+  ("awards.jpg",               "Awards",     "awards.html"),
+  ("origin-fun.jpg",           "Fun",        "fun.html"),
+  ("who-am-i-sq.jpg",          "I",          "who-am-i.html"),
 ]
 
 TRACKS = {
@@ -150,42 +150,31 @@ def brick(fname, label, href):
             f'<span class="brick__k">{label}</span></a>')
 
 def belt():
-    """Stripe Press stacks its books down a void with a tick ruler running alongside.
-    This is that, upright, and built as an index rather than a row of thumbnails:
-    each entry is numbered, ruled off, and carries the headline of the page it opens,
-    so the belt tells you what is behind a door before you walk through it.
-    Native scroll-snap on the y axis. No JavaScript anywhere on this site."""
+    """Stripe Press stacks its books down a void. This is that, upright, and built as
+    an index: numbered, ruled, one word to a door. Scroll-snap on the y axis, and as
+    with the rest of this site there is no JavaScript in it."""
     rows = []
-    for i, (fname, label, href, headline) in enumerate(PYRAMID, 1):
+    for i, (fname, label, href) in enumerate(PYRAMID, 1):
         p = ROOT / "assets" / "photos" / fname
         img = f'<img src="assets/photos/{fname}" alt="" loading="lazy">' if p.exists() else ""
         rows.append(
             f'<a class="frame" href="{href}">'
             f'<span class="frame__n">{i:02d}</span>'
             f'<span class="frame__img">{img}</span>'
-            f'<span class="frame__t">'
             f'<span class="frame__k">{label}</span>'
-            f'<span class="frame__h">{headline}</span>'
-            f'</span>'
             f'<span class="frame__go" aria-hidden="true">&rarr;</span>'
             f'</a>')
-    # the belt should arrive somewhere, so the last entry is the way to reach me
     rows.append(
         '<div class="frame frame--end">'
         '<span class="frame__n">&mdash;</span>'
-        '<span class="frame__t">'
-        '<span class="frame__k">End of the index</span>'
-        '<span class="frame__h">Say something</span>'
+        '<span class="frame__k">Say something</span>'
         '<span class="frame__links">'
         '<a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a>'
         '<a href="https://www.linkedin.com/in/francisruan" target="_blank" rel="noopener">LinkedIn</a>'
         '<a href="Ruan_Francis_Resume.pdf" target="_blank" rel="noopener">Resume</a>'
-        '</span></span></div>')
+        '</span></div>')
     return ('<div class="beltwrap">'
-            '<div class="belt__track">'
-            '<div class="ruler" aria-hidden="true"></div>'
             f'<div class="belt">{"".join(rows)}</div>'
-            '</div>'
             '<p class="belt__hint">Nine ways in &middot; scroll &darr;</p>'
             '</div>')
 
@@ -969,22 +958,53 @@ FIN = f"""<div class="wrap">
 
 <p>It shows up in a supplement aisle that cleared at six times revenue and at one, eight weeks apart. It shows up in a finance workflow whose entire saving is invisible on a balance sheet. It is the same question wearing different clothes, and I have not got to the bottom of it yet, which is precisely why I keep going.</p>
 
-<h2>The deal work</h2>
+<p>It runs in three places, and they feed each other. The study is where I do the arithmetic. The paper is where I have to defend it in public. The show is where I go and ask the people it is happening to.</p>
+
+<div class="cats">
+  <a class="cat" href="#study">
+    <span class="cat__n">01</span>
+    <span class="cat__k">The study</span>
+    <span class="cat__t">Five deals, six weeks, a sevenfold spread</span>
+    <span class="cat__d">Five consumer wellness businesses changed hands this summer at prices seven times apart. I plotted them and worked out what each buyer was really paying for.</span>
+    <span class="cat__go" aria-hidden="true">&darr;</span>
+  </a>
+  <a class="cat" href="#paper">
+    <span class="cat__n">02</span>
+    <span class="cat__k">The paper</span>
+    <span class="cat__t">What I have put in writing</span>
+    <span class="cat__d">Two long pieces: the argument behind the deal spread, and an essay on the assets an AI deployment builds that never reach the balance sheet.</span>
+    <span class="cat__go" aria-hidden="true">&darr;</span>
+  </a>
+  <a class="cat" href="#show">
+    <span class="cat__n">03</span>
+    <span class="cat__k">The show</span>
+    <span class="cat__t">Wall Street&rsquo;s Trojan Horse</span>
+    <span class="cat__d">A podcast in progress about how quietly AI already walked into investment banking, told by the analysts living it and the people who built it.</span>
+    <span class="cat__go" aria-hidden="true">&darr;</span>
+  </a>
+</div>
+
+<h2 id="study">The study</h2>
 <p>Five consumer wellness businesses changed hands in six weeks this summer at prices seven times apart. I plotted them, worked out what each buyer was really paying for, and wrote a note on each.</p>
 {dealgrid()}
 <p><a href="trend.html"><strong>Read the full argument</strong></a>, including the chart and where I think I am wrong.</p>
 
-<h2>Inside a public company</h2>
+<h2 id="paper">The paper</h2>
+<p>Everything above is only worth something if I am willing to write it down where somebody can disagree with me. These are the two pieces I would defend.</p>
+<div class="biglinks">
+  <a href="trend.html"><span class="bl__lg"></span><span class="bl__n">Five Deals, Six Weeks, and a Sevenfold Spread</span><span class="bl__note">The full argument, the chart, the five notes, and the part where I say what would prove me wrong.</span></a>
+  <a href="invisible.html"><span class="bl__lg"></span><span class="bl__n">The Assets AI Builds That Nobody Records</span><span class="bl__note">The essay that came out of the BODi work. The best output of a deployment never lands on the balance sheet.</span></a>
+</div>
+<h3>Where the operating work happened</h3>
 <div class="biglinks">
   <a href="bodi.html"><span class="bl__lg"><img src="assets/logos/bodi.svg" alt=""></span><span class="bl__n">BODi</span><span class="bl__note">Ninety minutes to three. $784K sized and presented to the MD of Accounting.</span></a>
-  <a href="invisible.html"><span class="bl__lg"></span><span class="bl__n">The assets AI builds that nobody records</span><span class="bl__note">The essay that came out of it. The best output of a deployment never lands on the balance sheet.</span></a>
 </div>
 
-<h2>Wall Street&rsquo;s Trojan Horse</h2>
+<h2 id="show">The show</h2>
 <div class="podcast">
   <img class="podcast__art" src="assets/logos/podcast-cover.svg" alt="Wall Street&rsquo;s Trojan Horse, placeholder cover">
   <div class="podcast__body">
-    <p class="podcast__k">A podcast, in progress</p>
+    <p class="podcast__k">Wall Street&rsquo;s Trojan Horse &middot; a podcast, in progress</p>
     <p>A show about how quietly AI has already walked into investment banking. Not the version in the headlines, with the press releases and the transformation decks. The version where a first-year analyst stops doing four hours of work on a Tuesday and mentions it to nobody.</p>
     <p>I am collecting perspectives from two groups: first-year analysts who are living inside the change, and the people building the tools that caused it. They describe the same event in almost completely different language, and the distance between those two accounts is the actual show.</p>
     <p class="quiet">Artwork and first episodes to come. If you are a first-year analyst, or you build these tools, I would like to record with you.</p>
@@ -1144,29 +1164,36 @@ hub("my-why.html", "My why", "My Mother Works Nights",
     "My Why")
 
 LOVES = [
-  ("Little Women", "Greta Gerwig, 2019", "film",
+  ("Little Women", "Greta Gerwig, 2019", "film", "little-women",
    "The first time a film made me feel like I was inside a sisterhood. I did not know a boy was "
    "allowed to feel that and it genuinely rearranged something. I have watched it more times than "
    "I am going to admit in writing."),
-  ("A River Runs Through It", "Robert Redford, 1992", "film",
+  ("A River Runs Through It", "Robert Redford, 1992", "film", "river-runs",
    "A film about fly fishing and a family that is really a film about how to love the ordinary. "
    "No yachts. No parties. Nobody performing a life for anybody. Set that against the version of "
    "living we are all shown now and it is almost radical."),
-  ("Pride and Prejudice", "Jane Austen, 1813", "book",
+  ("Pride and Prejudice", "Jane Austen, 1813", "book", "pride-prejudice",
    "Elizabeth Bennet does not settle for good and does not settle for great. She holds out for the "
    "correct one and takes the social cost of holding out. That is the whole book to me."),
-  ("The Notebook", "Nick Cassavetes, 2004", "film",
+  ("The Notebook", "Nick Cassavetes, 2004", "film", "notebook",
    "I will not be defending this. I do not need to."),
-  ("Ten Things I Hate About You", "Gil Junger, 1999", "film",
+  ("Ten Things I Hate About You", "Gil Junger, 1999", "film", "ten-things",
    "The poem at the end. Every single time."),
 ]
 
 def loves():
+    """Five plates. The book is its own 1813 title page, which is public domain and a
+    better object than any modern cover; the films are their release posters."""
     out = ['<div class="loves">']
-    for title, credit, kind, note in LOVES:
-        out.append(f'<figure class="love"><span class="love__plate"><span class="love__kind">{kind}</span>'
-                   f'<span class="love__t">{title}</span><span class="love__c">{credit}</span></span>'
-                   f'<figcaption>{note}</figcaption></figure>')
+    for title, credit, kind, slug, note in LOVES:
+        out.append(f'<figure class="love">'
+                   f'<span class="love__art"><img src="assets/loves/{slug}.jpg" alt="{title}" loading="lazy"></span>'
+                   f'<figcaption class="love__cap">'
+                   f'<span class="love__kind">{kind}</span>'
+                   f'<span class="love__t">{title}</span>'
+                   f'<span class="love__c">{credit}</span>'
+                   f'<span class="love__n">{note}</span>'
+                   f'</figcaption></figure>')
     out.append("</div>")
     return "".join(out)
 
@@ -1216,10 +1243,7 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
 
     '<h2>Three things that explain me faster than I can</h2>'
     + loves() +
-    '<p class="quiet">Set as plates rather than posters. The artwork belongs to the people who made these '
-    'and I am not going to republish it on my own site.</p>'
-
-    '<h2>I am a lover boy and I am not embarrassed about it</h2>'
+        '<h2>I am a lover boy and I am not embarrassed about it</h2>'
     '<p>I am a poet before I am an analyst. I like the beach, I like reflecting, I like feeling things '
     'deeply and then going and finding somebody to talk about it with. Romance films work on me every '
     'single time and I have stopped pretending to be above them.</p>'
