@@ -9,7 +9,8 @@ SITE = "https://francisruan.com"
 
 FONT = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-        '<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&display=swap" rel="stylesheet">')
+        '<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Inter:wght@400;500;800&display=swap" rel="stylesheet">')
+
 ICON = ("<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' "
         "viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Newsreader,Georgia,serif' fill='%231C1C1C'>F</text></svg>\">")
 
@@ -157,62 +158,53 @@ def brick(fname, label, href):
             f'<span class="brick__k">{label}</span></a>')
 
 def belt():
-    """Stripe Press stacks its books down a void. This is that, upright, and built as
-    an index: numbered, ruled, one word to a door. Scroll-snap on the y axis, and as
-    with the rest of this site there is no JavaScript in it."""
+    """Three plates across, pushed sideways. Every image is held in black and white
+    here and only takes its colour once you have opened it, which is done with a CSS
+    animation on the destination page rather than with script. The counter under the
+    belt is driven by a scroll-linked animation, so it too runs without JavaScript
+    and simply rests on 01 in browsers that do not support one."""
     rows = []
+    n = len(PYRAMID)
     for i, (fname, label, href) in enumerate(PYRAMID, 1):
-        p = ROOT / "assets" / "photos" / fname
-        img = f'<img src="assets/photos/{fname}" alt="" loading="lazy">' if p.exists() else ""
+        pth = ROOT / "assets" / "photos" / fname
+        img = f'<img src="assets/photos/{fname}" alt="" loading="lazy">' if pth.exists() else ""
         rows.append(
             f'<a class="frame" href="{href}">'
-            f'<span class="frame__n">{i:02d}</span>'
             f'<span class="frame__img">{img}</span>'
-            f'<span class="frame__k">{label}</span>'
-            f'<span class="frame__go" aria-hidden="true">&rarr;</span>'
+            f'<span class="frame__k">[ {label} ]</span>'
             f'</a>')
-    rows.append(
-        '<div class="frame frame--end">'
-        '<span class="frame__n">&mdash;</span>'
-        '<span class="frame__k">Say something</span>'
-        '<span class="frame__links">'
-        '<a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a>'
-        '<a href="https://www.linkedin.com/in/francisruan" target="_blank" rel="noopener">LinkedIn</a>'
-        '<a href="Ruan_Francis_Resume.pdf" target="_blank" rel="noopener">Resume</a>'
-        '</span></div>')
+    ticker = "".join(f'<span>{i:02d}</span>' for i in range(1, n + 1))
     return ('<div class="beltwrap">'
             f'<div class="belt">{"".join(rows)}</div>'
-            '<p class="belt__hint">Nine ways in &middot; scroll &darr;</p>'
+            '<p class="belt__count" aria-hidden="true">'
+            f'<span class="belt__win"><span class="belt__roll">{ticker}</span></span>'
+            f'<span class="belt__of">of {n:02d}</span></p>'
+            f'<p class="belt__sr">Nine sections, pushed sideways.</p>'
             '</div>')
 
-INDEX = f"""<div class="cover">
+INDEX = f"""<div class="sheet">
+  <div class="cover">
 
-  <div class="cover__side">
-    <div class="mast">
-      <img class="mast__face" src="assets/photos/headshot.jpg" alt="Francis Ruan" width="892" height="1400">
-      <div class="mast__id">
-        <h1>Francis Ruan</h1>
-      </div>
-    </div>
+    <header class="poster">
+      <h1 class="poster__name">Francis<br>Ruan</h1>
+      <p class="poster__sub">student at university of southern california</p>
+    </header>
 
-    <div class="marks">
-      <p class="marks__k">Where the time goes</p>
+    {belt()}
+
+    <footer class="cover__foot">
       <ul class="marks__row">
-        <li><img class="mk mk--usc"   src="assets/logos/uscmarshall.png" alt="USC Marshall"></li>
-        <li><img class="mk mk--vuori" src="assets/logos/vuori.svg"       alt="Vuori"></li>
-        <li><img class="mk mk--bodi"  src="assets/logos/bodi.svg"        alt="BODi"></li>
-        <li><img class="mk mk--porto" src="assets/logos/elporto.png"     alt="El Porto Surfboards"></li>
+        <li><img class="mk mk--usc"   src="assets/logos/uscmarshall-black.png" alt="USC Marshall"></li>
+        <li><img class="mk mk--vuori" src="assets/logos/vuori.svg"             alt="Vuori"></li>
       </ul>
-    </div>
+      <p class="cover__links">
+        <a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a>
+        <a href="https://www.linkedin.com/in/francisruan" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="Ruan_Francis_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </p>
+    </footer>
 
-    <div class="cover__foot">
-      <a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a>
-      <a href="https://www.linkedin.com/in/francisruan" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="Ruan_Francis_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-    </div>
   </div>
-
-  {belt()}
 </div>"""
 
 page("index.html","Francis Ruan",
