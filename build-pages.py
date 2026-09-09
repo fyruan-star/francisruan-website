@@ -1439,36 +1439,58 @@ hub("fight-on.html", "Fight on", "Nobody Came Until Nine",
     'No adult stood behind me explaining heat. I burned things, and then over some months I stopped burning '
     'things, and nobody was there for either milestone.</p>'
 
-    '<h2>What it meant on the way home</h2>'
+    '<h2>What it meant for playdates</h2>'
 
-    '<p>When practice ended and the parents pulled up in that long patient line, I ran. My friend&rsquo;s house '
-    'was about a mile. I ran it in cleats more than once. A ride was a thing you had to ask for, and asking was '
-    'the single currency I was most careful with, so I spent my legs instead.</p>'
+    '<p>Other children were dropped off. I ran. My mother was at work and the distance between our '
+    'apartment and wherever everybody was gathering was a mile or two of identical suburb, so I went on '
+    'foot, in cleats more than once, and arrived warm and slightly out of breath and did not explain '
+    'why.</p>'
+
+    '<p>Sometimes I got lost. I had no phone, the streets in that part of town repeat themselves, and '
+    'more than once a car slowed alongside a boy standing at an intersection trying to work out which '
+    'direction was home. I had my mother&rsquo;s number memorised the way other children memorise a '
+    'song. I would recite it to whoever had stopped, and somebody&rsquo;s father would ring her from his '
+    'own phone, and she would tell him where we lived while I sat in the back of a stranger&rsquo;s car '
+    'being driven home by a man whose name I never learned. She thanked every one of them. I think about '
+    'that more than I expected to, that a working woman&rsquo;s entire contingency plan for her son '
+    'getting lost was the decency of whoever happened to be passing, and that it held.</p>'
 
     '<h2>The honest inventory</h2>'
 
-    '<p>Roughly in order:</p>'
+    '<p>Roughly in order.</p>'
 
-    '<p>I could not swim. Not slow at it, could not do it. Swimming lessons are something you pay for.</p>'
+    '<p>I could not swim. Not slowly, not badly, I simply could not do it, because swimming is a thing '
+    'somebody pays for and then drives you to twice a week for a year. I could not throw a football with '
+    'a spiral on it. I could not dribble a basketball with my left hand, or with any real conviction '
+    'using my right. I had never stood in a batter&rsquo;s box. Soccer I understood mostly as a rumour, '
+    'something other boys seemed to have been issued along with their shin pads. I could not hit a '
+    'spikeball, and I was laughed at for that repeatedly, by people who were not being cruel so much as '
+    'accurate. I picked up a lacrosse stick for the first time at a tryout, in front of boys who had been '
+    'holding one since they were eight, and the sound a group makes while it watches you fail at '
+    'something easy is not a sound you forget.</p>'
 
-    '<p>I could not play spikeball, and I was laughed at for that repeatedly, by people who were not being '
-    'cruel so much as accurate. I am now the best spikeball player I know. I would like that on the record. '
-    'It took an absurd number of hours and I regret none of them.</p>'
+    '<p>I was fat, and I was told so, in the specific unhurried way children tell each other things. I '
+    'was picked last often enough that it stopped registering as an event and began registering as '
+    'information, which I have come to think is the part that actually does the damage. Nobody was being '
+    'vicious. They were being correct, and by about nine I had quietly accepted the account they had '
+    'given me, which was that I was unathletic, ungifted, and the fat kid, and that these were facts '
+    'about my nature rather than about my circumstances. It is remarkable how fast a child will take '
+    'somebody else&rsquo;s arithmetic and file it as truth about himself.</p>'
 
-    '<p>I was fat, and I was told so, in the specific unhurried way children tell each other things.</p>'
+    '<p>School offered no rescue either. I went to summer school every summer of elementary school. My '
+    'English was still arriving, and I spent those Junes being taught again what I had not managed to '
+    'hold the first time, and I did not think of myself as somebody who was good at learning, because '
+    'nothing in the available evidence suggested that I was.</p>'
 
-    '<p>I had never played a down of football, and I signed up anyway, and I was put on the ground for about '
-    'two years without meaningful interruption.</p>'
-
-    '<p>I picked up a lacrosse stick for the first time at a tryout, in front of people who had been holding '
-    'one since they were eight, and the sound a group makes when it watches you fail at something easy is not '
-    'a sound you forget.</p>'
-
-    '<p>Teachers wrote me down. More than one decided early that I was a troublemaker and then stopped updating '
-    'the file. I was not a troublemaker. I was a kid with six unsupervised hours who talked too much, because '
-    'talking was the only thing available that was free.</p>'
-
-    '<p>And my father was not a factor in any of this in the way that fathers are supposed to be.</p>'
+    '<p>None of which made me miserable, and I would be lying by omission if I let this read as a sad '
+    'childhood, because it was not one. I had friends, a great many of them, because I worked out '
+    'extremely early that if you are going to be the worst athlete on the field you had better be the '
+    'funniest person on it. Fart noises, I discovered, are universal. They translate across every '
+    'language barrier a seven-year-old is ever going to meet, and mine was considerable. I once '
+    'microwaved a plastic baby in the pretend kitchen of a kindergarten classroom and got a laugh so '
+    'total, so unanimous, that I have been chasing it in one form or another ever since. I could not '
+    'catch anything, but I could make a room go, and a room that is laughing does not much care what you '
+    'cannot do.</p>'
 
     '<p>Add it up and the fair summary of me at eleven is: not good at anything yet.</p>'
 
@@ -1493,6 +1515,49 @@ hub("fight-on.html", "Fight on", "Nobody Came Until Nine",
     '<p>I wanted, more than almost anything available to want, to be good. Being read as trouble while you are '
     'trying that hard is a specific ache, and I would not wish it on a child, and I am not sure I would trade '
     'it either.</p>'
+
+    '<h2>What nobody had told me</h2>'
+
+    '<p>Here is the thing I did not understand until years later, and it has reorganised how I look at '
+    'more or less everything since.</p>'
+
+    '<p>The boys who could throw a spiral had been throwing one in a garden with somebody since they were '
+    'four. The boy who moved fluidly through a lacrosse drill had six years of muscle memory behind him '
+    'that I could not see, because muscle memory is invisible and from the outside it looks exactly like '
+    'talent. The same was true in basketball, in baseball, in soccer, in the water. They were not gifted '
+    'and I was not deficient. They were early, and early compounds, and I had been comparing my first '
+    'week against their sixth year and drawing conclusions about my nature from the gap.</p>'
+
+    '<p>What I had instead was video games, which nobody counts as anything at all. But a game teaches one '
+    'specific and enormously transferable discipline, which is that dying is information. You die, and you '
+    'ask what killed you, and you change a single variable, and you go again, and the loop tightens every '
+    'time you run it. Thousands of hours of that is not nothing. It is a childhood spent rehearsing the '
+    'one thing most people never rehearse, which is looking directly at your own failure without '
+    'flinching and asking it a question.</p>'
+
+    '<p>It is also, and I did not see the connection for a long time, the reason I got better at school. I '
+    'was never the boy who simply knew. I was the boy who went back afterwards and worked out precisely '
+    'where the understanding had broken, and that turned out to be worth considerably more than knowing, '
+    'because it kept working after the material got hard and the boys who simply knew ran out of '
+    'road.</p>'
+
+    '<p>Everybody talks about getting up, and getting up is the cheap half of it. What changes the next '
+    'repetition is getting up while knowing exactly what put you down, and that is the only version of '
+    'resilience I have ever found that actually accumulates instead of merely repeating.</p>'
+
+    '<p>So I keep notes now. After a session I write down what I could not do and why, and I look for the '
+    'bottleneck rather than the failure, and then I train the bottleneck rather than the sport. I am, and '
+    'I promise this is not a boast because it cost an absurd number of hours, now the best spikeball '
+    'player I know. I am better than most of my friends at a good many things they used to beat me at '
+    'without trying. And I found surfing, which almost none of them compounded as children either, so we '
+    'all began at zero on the same morning and I finally got to see what happens when the starting line '
+    'is honest.</p>'
+
+    '<p>None of which made me talented. It made me suspicious of the word. I no longer believe there is '
+    'any such thing as simply smarter or simply more athletic. There is only experience that compounded '
+    'somewhere you were not standing to watch it, and the very large difference between a person who has '
+    'been doing a thing for six years and a person who started on Tuesday, which almost everybody, '
+    'including the person starting on Tuesday, mistakes for a difference in kind.</p>'
 
     '<h2>And then I got to USC</h2>'
 
