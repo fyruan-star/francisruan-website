@@ -115,29 +115,36 @@ PYRAMID = [
 ]
 
 TRACKS = {
-  "my-why.html":    ("Cool",              "Daniel Caesar"),
-  "fight-on.html":  ("Hold On",           "Alabama Shakes"),
-  "leadership.html":("Ivy",               "Frank Ocean"),
-  "finance.html":   ("Cantaloupe Island", "Herbie Hancock"),
-  "curiosity.html": ("Lujon",             "Henry Mancini"),
-  "building.html":  ("Electric Feel",     "MGMT"),
-  "awards.html":    ("Golden",            "Harry Styles"),
-  "fun.html":       ("Sundown",           "LEISURE"),
-  "who-am-i.html":  ("Orange Blood",      "Mt Joy"),
-  "trend.html":     ("Cantaloupe Island", "Herbie Hancock"),
-  "invisible.html": ("Lujon",             "Henry Mancini"),
+  # page                track                artist            sleeve
+  "my-why.html":    ("Cool",              "Daniel Caesar",   "my-why"),
+  "fight-on.html":  ("Hold On",           "Alabama Shakes",  "fight-on"),
+  "leadership.html":("Ivy",               "Frank Ocean",     "leadership"),
+  "finance.html":   ("Cantaloupe Island", "Herbie Hancock",  "finance"),
+  "curiosity.html": ("Lujon",             "Henry Mancini",   "curiosity"),
+  "building.html":  ("Electric Feel",     "MGMT",            "building"),
+  "awards.html":    ("Golden",            "Harry Styles",    "awards"),
+  "fun.html":       ("Sundown",           "LEISURE",         "fun"),
+  "who-am-i.html":  ("Orange Blood",      "Mt Joy",          "who-am-i"),
+  "trend.html":     ("Cantaloupe Island", "Herbie Hancock",  "finance"),
+  "invisible.html": ("Lujon",             "Henry Mancini",   "curiosity"),
 }
 
 def soundtrack(fn):
+    """The sleeve and the title, small, in the top right corner of the page. No
+    instruction to the reader and no musical note; a record cover is legible on
+    its own and does not need to be captioned."""
     t = TRACKS.get(fn)
     if not t: return ""
-    title, artist = t
+    title, artist, sleeve = t
     from urllib.parse import quote
     q = quote(f"{title} {artist}")
-    return ('<div class="track"><span class="track__note" aria-hidden="true">&#9834;</span>'
-            '<span class="track__k">Please play while reading</span>'
+    return ('<div class="track">'
             f'<a class="track__l" href="https://open.spotify.com/search/{q}" target="_blank" rel="noopener">'
-            f'<em>{title}</em>, {artist}</a></div>')
+            f'<img class="track__art" src="assets/tracks/{sleeve}.jpg" alt="" loading="lazy" width="300" height="300">'
+            '<span class="track__meta">'
+            f'<span class="track__t">{title}</span>'
+            f'<span class="track__a">{artist}</span>'
+            '</span></a></div>')
 
 def ask(line="If any of this is worth an argument, I would like to have it."):
     return ('<div class="ask"><p>' + line +
@@ -1220,45 +1227,34 @@ hub("my-why.html", "My why", "My Mother Works Nights",
     "Why")
 
 LOVES = [
-  ("Little Women", "Greta Gerwig, 2019", "film", "little-women",
-   "The first time a film made me feel like I was inside a sisterhood. I did not know a boy was "
-   "allowed to feel that and it genuinely rearranged something. I have watched it more times than "
-   "I am going to admit in writing."),
-  ("A River Runs Through It", "Robert Redford, 1992", "film", "river-runs",
-   "A film about fly fishing and a family that is really a film about how to love the ordinary. "
-   "No yachts. No parties. Nobody performing a life for anybody. Set that against the version of "
-   "living we are all shown now and it is almost radical."),
-  ("Pride and Prejudice", "Jane Austen, 1813", "book", "pride-prejudice",
-   "Elizabeth Bennet does not settle for good and does not settle for great. She holds out for the "
-   "correct one and takes the social cost of holding out. That is the whole book to me."),
-  ("The Notebook", "Nick Cassavetes, 2004", "film", "notebook",
-   "I will not be defending this. I do not need to."),
-  ("Ten Things I Hate About You", "Gil Junger, 1999", "film", "ten-things",
-   "The poem at the end. Every single time."),
+  ("Little Women",        "Greta Gerwig, 2019",     "film", "little-women"),
+  ("A River Runs Through It","Robert Redford, 1992","film", "river-runs"),
+  ("Pride and Prejudice", "Jane Austen, 1813",      "book", "pride-prejudice"),
+  ("Good Will Hunting",   "Gus Van Sant, 1997",     "film", "good-will-hunting"),
+  ("Rudy: My Story",      "Rudy Ruettiger, 2012",   "book", "rudy"),
 ]
 
 def loves():
-    """Five plates. The book is its own 1813 title page, which is public domain and a
-    better object than any modern cover; the films are their release posters."""
+    """Five objects on a shelf. The artwork does the identifying; the argument for
+    why they belong together is made once, underneath, rather than five times."""
     out = ['<div class="loves">']
-    for title, credit, kind, slug, note in LOVES:
+    for title, credit, kind, slug in LOVES:
         out.append(f'<figure class="love">'
                    f'<span class="love__art"><img src="assets/loves/{slug}.jpg" alt="{title}" loading="lazy"></span>'
                    f'<figcaption class="love__cap">'
                    f'<span class="love__kind">{kind}</span>'
                    f'<span class="love__t">{title}</span>'
                    f'<span class="love__c">{credit}</span>'
-                   f'<span class="love__n">{note}</span>'
                    f'</figcaption></figure>')
     out.append("</div>")
     return "".join(out)
 
 hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     "",
-    '<div class="videos videos--one">'
+    '<div class="videos videos--one videos--feature">'
     '<figure><video controls preload="metadata" playsinline poster="assets/video/homecoming-poster.jpg">'
     '<source src="assets/video/homecoming.mp4" type="video/mp4">Your browser cannot play this video.</video>'
-    '<figcaption>Homecoming court.</figcaption></figure>'
+    '</figure>'
     '</div>'
 
     '<p class="kicker">A fair question, asked of me often enough that I have had to develop an answer. '
@@ -1297,32 +1293,62 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     '<p>There were other teachers who got as far as the headache and stopped. She is the one who kept '
     'reading, and I have thought about the difference between those two teachers for years.</p>'
 
-    '<h2>Three things that explain me faster than I can</h2>'
+    '<h2>Five things that explain me faster than I can</h2>'
     + loves() +
-        '<h2>I am a lover boy and I am not embarrassed about it</h2>'
-    '<p>I am a poet before I am an analyst. I like the beach, I like reflecting, I like feeling things '
-    'deeply and then going and finding somebody to talk about it with. Romance films work on me every '
-    'single time and I have stopped pretending to be above them.</p>'
+    '<p>Put them beside one another and the pattern stops being subtle. Every one of them is about '
+    'somebody who was handed a smaller life than the one they turned out to be capable of and who '
+    'declined it, politely in Austen&rsquo;s case and considerably less politely in Rudy&rsquo;s. They are '
+    'also, all five, arguments that feeling things deeply is a form of competence rather than a failure '
+    'of nerve, which is not the lesson boys are usually issued and is precisely the one I needed. What I '
+    'take from Maclean and from Gerwig is that the ordinary hours are the prize itself and not the '
+    'waiting room outside it. What I take from Will Hunting is that being clever is the least interesting '
+    'thing about a person and by far the easiest thing to hide behind. And what I take from Elizabeth '
+    'Bennet, who I am fairly sure would have found me exhausting, is that holding out for the correct '
+    'thing costs you something socially and remains worth it anyway.</p>' +
+        '<h2>Embracing your corny</h2>'
+    '<p>I have decided to be corny deliberately, which I would recommend to anybody, because the '
+    'alternative is a lifetime spent performing a coolness that not one person has ever actually enjoyed '
+    'having performed at them. It is an enormous amount of work to seem unmoved, and the return on it is '
+    'nothing.</p>'
+    '<p>I am a poet some distance before I am an analyst. I like the beach, and I like reflecting on the '
+    'beach, and I like finding somebody afterwards to tell about it. Romance films work on me without '
+    'exception and without any resistance worth the name, and I stopped pretending to be above them at '
+    'roughly the same age I stopped pretending not to want things, which turned out to be the same '
+    'decision wearing two coats.</p>'
     '<p>And I have very specific instructions about how to treat somebody, because my mother taught them '
-    'to me and she did not present them as optional. Buy the flowers, for no occasion. Say the compliment '
-    'out loud instead of thinking it. Never go to bed upset, not once, no matter how late it makes the '
-    'night. Open the door, every time, forever.</p>'
-    '<p>And when something goes wrong, do the harder thing: sit down and work out whether this is actually '
-    'a you problem, because it very often is, and it is almost never only a you problem either. It is a '
-    'we. Take the accountability all the way to the bottom of it, past the point where it stops feeling '
-    'good, and then keep going a little further.</p>'
+    'to me and she did not present them as optional. Buy the flowers, and buy them for no occasion, since '
+    'an occasion is only a permission slip. Say the compliment out loud rather than thinking it warmly '
+    'and assuming it arrived. Never go to bed upset, not once, however late that decision makes the '
+    'night. Open the door, every time, for the rest of your life.</p>'
+    '<p>And when something has gone wrong between you, do the harder thing, which is to sit down and work '
+    'out honestly whether this is a you problem, because it very often is, and because it is almost never '
+    'only a you problem either, which is the entire reason the word is we. Take the accountability all '
+    'the way down to the bottom of it, past the point where it stops making you feel good about yourself '
+    'for taking it, and then go a little further than that.</p>'
 
     '<h2>And I am also the other thing</h2>'
-    '<p>I look up to bodybuilders. I watch a genuinely unreasonable amount of NFL. I was a captain on a '
-    'football team and I am the person yelling in the huddle, and I like being that person, and I do not '
-    'think it is in tension with any of the paragraph above.</p>'
-    '<p>That is the whole point I am making. Those are supposed to be different men. They are not.</p>'
+    '<p>I look up to bodybuilders, genuinely and without a trace of irony, for the specific reason that '
+    'the whole discipline is a public argument that you can change what you were handed provided you are '
+    'willing to be extremely boring about it for several years running.</p>'
+    '<p>I watch an unreasonable quantity of NFL, and I mean unreasonable in the sense that I have '
+    'developed opinions about offensive line play that nobody asked me for. I watch UFC and will happily '
+    'explain why a fight was decided in the first ninety seconds by somebody&rsquo;s stance rather than by '
+    'the thing everybody in the room was looking at. I know an embarrassing amount about cars, almost all '
+    'of it useless, every bit of it retained without effort while the periodic table went straight '
+    'through me. I was a captain on a football team and I am the person yelling in the huddle, and I like '
+    'being that person a great deal. I still know more about dinosaurs than any grown man has a defensible '
+    'reason to know, and I have made my peace with that.</p>'
+    '<p>None of which is in tension with a single sentence of the section above it, and that is the whole '
+    'of what I am trying to say. These are supposed to be two different men, the one who cries at Little '
+    'Women and the one who wants to talk about the offensive line, and they were never two men at all. '
+    'They have always been the same one, and the only thing that ever changes is which room he is '
+    'standing in and how safe that room has made itself.</p>'
 
     '<h2>Things I will read about until three in the morning</h2>'
     '<p>Human pathogenesis. Biology and anatomy, mechanism-first, always. I keep profiles on myself and '
     'run bloodwork against them, which sounds clinical and is actually just curiosity pointed inward.</p>'
     '<p>Then: human history. Archaeology. Ancient civilizations. What people did before they had any of '
-    'this. I was an absolutely insufferable dinosaur child and I have simply redirected it.</p>'
+    'this. It is the same appetite that made me an insufferable dinosaur child, pointed at a longer stretch of time.</p>'
     '<p>Here is the one I bring up at dinner and refuse to let go of. For most of recorded European '
     'history people did not sleep the way we do. They slept in two shifts. You went down not long after '
     'dark for roughly four hours, then woke naturally around midnight into an interval people simply '

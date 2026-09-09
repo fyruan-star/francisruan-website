@@ -241,17 +241,39 @@ body.index{ height:100dvh; overflow:hidden; }
 .bl--flat{ cursor:default; }
 @media (max-width:640px){ .rec__r{ grid-template-columns:1fr; gap:.15rem; } }
 
-.track{
-  display:flex; align-items:baseline; flex-wrap:wrap; gap:.5rem .8rem;
-  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
-  padding:.7rem 0; margin:0 0 2rem; max-width:var(--read);
+/* ---------------------------------------------------------------- track ---
+   The sleeve and the title, set small in the top right corner of the page and
+   anchored to the article rather than sitting across the top of the reading
+   column. No note glyph and no instruction: a record cover is self-explanatory. */
+.track{ margin:0 0 1.6rem; max-width:var(--measure); }
+.track__l{
+  display:flex; align-items:center; gap:.6rem;
+  color:var(--ink-2); border:0;
 }
-.track__note{ font-size:1.05rem; color:var(--ink); line-height:1; }
-.track__k{ font-family:var(--f-agate); font-size:.64rem; letter-spacing:.15em;
-  text-transform:uppercase; color:var(--ink-3); }
-.track__l{ font-size:.95rem; color:var(--ink); border-bottom:1px solid var(--rule-2); margin-left:auto; }
-.track__l:hover{ border-bottom-color:var(--ink); }
-@media (max-width:560px){ .track__l{ margin-left:0; } }
+.track__art{
+  width:38px; height:38px; flex:0 0 auto; display:block;
+  object-fit:cover; border:1px solid var(--rule-2);
+}
+.track__meta{ display:flex; flex-direction:column; gap:.05rem; min-width:0; }
+.track__t{
+  font-family:var(--f-head); font-style:italic; font-size:.92rem;
+  line-height:1.15; color:var(--ink);
+}
+.track__a{
+  font-family:var(--f-agate); font-size:.62rem; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+.track__l:hover .track__t{ text-decoration:underline; text-underline-offset:2px; }
+.track__l:hover .track__art{ border-color:var(--ink); }
+
+@media (min-width: 900px){
+  .wrap{ position:relative; }
+  .track{
+    position:absolute; top:clamp(2rem,5vw,3.3rem); right:0;
+    width:auto; max-width:220px; margin:0; z-index:2;
+  }
+  .track__art{ width:44px; height:44px; }
+}
 
 .whoami{ display:grid; grid-template-columns:minmax(160px,230px) 1fr; gap:.75rem 1.5rem;
   align-items:baseline; margin:1.4rem 0 0; max-width:var(--read); }
@@ -570,3 +592,16 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
   .lead{ max-width:420px; }
 }
 
+
+/* A single video is the lead image of its page, so it gets the full width of
+   the article rather than the width of a line of text. */
+.videos--feature{ max-width:none; margin-bottom:2.6rem; }
+.videos--feature video{ width:100%; }
+@media (min-width: 900px){
+  .videos--one.videos--feature{ max-width:none; }
+}
+
+/* .videos is declared after .videos--one and at equal specificity, so the
+   single-video case was quietly keeping the two-column track and rendering at
+   half width. This settles it. */
+.videos.videos--one{ grid-template-columns:1fr; }
