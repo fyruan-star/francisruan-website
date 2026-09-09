@@ -14,10 +14,11 @@ ICON = ("<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns='http://www.w3.
         "viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Newsreader,Georgia,serif' fill='%231C1C1C'>F</text></svg>\">")
 
 def topbar(active=""):
-    items=[("index.html","Index"),("my-why.html","My Why"),("fight-on.html","Fight On"),
-           ("finance.html","Finance"),("leadership.html","Leadership"),("building.html","Building"),
-           ("curiosity.html","Curiosity"),("fun.html","Fun"),("awards.html","Awards"),
-           ("who-am-i.html","Who am I"),("Ruan_Francis_Resume.pdf","Resume")]
+    items=[("index.html","Index"),("my-why.html","Why"),("who-am-i.html","I"),
+           ("fight-on.html","Fight On"),("curiosity.html","Curiosity"),
+           ("leadership.html","Leadership"),("finance.html","Finance"),
+           ("building.html","Engineer"),("awards.html","Lucky"),
+           ("fun.html","Fun"),("Ruan_Francis_Resume.pdf","Resume")]
     li="".join(f'<li><a href="{h}"{" target=_blank rel=noopener" if h.endswith(".pdf") else ""}'
                f'{" style=color:var(--ink)" if t==active else ""}>{t}</a></li>' for h,t in items)
     return ('<header class="topbar"><div class="wrap topbar__in">'
@@ -101,17 +102,16 @@ def venn(w=900, h=700):
 
 # =============================================================== INDEX ======
 PYRAMID = [
-  # One word where one word will do. The plate carries the feeling, the title only
-  # has to name the door. Why opens, I closes.
-  ("my-why-title-sq.jpg",      "Why",        "my-why.html"),
-  ("fight-on-sq.jpg",          "Fight On",   "fight-on.html"),
-  ("origin-relationships.jpg", "Finance",    "finance.html"),
-  ("origin-curiosity.jpg",     "Curiosity",  "curiosity.html"),
-  ("origin-engineer.jpg",      "Built",      "building.html"),
-  ("origin-leadership.jpg",    "Leadership", "leadership.html"),
-  ("awards.jpg",               "Awards",     "awards.html"),
-  ("origin-fun.jpg",           "Fun",        "fun.html"),
-  ("who-am-i-sq.jpg",          "I",          "who-am-i.html"),
+  # One word where one word will do. Why opens, the fun closes it out.
+  ("my-why-title-sq.jpg",      "Why",                     "my-why.html"),
+  ("who-am-i-sq.jpg",          "I",                       "who-am-i.html"),
+  ("fight-on-sq.jpg",          "Fight On",                "fight-on.html"),
+  ("origin-curiosity.jpg",     "Curiosity",               "curiosity.html"),
+  ("origin-leadership.jpg",    "Leadership",              "leadership.html"),
+  ("origin-relationships.jpg", "Finance",                 "finance.html"),
+  ("origin-engineer.jpg",      "Engineer",                "building.html"),
+  ("awards.jpg",               "Lucky",                   "awards.html"),
+  ("origin-fun.jpg",           "The Art Of Having Fun",   "fun.html"),
 ]
 
 TRACKS = {
@@ -473,7 +473,7 @@ TREND = f"""<div class="wrap">
 
 <p>In about six weeks, five companies that all essentially sell you a bottle of pills changed hands. Procter &amp; Gamble paid a reported $3.8 billion for Thorne, which is roughly <strong>5.8 times</strong> next year&rsquo;s revenue. Four weeks later Nestl&eacute; sold seven vitamin brands doing $1.2 billion of sales for $1 billion, which is about <strong>0.8 times</strong>.</p>
 
-<p>Same aisle. In some stores, genuinely the same shelf. Seven times the price.</p>
+<p>What I keep returning to is that these were the same aisle, and in some stores genuinely the same shelf, and yet the price a buyer proved willing to pay for a foot of it varied by a factor of seven.</p>
 
 <div class="chartwrap">{multiples_chart()}</div>
 
@@ -773,7 +773,7 @@ RECORD = [
     ("Morgan Stanley Endowed Scholarship", ""),
   ]),
   ("Recognition", [
-    ("TEDx Speaker", "<em>Why You Should Make a Done List</em>. Not recorded"),
+    ("TEDx Speaker", "<em>Why You Should Make a Done List</em>"),
     ("1st Place, Stanford ProCo", "Competitive programming, modelled on ACM-ICPC"),
     ("AI Innovation Challenge", "USC Marshall OpenAI Lab. Selected from 500+ submissions"),
     ("State of California Congressional Award", ""),
@@ -802,7 +802,7 @@ def record():
 
 HON = f"""<div class="wrap">
 <header class="phead">
-  <p class="eyebrow">Awards</p>
+  <p class="eyebrow">Lucky</p>
   <h1>Everything, on One Page</h1>
   <p class="meta"><span>Los Altos High School, 2021 to 2025</span><span>USC, 2025 to present</span></p>
 </header>
@@ -810,8 +810,10 @@ HON = f"""<div class="wrap">
   {soundtrack("awards.html")}
   <figure class="lead">
     <img src="assets/photos/awards.jpg" alt="Francis Ruan as a boy, arms raised on a school blacktop" width="900" height="900">
-    <figcaption>Awards. The reaction has not really changed.</figcaption>
+    <figcaption>Arms up on a blacktop, years before there was anything to put on a list. The reaction has not changed a great deal since.</figcaption>
   </figure>
+  <p class="kicker">I have called this section Lucky, and I would like to be exact about what I mean by it, because false modesty is only bragging with better manners.</p>
+  <p>I worked for all of these and I am not going to pretend otherwise. What I did not do is arrange the conditions that made the work count for anything, and those conditions turn out to be most of the story: the teacher who kept reading after the first impression had already been formed, the mother who took the night shift so that the school district would be the one it was, the particular year in which a competition happened to be looking for exactly the thing I happened to have been practising. Effort is the part I can honestly claim. Timing is not, and neither is anybody else&rsquo;s generosity, and a list like this one reads very differently once you have admitted how much of it was handed to you by people who do not appear anywhere on it.</p>
   {record()}
   {ask("If you want the story behind any one of these, ask me about it.")}
 </div>
@@ -820,7 +822,7 @@ HON = f"""<div class="wrap">
 
 page("awards.html","Awards | Francis Ruan",
      "Francis Ruan's record: valedictorian, TEDx speaker, Stanford ProCo, USC Presidential and Morgan Stanley scholarships, Dean's List.",
-     HON, active="Awards")
+     HON, active="Lucky")
 print("awards.html")
 print("awards.html")
 
@@ -956,9 +958,11 @@ FIN = f"""<div class="wrap">
 {soundtrack("finance.html")}
 <p class="kicker">The through-line in all of this is one stubborn question: where does value sit when the accounts cannot see it?</p>
 
-<p>It shows up in a supplement aisle that cleared at six times revenue and at one, eight weeks apart. It shows up in a finance workflow whose entire saving is invisible on a balance sheet. It is the same question wearing different clothes, and I have not got to the bottom of it yet, which is precisely why I keep going.</p>
+<p>I noticed it first in a supplement aisle, where two businesses selling more or less the same thing to more or less the same person cleared at six times revenue and at barely one within eight weeks of each other, which is not a rounding error so much as an argument about what was actually being bought. Then I ran into it again inside a finance workflow whose saving was real enough to measure in hours and yet had nowhere on a balance sheet to sit. It is the same question wearing different clothes each time, and I have not got to the bottom of it, though I have stopped treating that as a failure and started treating it as the reason to keep going.</p>
 
-<p>It runs in three places, and they feed each other. The study is where I do the arithmetic. The paper is where I have to defend it in public. The show is where I go and ask the people it is happening to.</p>
+<p>I should be honest about the route here, because it was not the obvious one. I did not grow up anywhere near this. What I grew up around was a household in which the arithmetic was never abstract, where somebody was awake at the wrong end of the clock so that a number would come out right at the end of the month, and where I learned early to read a room for the thing nobody was saying out loud. Finance turned out to be that same habit pointed at companies rather than at my own kitchen, which is why the question that holds me is not what a business earns but what it is quietly worth to somebody who has understood it better than its accounts have.</p>
+
+<p>It runs in three places that feed one another, so that the arithmetic I do privately in the study has to survive being written down in the paper where somebody can disagree with it in public, and both of them in turn have to survive the show, where I go and ask the people it is actually happening to whether any of it resembles their Tuesday.</p>
 
 <div class="cats">
   <a class="cat" href="#study">
@@ -1010,6 +1014,8 @@ FIN = f"""<div class="wrap">
     <p class="quiet">Artwork and first episodes to come. If you are a first-year analyst, or you build these tools, I would like to record with you.</p>
   </div>
 </div>
+<h2>What I am looking for</h2>
+<p>An analyst seat where the work is genuinely difficult and somebody senior is willing to tell me plainly when I have got something wrong, which is a narrower request than it sounds. The longer ambition, and I am aware how it reads set down in writing, is to use these tools to make investment banking a more human business rather than merely a faster one, on the theory that once the searching becomes cheap the judgement is the only thing left, and judgement has always been the part that needed a person in it.</p>
 {ask("If you work in a bank and have watched this happen from the inside, come on the show.")}
 </div>
 <nav class="nextprev"><a href="trend.html">The deal essay &rarr;</a><a href="index.html">Index</a></nav>
@@ -1049,39 +1055,88 @@ def biglinks(items):
 
 hub("building.html", "Engineer", "What I Have Built",
     "",
-    biglinks([("bodi.html","bodi.svg","BODi","Ninety minutes to three. $784K sized and presented."),
-              ("suntag.html","suntag.svg","Suntag Co.","$5,000 pre-seed, 300+ waitlist, and a pricing call I got wrong.")])
+    '<p class="kicker">Every one of these began the same way, with somebody doing a thing by hand that '
+    'did not need a person in it, and a suspicion on my part that the person was in there for a reason '
+    'nobody had bothered to name.</p>'
 
-    + '<h2>USC Marshall, AI Builder Hub</h2>'
-    + '<div class="biglinks">'
+    '<h2>Ninety minutes down to three</h2>'
+    '<p>At BODi I was the AI intern on the finance and growth side, which in practice meant sitting close '
+    'enough to recurring invoice and general-ledger review to notice how much of it was spent confirming '
+    'that things were fine. The records were almost always correct. That was precisely the difficulty, '
+    'because the handful of exceptions that genuinely wanted a decision were sitting somewhere inside a '
+    'queue you could only find by reading the whole thing line by line, and so the expensive part of the '
+    'task was never the reviewing at all but the searching that came before it.</p>'
+
+    '<p>The first useful thing I did was refuse to write anything for a while. I went to the FP&amp;A and '
+    'Accounting owners and made them define, out loud and in writing, what actually constituted an '
+    'exception, because the moment I encoded my own guess about that I would have been quietly setting '
+    'policy while telling myself I was only building tooling. Thresholds, controls and sign-off stayed '
+    'with them throughout, I built to their definitions, and they validated every output before anybody '
+    'relied on it. Then I rebuilt the general-ledger cleansing so records arrived in one shape instead of '
+    'several, and ran the automated output against manual review, again and again, until the two agreed '
+    'often enough that I was willing to tighten the thresholds rather than loosen them.</p>'
+
+    '<p>Selected recurring tasks went from roughly ninety minutes to somewhere between one and three, and '
+    'I sized the annualised operating expense reduction at approximately <strong>$784K</strong> and '
+    'presented it to the MD of Accounting. The speed was the least interesting part of it. What held my '
+    'attention was the question underneath, which was what a human being was actually in that seat to '
+    'decide, and how much of what looked like judgement turned out on inspection to be search.</p>'
+
+    '<p>I should say plainly that the figure is a run-rate estimate built from task frequency and loaded '
+    'analyst cost rather than realised profit and loss, and I would volunteer that before anyone thought '
+    'to ask me for it. The thresholds are also still set by hand, which is the part I would go back and '
+    'change first, because they ought to be learned from which flags accountants genuinely act on rather '
+    'than from what I guessed would matter. I would build that feedback loop before optimising another '
+    'thing. <a href="bodi.html">The full write-up is here</a>.</p>'
+
+    '<h2>The price you have to name before anyone has paid you one</h2>'
+    '<p>Suntag was mine end to end, which meant solar viability testing, the interface in Figma, the '
+    'prototype code and the demos I ran mostly so that I could watch people&rsquo;s faces, and it also '
+    'meant there was nobody in the room to hand the pricing question to. Hardware makes you commit tooling '
+    'and a first production order before you have any demand data worth the name, so you price too low and '
+    'delete the margin that funds the second run, or you price too high and end up holding inventory with '
+    'no signal telling you why. We funded it pre-launch on a <strong>$5,000</strong> pre-seed with a '
+    'waitlist above three hundred, and that is validation rather than revenue, and I am not going to '
+    'describe it as more than it was.</p>'
+
+    '<p>I got the important part wrong. I treated the waitlist as demand, when a waitlist only ever '
+    'measures interest at a price of zero and says nothing whatsoever about the price at which that '
+    'interest survives contact with a checkout page. Running it again I would take refundable deposits at '
+    'two different price points before committing a cent to tooling, which converts a soft and flattering '
+    'signal into a number I could defend to somebody sceptical, and costs almost nothing to do. '
+    '<a href="suntag.html">The pricing decision, split into what I measured and what I assumed</a>.</p>'
+
+    '<h2>USC Marshall, AI Builder Hub</h2>'
+    '<div class="biglinks">'
       '<a href="https://github.com/fyruan-star/usc-catalogue-scraper" target="_blank" rel="noopener">'
       '<span class="bl__lg"><img src="assets/logos/uscmarshall.png" alt="USC Marshall"></span>'
       '<span class="bl__n">AI Builder Hub Engineer</span>'
       '<span class="bl__note">One of four student engineers. Reverse engineered the course '
       'registration system used by 45,185 students.</span></a>'
       '</div>'
-    + '<p>The piece that is public is the scraper underneath it: a collector that pulls one plain-text '
-      'file per undergraduate programme out of USC&rsquo;s online catalogue, which is the input a degree '
-      'requirements validator needs and which nobody had bothered to build. It parses <strong>470</strong> '
-      'programme descriptions and feeds a rules engine that checks a student&rsquo;s courses against what '
-      'their degree actually demands.</p>'
-    + '<p><a href="https://github.com/fyruan-star/usc-catalogue-scraper" target="_blank" rel="noopener">'
-      'github.com/fyruan-star/usc-catalogue-scraper</a></p>'
+    '<p>The piece that is public is the collector underneath it, which pulls one plain-text file per '
+    'undergraduate programme out of USC&rsquo;s online catalogue. That is the input a degree requirements '
+    'validator needs in order to exist at all, and nobody had built it, which is a recurring pattern in '
+    'this kind of work: the unglamorous middle of a system is usually the part that is missing. It parses '
+    '<strong>470</strong> programme descriptions and feeds a rules engine that checks a student&rsquo;s '
+    'courses against what their degree actually demands rather than what they believe it demands.</p>'
+    '<p><a href="https://github.com/fyruan-star/usc-catalogue-scraper" target="_blank" rel="noopener">'
+    'github.com/fyruan-star/usc-catalogue-scraper</a></p>'
 
-    + '<h2>Also running</h2>'
-    + '<div class="biglinks">'
+    '<h2>Also running</h2>'
+    '<div class="biglinks">'
       '<a href="#" class="bl--flat"><span class="bl__lg"></span>'
       '<span class="bl__n">Los Altos Vintage</span>'
-      '<span class="bl__note">Founded and operating. One line of detail still to come from me.</span></a>'
+      '<span class="bl__note">Founded and operating.</span></a>'
       '<a href="#" class="bl--flat"><span class="bl__lg"></span>'
       '<span class="bl__n">Elevated Youth</span>'
-      '<span class="bl__note">Founded and operating. One line of detail still to come from me.</span></a>'
+      '<span class="bl__note">Founded and operating.</span></a>'
       '</div>'
 
-    + '<p style="margin-top:2rem">The write-up that came out of the BODi work is '
-      '<a href="invisible.html">here</a>. It argues that the most valuable thing you build with AI never '
-      'lands on the balance sheet.</p>',
-    "Building")
+    '<p>Writing the BODi work up is what pushed me toward '
+    '<a href="invisible.html">an essay about where savings of that kind actually go</a>, which is nowhere '
+    'the balance sheet can see them. That has become the question I keep circling.</p>',
+    "Engineer")
 
 hub("my-why.html", "My why", "My Mother Works Nights",
     "",
@@ -1092,14 +1147,15 @@ hub("my-why.html", "My why", "My Mother Works Nights",
     '<source src="assets/video/mom-2.mp4" type="video/mp4">Your browser cannot play this video.</video></figure>'
     '</div>'
 
-    '<p class="kicker">I want to be careful how I tell this, because there is a version of it that turns '
-    'my mother into a lesson, and she is not a lesson.</p>'
+    '<p class="kicker">She comes home a little after seven in the morning smelling faintly of hand '
+    'sanitizer, and she will not go to bed until she has asked me at least two questions about my week, '
+    'and she holds an unshakeable and entirely evidence-free confidence that both her sons are going to '
+    'be fine.</p>'
 
-    '<p>She is a woman who comes home a little after seven in the morning smelling faintly of hand sanitizer, '
-    'who will not go to bed until she has asked me at least two questions about my week, and who holds an '
-    'unshakeable and entirely evidence-free confidence that both her sons are going to be fine. She is sixty-three. '
-    'She has raised us on her own the entire time. Her friends are mostly in China, which in practice means '
-    'her friends are mostly a phone screen at inconvenient hours.</p>'
+    '<p>She is sixty-three, she has raised us on her own the entire time, and her friends are mostly in '
+    'China, which in practice means her friends are mostly a phone screen at inconvenient hours. There is '
+    'a version of all this that turns her into a lesson, and I would rather not write that one, because '
+    'she is a person and not a moral.</p>'
 
     '<figure class="lead"><img src="assets/photos/my-why-title.jpg" '
     'alt="Francis Ruan as a boy with his mother, a mountain behind them" width="1200" height="1527">'
@@ -1161,7 +1217,7 @@ hub("my-why.html", "My why", "My Mother Works Nights",
     '<p><a href="https://www.paloaltoonline.com/short-story/2025/07/17/short-story-contest-2025-the-dinner-table/" '
     'target="_blank" rel="noopener"><strong>The Dinner Table</strong></a>, Palo Alto Online, July 2025.</p>'
     + ask("If you have a mother who did something like this, I would genuinely like to hear about her."),
-    "My Why")
+    "Why")
 
 LOVES = [
   ("Little Women", "Greta Gerwig, 2019", "film", "little-women",
@@ -1314,7 +1370,7 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     '<a href="my-why.html">first photograph on the site</a>, which tells you roughly how long this '
     'arrangement has been going on.</p>'
     + ask("If you have made it this far you may as well introduce yourself."),
-    "Who am I")
+    "I")
 
 hub("fight-on.html", "Fight on", "Nobody Came Until Nine",
     "",
@@ -1452,8 +1508,9 @@ hub("fight-on.html", "Fight on", "Nobody Came Until Nine",
     'mother&rsquo;s email in sixth grade, and learning the stove by yourself, and running a mile because '
     'asking for a ride costs something you have decided not to spend.</p>'
 
-    '<p>It means nobody is coming to make this easier, and you go anyway, and you go cheerfully, because '
-    'bitterness is enormously heavy and I could never afford to carry any.</p>'
+    '<p class="pull">It means nobody is coming to make this easier, and you go anyway, and '
+    'you go cheerfully, because bitterness is enormously heavy and I could never afford to carry '
+    'any.</p>'
 
     '<p>There is a version of this story where the boy is bitter, and I understand how you get there. All the '
     'ingredients are present. But I have met bitter people and they are so tired, and being tired is the one '
@@ -1495,7 +1552,10 @@ hub("leadership.html", "Greatest leadership", "The Sideline Is a Vantage, Not a 
 
     '<h2>People arrive one at a time</h2>'
 
-    '<p>A team is not a unit. It is forty separate difficult conversations wearing the same color. The corner '
+    '<p class="pull">A team is not a unit. It is forty separate difficult conversations '
+    'wearing the same colour.</p>'
+
+    '<p>The corner '
     'who just got beaten deep does not want a speech, he wants somebody to sit down next to him and say nothing '
     'for a minute while the humiliation finishes moving through him. The lineman who is furious needs to be '
     'furious somewhere else first, before he says the sentence he will not be able to take back.</p>'
@@ -1530,6 +1590,16 @@ hub("leadership.html", "Greatest leadership", "The Sideline Is a Vantage, Not a 
     'holding one never hold the other. You do not need the ball to carry a squad. You need to be the person '
     'everybody looks at when it goes badly, and you need to have decided, well before it goes badly, exactly '
     'what you intend to be like when it does.</p>'
+
+    '<h2>Where it turns out I still am</h2>'
+    '<p>I am the alumni chair for USC men&rsquo;s lacrosse, which makes me responsible to roughly three '
+    'hundred and fifty alumni across fifty-one graduating classes and for a budget somewhere near $165K, '
+    'and it has turned out to be the same job in different weather. Nobody in that group is obliged to '
+    'answer me. They have careers and families and an entirely reasonable claim on their own Saturdays, '
+    'so the only thing that moves them is whether the person asking has bothered to understand what a '
+    'given season meant to the people who played in it. That is Monday again, only now Monday is spread '
+    'across five decades, and I find I am still considerably better at that than at anything likely to '
+    'get my own name read out.</p>'
 
     '<p>Four years, three on varsity. <a href="awards.html">The rest of the record is here</a>, though it is '
     'much less interesting than this.</p>'
@@ -1605,8 +1675,9 @@ hub("fun.html", "The art of fun", "The Unserious Half",
     'differently for the next minute, is genuinely unmatched by anything I can buy. It costs nothing. It '
     'takes about eleven seconds. I have never once regretted sending one and I have sent a great many.</p>'
 
-    '<p>Keep the expenses near zero. Collect the crumbs on purpose. That is the whole method, and it has '
-    'never let me down on a Tuesday.</p>'
+    '<p>The whole method, such as it is, comes down to keeping the expenses near zero and collecting the '
+    'crumbs deliberately rather than hoping they accumulate on their own, and I can report that it has '
+    'never once let me down on a Tuesday.</p>'
 
     '<div class="band">'
     '<figure><img src="assets/photos/fun-house.jpg" alt="Francis Ruan with friends in front of a painted Trojan mural" loading="lazy"></figure>'
