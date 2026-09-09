@@ -64,15 +64,32 @@ body.index{ height:100dvh; overflow:hidden; }
 .cover{
   height:100dvh; max-width:var(--wrap); margin-inline:auto;
   padding:clamp(1.2rem,3vh,2.2rem) var(--pad) clamp(.9rem,2.2vh,1.5rem);
-  display:grid; grid-template-columns:minmax(240px, 0.9fr) minmax(0, 1.1fr);
-  gap:clamp(1.6rem,4vw,3.6rem); align-items:stretch;
+  display:grid; grid-template-columns:minmax(230px, .78fr) minmax(0, 1.22fr);
+  gap:clamp(1.6rem,4.5vw,4rem); align-items:stretch;
 }
-/* left rail holds the identity; it does not move while the belt runs past it */
+/* identity floats in the optical centre of the rail, contact stays pinned to the
+   baseline: the two autos split the slack so the block never strands at the top */
 .cover__side{ display:flex; flex-direction:column; min-height:0; }
+.cover__side > .mast{ margin-top:auto; }
+.cover__side > .marks{ margin-bottom:auto; }
 
 /* masthead, set the way a broadsheet nameplate is */
-.mast{ display:flex; align-items:center; gap:clamp(1.1rem,2.4vw,2rem); }
+/* portrait over name, so the name gets the whole column and never breaks */
+.mast{ display:flex; flex-direction:column; align-items:flex-start; gap:clamp(.85rem,1.9vh,1.35rem); }
 .mast__id{ padding-bottom:0; }
+.mast h1{
+  font-family:var(--f-head); font-weight:700;
+  font-size:clamp(1.7rem,4.4vh,2.7rem); line-height:1; letter-spacing:-.024em;
+  white-space:nowrap;
+}
+.mast__face{
+  width:clamp(104px,15vh,170px); height:auto; object-fit:contain;
+  border:1px solid var(--ink); flex:0 0 auto; display:block;
+}
+.mast__sub{
+  font-family:var(--f); font-style:italic; color:var(--ink-2);
+  font-size:clamp(.82rem,1.7vh,1rem); margin:.45rem 0 0; max-width:44ch;
+}
 .handles{ display:flex; align-items:center; gap:clamp(.85rem,1.8vw,1.5rem); margin:.55rem 0 0; }
 .handles img{ height:clamp(13px,1.55vh,19px); width:auto; display:block; opacity:.82; }
 .lead-in{
@@ -81,103 +98,114 @@ body.index{ height:100dvh; overflow:hidden; }
 }
 .lead-in a{ color:var(--ink); font-style:normal; border-bottom:1px solid var(--ink-3); }
 .lead-in a:hover{ border-bottom-color:var(--ink); }
-.mast h1{
-  font-family:var(--f-head); font-weight:700;
-  font-size:clamp(1.9rem,4.6vh,3.1rem); line-height:1; letter-spacing:-.02em;
-}
-.mast__sub{
-  font-family:var(--f); font-style:italic; color:var(--ink-2);
-  font-size:clamp(.82rem,1.7vh,1rem); margin:.45rem 0 0; max-width:44ch;
-}
-.mast__face{
-  width:clamp(104px,14.5vh,178px); height:auto; object-fit:contain;
-  border:1px solid var(--ink); flex:0 0 auto; display:block;
-}
 
-.dateline{
-  font-family:var(--f-agate); font-size:.65rem; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--ink-2); display:flex; flex-wrap:wrap; justify-content:space-between; gap:.3rem 1.5rem;
-  padding:.5rem 0; border-bottom:1px solid var(--ink);
+/* --------------------------------------------------------------- marks ---
+   Five marks with five different aspect ratios sitting on one baseline. Equal
+   heights would make the tall badge shout and the wide wordmarks whisper, so
+   each is sized to its own optical weight rather than to a shared number.    */
+.marks{ margin:clamp(1.4rem,3.4vh,2.4rem) 0 0; }
+.marks__k{
+  font-family:var(--f-agate); font-size:.6rem; font-weight:600; letter-spacing:.17em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 .8rem;
+  padding-bottom:.55rem; border-bottom:1px solid var(--rule);
 }
+/* a two-up grid rather than a wrapping row: four marks of four different shapes
+   land on a deliberate lattice instead of spilling three-and-one */
+.marks__row{
+  list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:clamp(.95rem,2.4vh,1.5rem) clamp(.9rem,2.2vw,1.5rem);
+  align-items:center; justify-items:start;
+}
+.marks__row li{ display:flex; align-items:center; min-width:0; }
+.mk{ display:block; width:auto; }
+.mk--usc  { height:clamp(14px,1.8vh,21px); }
+.mk--vuori{ height:clamp(13px,1.6vh,19px); }
+.mk--bodi { height:clamp(13px,1.6vh,19px); }
+.mk--porto{ height:clamp(40px,5vh,58px); }   /* a badge, not a wordmark, so it needs more */
 
 /* ---------------------------------------------------------------- belt ---
-   Stripe Press stacks its books down a void with a tick ruler running alongside.
-   This is that, upright. The track scrolls on the y axis and snaps; the ruler
-   stands to its left as the position indicator. Scroll-snap does all of it,
-   there is no JavaScript here.                                              */
-.beltwrap{
-  min-height:0; display:flex; flex-direction:column;
-  gap:clamp(.45rem,1.1vh,.8rem);
-}
-.belt__track{
-  flex:1 1 auto; min-height:0;
-  display:flex; gap:clamp(.8rem,1.8vw,1.4rem);
-}
+   Stripe Press stacks its books down a void with a tick ruler beside them.
+   This is that, upright, and built as an index: numbered, ruled, each entry
+   carrying the headline of the page it opens. Scroll-snap on the y axis.     */
+.beltwrap{ min-height:0; display:flex; flex-direction:column; gap:clamp(.45rem,1.1vh,.8rem); }
+.belt__track{ flex:1 1 auto; min-height:0; display:flex; gap:clamp(.8rem,1.8vw,1.3rem); }
 .belt{
-  --frame: clamp(96px, 15vh, 168px);
+  --plate: clamp(72px, 9.4vh, 116px);
   flex:1 1 auto; min-width:0;
-  display:flex; flex-direction:column; gap:clamp(.6rem,1.6vh,1.15rem);
   overflow-y:auto; overflow-x:hidden;
-  scroll-snap-type:y mandatory; scroll-behavior:smooth;
-  scroll-padding-top:2px;
-  padding:2px 2px .4rem;
-  scrollbar-width:none; -ms-overflow-style:none;
-  overscroll-behavior-y:contain;
+  scroll-snap-type:y proximity; scroll-behavior:smooth; scroll-padding-top:1px;
+  scrollbar-width:none; -ms-overflow-style:none; overscroll-behavior-y:contain;
 }
 .belt::-webkit-scrollbar{ display:none; }
 
-/* a plate on the left, its name on the right: what a vertical list wants */
 .frame{
-  flex:0 0 auto; scroll-snap-align:start;
-  display:flex; align-items:center; gap:clamp(.85rem,1.9vw,1.35rem);
-  text-align:left;
+  scroll-snap-align:start;
+  display:grid;
+  grid-template-columns:auto var(--plate) minmax(0,1fr) auto;
+  align-items:center; gap:clamp(.7rem,1.6vw,1.15rem);
+  padding:clamp(.55rem,1.3vh,.95rem) 0;
+  border-top:1px solid var(--rule);
+  color:var(--ink);
+}
+.frame:first-child{ border-top:0; }
+.frame__n{
+  font-family:var(--f-agate); font-size:.62rem; font-weight:600; letter-spacing:.1em;
+  color:var(--ink-3); font-variant-numeric:tabular-nums; align-self:start; padding-top:.15rem;
 }
 .frame__img{
-  width:var(--frame); aspect-ratio:1/1; display:block; overflow:hidden; flex:0 0 auto;
+  width:var(--plate); aspect-ratio:1/1; display:block; overflow:hidden;
   border:1px solid var(--ink); background:var(--wash);
 }
-.frame__img img{ width:100%; height:100%; object-fit:cover; display:block; }
+.frame__img img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  filter:grayscale(.12);
+}
+.frame__t{ display:flex; flex-direction:column; gap:.22rem; min-width:0; }
 .frame__k{
-  font-family:var(--f-agate); font-size:clamp(.64rem,1.25vh,.78rem); font-weight:600;
-  letter-spacing:.13em; text-transform:uppercase; color:var(--ink); line-height:1.35;
+  font-family:var(--f-agate); font-size:.6rem; font-weight:600;
+  letter-spacing:.15em; text-transform:uppercase; color:var(--ink-3);
 }
-.frame__card{
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.4rem;
-  background:var(--paper); padding:.7rem;
+.frame__h{
+  font-family:var(--f-head); font-size:clamp(.95rem,1.95vh,1.24rem);
+  line-height:1.22; letter-spacing:-.005em; text-wrap:pretty;
 }
-.card__t{ font-family:var(--f-head); font-style:italic; font-size:clamp(.85rem,1.9vh,1.15rem);
-  color:var(--ink); margin-bottom:.2rem; text-align:center; }
-.card__l{ font-family:var(--f-agate); font-size:.7rem; text-align:center; }
-.card__l a{ color:var(--ink-2); border-bottom:1px solid var(--rule-2); }
-.card__l a:hover{ color:var(--ink); border-bottom-color:var(--ink); }
-.frame--end .frame__k{ color:var(--ink-3); }
+.frame__go{
+  font-size:1rem; color:var(--ink-3); justify-self:end; padding-right:.15rem;
+}
+
+/* hover is the whole row, because the whole row is the target */
+.frame:hover .frame__img img{ filter:grayscale(0); }
 .frame:hover .frame__img{ border-width:2px; }
-.frame:hover .frame__k{ text-decoration:underline; text-underline-offset:3px; }
+.frame:hover .frame__k{ color:var(--ink); }
+.frame:hover .frame__h{ text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; }
+.frame:hover .frame__go{ color:var(--ink); }
+.frame:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+
+.frame--end{ grid-template-columns:auto minmax(0,1fr); }
+.frame--end .frame__h{ font-style:italic; color:var(--ink-2); }
+.frame__links{ display:flex; flex-wrap:wrap; gap:.25rem 1.1rem; margin-top:.35rem; }
+.frame__links a{
+  font-family:var(--f-agate); font-size:.7rem; color:var(--ink-2);
+  border-bottom:1px solid var(--rule-2);
+}
+.frame__links a:hover{ color:var(--ink); border-bottom-color:var(--ink); }
 
 /* the ruler, lifted from the Stripe Press left rail and left standing */
 .ruler{
-  width:15px; flex:0 0 15px;
+  width:13px; flex:0 0 13px;
   background:
-    repeating-linear-gradient(to bottom, var(--ink) 0 1px, transparent 1px 14px) top left / 9px 100% no-repeat,
+    repeating-linear-gradient(to bottom, var(--ink) 0 1px, transparent 1px 14px) top left / 8px 100% no-repeat,
     linear-gradient(to bottom, var(--rule) 0 100%) top left / 1px 100% no-repeat;
-  opacity:.5;
+  opacity:.45;
 }
 .belt__hint{
-  font-family:var(--f-agate); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase;
-  color:var(--ink-3); margin:0; text-align:center;
-}
-
-/* the one line of orientation the cover was missing, set in text not agate so it
-   reads as a sentence rather than a label */
-.cover__line{
-  margin:clamp(1.1rem,3vh,2rem) 0 0; max-width:34ch;
-  font-size:clamp(.9rem,1.75vh,1.06rem); line-height:1.5; color:var(--ink-2);
-  text-wrap:pretty;
+  font-family:var(--f-agate); font-size:.63rem; letter-spacing:.17em; text-transform:uppercase;
+  color:var(--ink-3); margin:0; text-align:right;
 }
 
 .cover__foot{
-  margin-top:auto;
-  display:flex; flex-wrap:wrap; gap:.3rem 1.6rem;
+  display:flex; flex-wrap:wrap; gap:.3rem 1.5rem;
   font-family:var(--f-agate); font-size:.68rem; letter-spacing:.06em;
   color:var(--ink-2); border-top:1px solid var(--ink); padding-top:.6rem;
 }
@@ -313,15 +341,11 @@ body.index{ height:100dvh; overflow:hidden; }
 @media (max-width:820px){ .teamgrid{ grid-template-columns:1fr; } }
 @media (max-width:720px){
   body.index{ height:auto; overflow:auto; }
-  .cover{ height:auto; display:flex; flex-direction:column; gap:1.4rem; }
-  .belt__track{ min-height:0; }
-  .belt{ --frame: min(34vw, 148px); overflow:visible; scroll-snap-type:none; }
+  .cover{ height:auto; display:flex; flex-direction:column; gap:1.5rem; }
+  .belt{ --plate: clamp(64px, 19vw, 92px); overflow:visible; scroll-snap-type:none; }
   .ruler{ display:none; }
   .mast{ flex-direction:column-reverse; align-items:flex-start; gap:1rem; }
-  .biglinks a{ grid-template-columns:34px 1fr; }
-  .bl__note{ grid-column:2; text-align:left; max-width:100%; }
-  .vuoricard{ flex-direction:column; }
-  .cover__foot{ flex-direction:column; }
+  .belt__hint{ text-align:left; }
 }
 
 /* ============================================================ ARTICLE PAGES = */

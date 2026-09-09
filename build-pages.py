@@ -101,18 +101,18 @@ def venn(w=900, h=700):
 
 # =============================================================== INDEX ======
 PYRAMID = [
-  # My why opens, Fight on sits dead centre of the nine, Who is Francis closes
-  [("my-why-title-sq.jpg",      "My why",                    "my-why.html")],
-  [("origin-relationships.jpg", "Finance",                   "finance.html"),
-   ("origin-curiosity.jpg",     "Intellectual curiosity",    "curiosity.html"),
-   ("origin-engineer.jpg",      "Engineer",                  "building.html")],
-  [("fight-on-sq.jpg",          "Fight on",                  "fight-on.html"),
-   ("origin-leadership.jpg",    "Leadership",                "leadership.html"),
-   ("awards.jpg",               "Awards",                    "awards.html"),
-   ("origin-fun.jpg",           "The art of fun",            "fun.html"),
-   ("who-am-i-sq.svg",          "So who is Francis",         "who-am-i.html")],
+  # plate, section, destination, and the page's own headline, which is the best
+  # one-line description of it that exists. My why opens, Who is Francis closes.
+  ("my-why-title-sq.jpg",      "My why",                 "my-why.html",     "My Mother Works Nights"),
+  ("fight-on-sq.jpg",          "Fight on",               "fight-on.html",   "Nobody Came Until Nine"),
+  ("origin-relationships.jpg", "Finance",                "finance.html",    "What I Am Actually Trying to Learn"),
+  ("origin-curiosity.jpg",     "Intellectual curiosity", "curiosity.html",  "A Plate of What I Am Curious About"),
+  ("origin-engineer.jpg",      "Engineer",               "building.html",   "What I Have Built"),
+  ("origin-leadership.jpg",    "Leadership",             "leadership.html", "The Sideline Is a Vantage, Not a Consolation"),
+  ("awards.jpg",               "Awards",                 "awards.html",     "Everything, on One Page"),
+  ("origin-fun.jpg",           "The art of fun",         "fun.html",        "The Unserious Half"),
+  ("who-am-i-sq.jpg",          "So who is Francis",      "who-am-i.html",   "The Four Dimensional Answer"),
 ]
-
 
 TRACKS = {
   "my-why.html":    ("Cool",              "Daniel Caesar"),
@@ -150,35 +150,43 @@ def brick(fname, label, href):
             f'<span class="brick__k">{label}</span></a>')
 
 def belt():
-    """Stripe Press stacks its books down a dark void with a tick ruler beside them.
-    This is that, upright: the photographs run down a track you scroll, with the ruler
-    standing alongside as the position indicator. Each frame is a plate on the left and
-    its name on the right, which is the arrangement a vertical list actually wants.
-    Native scroll-snap on the y axis, no JavaScript."""
-    frames = []
-    for row in PYRAMID:
-        for fname, label, href in row:
-            p = ROOT / "assets" / "photos" / fname
-            img = f'<img src="assets/photos/{fname}" alt="" loading="lazy">' if p.exists() else ""
-            frames.append(f'<a class="frame" href="{href}">'
-                          f'<span class="frame__img">{img}</span>'
-                          f'<span class="frame__k">{label}</span></a>')
-    # the belt should arrive somewhere, so the last frame is the way to reach me
-    frames.append(
+    """Stripe Press stacks its books down a void with a tick ruler running alongside.
+    This is that, upright, and built as an index rather than a row of thumbnails:
+    each entry is numbered, ruled off, and carries the headline of the page it opens,
+    so the belt tells you what is behind a door before you walk through it.
+    Native scroll-snap on the y axis. No JavaScript anywhere on this site."""
+    rows = []
+    for i, (fname, label, href, headline) in enumerate(PYRAMID, 1):
+        p = ROOT / "assets" / "photos" / fname
+        img = f'<img src="assets/photos/{fname}" alt="" loading="lazy">' if p.exists() else ""
+        rows.append(
+            f'<a class="frame" href="{href}">'
+            f'<span class="frame__n">{i:02d}</span>'
+            f'<span class="frame__img">{img}</span>'
+            f'<span class="frame__t">'
+            f'<span class="frame__k">{label}</span>'
+            f'<span class="frame__h">{headline}</span>'
+            f'</span>'
+            f'<span class="frame__go" aria-hidden="true">&rarr;</span>'
+            f'</a>')
+    # the belt should arrive somewhere, so the last entry is the way to reach me
+    rows.append(
         '<div class="frame frame--end">'
-        '<span class="frame__img frame__card">'
-        '<span class="card__t">Say something</span>'
-        '<span class="card__l"><a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a></span>'
-        '<span class="card__l"><a href="https://www.linkedin.com/in/francisruan" target="_blank" rel="noopener">LinkedIn</a></span>'
-        '<span class="card__l"><a href="Ruan_Francis_Resume.pdf" target="_blank" rel="noopener">Resume</a></span>'
-        '</span>'
-        '<span class="frame__k">End of the belt</span></div>')
+        '<span class="frame__n">&mdash;</span>'
+        '<span class="frame__t">'
+        '<span class="frame__k">End of the index</span>'
+        '<span class="frame__h">Say something</span>'
+        '<span class="frame__links">'
+        '<a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a>'
+        '<a href="https://www.linkedin.com/in/francisruan" target="_blank" rel="noopener">LinkedIn</a>'
+        '<a href="Ruan_Francis_Resume.pdf" target="_blank" rel="noopener">Resume</a>'
+        '</span></span></div>')
     return ('<div class="beltwrap">'
             '<div class="belt__track">'
             '<div class="ruler" aria-hidden="true"></div>'
-            f'<div class="belt">{"".join(frames)}</div>'
+            f'<div class="belt">{"".join(rows)}</div>'
             '</div>'
-            '<p class="belt__hint">Scroll down &darr;</p>'
+            '<p class="belt__hint">Nine ways in &middot; scroll &darr;</p>'
             '</div>')
 
 INDEX = f"""<div class="cover">
@@ -188,16 +196,18 @@ INDEX = f"""<div class="cover">
       <img class="mast__face" src="assets/photos/headshot.jpg" alt="Francis Ruan" width="892" height="1400">
       <div class="mast__id">
         <h1>Francis Ruan</h1>
-        <p class="handles">
-          <img src="assets/logos/vuori.svg" alt="Vuori">
-          <img src="assets/logos/uscmarshall.png" alt="USC Marshall">
-        </p>
       </div>
     </div>
 
-    <p class="cover__line">A USC student studying how companies build, measure and
-    finance growth. Nine ways in, and the plates below are the doors. Start anywhere,
-    though the first one is the reason for all the others.</p>
+    <div class="marks">
+      <p class="marks__k">Where the time goes</p>
+      <ul class="marks__row">
+        <li><img class="mk mk--usc"   src="assets/logos/uscmarshall.png" alt="USC Marshall"></li>
+        <li><img class="mk mk--vuori" src="assets/logos/vuori.svg"       alt="Vuori"></li>
+        <li><img class="mk mk--bodi"  src="assets/logos/bodi.svg"        alt="BODi"></li>
+        <li><img class="mk mk--porto" src="assets/logos/elporto.png"     alt="El Porto Surfboards"></li>
+      </ul>
+    </div>
 
     <div class="cover__foot">
       <a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a>
