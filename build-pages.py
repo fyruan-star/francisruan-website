@@ -14,9 +14,10 @@ ICON = ("<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns='http://www.w3.
         "viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Newsreader,Georgia,serif' fill='%231C1C1C'>F</text></svg>\">")
 
 def topbar(active=""):
-    items=[("index.html","Index"),("my-why.html","My Why"),("leadership.html","Leadership"),
-           ("building.html","Building"),("curiosity.html","Curiosity"),("fun.html","Fun"),
-           ("awards.html","Awards"),("who-am-i.html","Who am I"),("Ruan_Francis_Resume.pdf","Resume")]
+    items=[("index.html","Index"),("my-why.html","My Why"),("fight-on.html","Fight On"),
+           ("finance.html","Finance"),("leadership.html","Leadership"),("building.html","Building"),
+           ("curiosity.html","Curiosity"),("fun.html","Fun"),("awards.html","Awards"),
+           ("who-am-i.html","Who am I"),("Ruan_Francis_Resume.pdf","Resume")]
     li="".join(f'<li><a href="{h}"{" target=_blank rel=noopener" if h.endswith(".pdf") else ""}'
                f'{" style=color:var(--ink)" if t==active else ""}>{t}</a></li>' for h,t in items)
     return ('<header class="topbar"><div class="wrap topbar__in">'
@@ -150,8 +151,10 @@ def brick(fname, label, href):
 
 def belt():
     """Stripe Press stacks its books down a dark void with a tick ruler beside them.
-    Same idea rotated: the photographs run along a track you push sideways, with the
-    ruler underneath as the position indicator. Native scroll-snap, no JavaScript."""
+    This is that, upright: the photographs run down a track you scroll, with the ruler
+    standing alongside as the position indicator. Each frame is a plate on the left and
+    its name on the right, which is the arrangement a vertical list actually wants.
+    Native scroll-snap on the y axis, no JavaScript."""
     frames = []
     for row in PYRAMID:
         for fname, label, href in row:
@@ -171,35 +174,43 @@ def belt():
         '</span>'
         '<span class="frame__k">End of the belt</span></div>')
     return ('<div class="beltwrap">'
-            f'<div class="belt">{"".join(frames)}</div>'
+            '<div class="belt__track">'
             '<div class="ruler" aria-hidden="true"></div>'
-            '<p class="belt__hint">Push sideways &rarr;</p>'
+            f'<div class="belt">{"".join(frames)}</div>'
+            '</div>'
+            '<p class="belt__hint">Scroll down &darr;</p>'
             '</div>')
 
 INDEX = f"""<div class="cover">
 
-  <div class="mast">
-    <img class="mast__face" src="assets/photos/headshot.jpg" alt="Francis Ruan" width="892" height="1400">
-    <div class="mast__id">
-      <h1>Francis Ruan</h1>
-      <p class="handles">
-        <img src="assets/logos/vuori.svg" alt="Vuori">
-        <img src="assets/logos/uscmarshall.png" alt="USC Marshall">
-      </p>
+  <div class="cover__side">
+    <div class="mast">
+      <img class="mast__face" src="assets/photos/headshot.jpg" alt="Francis Ruan" width="892" height="1400">
+      <div class="mast__id">
+        <h1>Francis Ruan</h1>
+        <p class="handles">
+          <img src="assets/logos/vuori.svg" alt="Vuori">
+          <img src="assets/logos/uscmarshall.png" alt="USC Marshall">
+        </p>
+      </div>
+    </div>
+
+    <p class="cover__line">A USC student studying how companies build, measure and
+    finance growth. Nine ways in, and the plates below are the doors. Start anywhere,
+    though the first one is the reason for all the others.</p>
+
+    <div class="cover__foot">
+      <a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a>
+      <a href="https://www.linkedin.com/in/francisruan" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="Ruan_Francis_Resume.pdf" target="_blank" rel="noopener">Resume</a>
     </div>
   </div>
 
   {belt()}
-
-  <div class="cover__foot">
-    <a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a>
-    <a href="https://www.linkedin.com/in/francisruan" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="Ruan_Francis_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-  </div>
 </div>"""
 
 page("index.html","Francis Ruan",
-     "USC student studying how companies build, measure and finance growth. Six ways in.",
+     "USC student studying how companies build, measure and finance growth. Nine ways in.",
      INDEX, body_class="index", chrome=False)
 print("index.html")
 
@@ -419,7 +430,7 @@ CURIO = f"""<div class="wrap">
 </div>
 {ask("If any of this overlaps with something you are thinking about, write to me.")}
 </div>
-<nav class="nextprev"><a href="index.html">&larr; All six</a></nav>
+<nav class="nextprev"><a href="index.html">&larr; All nine</a></nav>
 </div>"""
 
 page("curiosity.html","Intellectual Curiosity | Francis Ruan",
@@ -992,7 +1003,7 @@ def hub(fn, eyebrow, title, lede, blocks, active):
 {soundtrack(fn)}
 {blocks}
 </div>
-<nav class="nextprev"><a href="index.html">&larr; All six</a></nav>
+<nav class="nextprev"><a href="index.html">&larr; All nine</a></nav>
 </div>"""
     page(fn, title + " | Francis Ruan", lede.replace('"',''), body, active=active)
     print(fn)
@@ -1056,7 +1067,7 @@ hub("my-why.html", "My why", "My Mother Works Nights",
 
     '<p>She is a woman who comes home a little after seven in the morning smelling faintly of hand sanitizer, '
     'who will not go to bed until she has asked me at least two questions about my week, and who holds an '
-    'unshakeable and frankly unearned confidence that both her sons are going to be fine. She is sixty-three. '
+    'unshakeable and entirely evidence-free confidence that both her sons are going to be fine. She is sixty-three. '
     'She has raised us on her own the entire time. Her friends are mostly in China, which in practice means '
     'her friends are mostly a phone screen at inconvenient hours.</p>'
 
@@ -1083,7 +1094,7 @@ hub("my-why.html", "My why", "My Mother Works Nights",
     '<p class="pull">She would rather have been there than anything. That is exactly why she was not.</p>'
 
     '<p>She also did not have to raise us here. Silicon Valley is an absurd place to be a single nurse with '
-    'two boys, where everything costs more than it should for reasons nobody can defend. She stayed because '
+    'two boys, where everything costs more than it should. She stayed because '
     'the schools were good. That was the entire calculation. She traded her own comfort for our classrooms '
     'and she has never once described it to me as a trade.</p>'
 
@@ -1116,7 +1127,7 @@ hub("my-why.html", "My why", "My Mother Works Nights",
     'love in a few paragraphs. I did not know you could do that with a few paragraphs. I have been trying to '
     'do it again ever since.</p>'
 
-    '<p>If you read one thing on this site, read that instead of this.</p>'
+    '<p>It is short, and it is the best thing I have written. If you only have a minute on this site, spend it there.</p>'
     '<p><a href="https://www.paloaltoonline.com/short-story/2025/07/17/short-story-contest-2025-the-dinner-table/" '
     'target="_blank" rel="noopener"><strong>The Dinner Table</strong></a>, Palo Alto Online, July 2025.</p>'
     + ask("If you have a mother who did something like this, I would genuinely like to hear about her."),
@@ -1238,18 +1249,15 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     'normal is about two hundred years old and wearing a very convincing costume.</p>'
 
     '<h2>The small operations</h2>'
-    '<p>I take an unreasonable number of selfies, for nobody. I film short videos of completely ordinary '
-    'afternoons, because a year from now the ordinary afternoon is exactly the thing I will want back.</p>'
-    '<p>I talk to myself more or less constantly, out loud, and I tell myself jokes, and I find them '
-    'funny. This is either a warning sign or the cheapest entertainment ever devised and I have chosen to '
-    'believe it is the second one.</p>'
+    '<p>There is a whole method to this that I have set out <a href="fun.html">in the fun section</a>, '
+    'about crumbs and operating expenses and why contentment is cheaper to build than joy. What belongs '
+    'here is only the residue of it, the habits somebody would actually notice if they lived with me.</p>'
     '<p>I care about clothes. I like talking to strangers and I will do it in any queue, anywhere. And the '
     'genuine highlight of a given week is the part where all my roommates and I finally clean the '
     'apartment, and somebody puts music on, and everybody is loose and slightly stupid and dancing badly '
-    'in a kitchen that is finally not disgusting. I would not trade that for a single yacht party.</p>'
-    '<p>And once a day, every day, I send somebody a genuine compliment. There is <a href="fun.html">a '
-    'longer argument about why</a>, but the short version is that it costs nothing and returns more than '
-    'anything else I do.</p>'
+    'in a kitchen that is finally not disgusting. I have never wanted a better evening than that one.</p>'
+    '<p>And once a day, every day, I send somebody a genuine compliment. It costs nothing and it '
+    'returns more than anything else I do.</p>'
     '<p>I love waking up. I have never once been sorry that a day started.</p>'
 
     '<h2>The rules I actually keep</h2>'
@@ -1383,7 +1391,7 @@ hub("fight-on.html", "Fight on", "Nobody Came Until Nine",
     'houses had it on the menu, I had already lost the taste for it.</p>'
 
     '<p><strong>A smile</strong>, and a real one. Not a performance. I liked people. I still do, embarrassingly '
-    'much, and it has never once cost me anything.</p>'
+    'much, and it has cost me far less than people warned me it would.</p>'
 
     '<p><strong>A joke</strong>, always loaded, usually deployed about four seconds after something went badly '
     'and occasionally while I was still crying. If somebody in the room was having a worse day than I was, I '
