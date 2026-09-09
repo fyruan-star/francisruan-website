@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# Local snapshot safety net (snapshot.py save/list/back). Stays on disk only.
+.backups/
+
+# Build output. Regenerate with: python3 build-single-file.py
+dist/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# This repository is PUBLIC, because GitHub Pages requires a public repo on the
+# free plan. Anything committed is browsable on GitHub and also served at
+# francisruan.com/<path>. The files below are working notes, not the site, and
+# are deliberately kept local.
+PRE-PROMPT.md
+CLAUDE-DESIGN-PROMPT.md
+AESTHETIC-DIRECTION.md
+archive-editorial/
+
+# Private working notes, kept out of the public repo.
+NOTES-LOCAL.md
