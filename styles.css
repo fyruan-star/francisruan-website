@@ -120,11 +120,11 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
   transition:filter .45s ease, transform .45s ease;
 }
 .frame__k{
-  display:block; margin-top:.62rem;
+  display:block; margin-top:.62rem; text-align:center;
   font-family:var(--f-grot); font-weight:500; font-size:.6rem;
   letter-spacing:.09em; text-transform:uppercase; color:var(--ink);
 }
-.frame:hover .frame__img img{ filter:grayscale(.55) contrast(1.02); transform:scale(1.015); }
+.frame:hover .frame__img img{ filter:grayscale(0) contrast(1); transform:scale(1.015); }
 .frame:focus-visible{ outline:2px solid var(--ink); outline-offset:4px; }
 
 /* the counter, driven by the belt's own scroll rather than by script -------- */
@@ -499,32 +499,7 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
 /* ----------------------------------------------------------------- cats ---
    Three ways into one subject, set as a numbered rank across the top of the
    page so a reader can choose before they commit to scrolling.               */
-.cats{
-  display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
-  gap:0; margin:2rem 0 2.6rem; border-top:1px solid var(--ink);
-}
-.cat{
-  display:flex; flex-direction:column; gap:.34rem;
-  padding:1.05rem clamp(.9rem,2vw,1.5rem) 1.2rem 0;
-  border-bottom:1px solid var(--ink); color:var(--ink); position:relative;
-}
-.cat + .cat{ border-left:1px solid var(--rule); padding-left:clamp(.9rem,2vw,1.5rem); }
-.cat__n{
-  font-family:var(--f-agate); font-size:.6rem; font-weight:600; letter-spacing:.1em;
-  color:var(--ink-3); font-variant-numeric:tabular-nums;
-}
-.cat__k{
-  font-family:var(--f-agate); font-size:.6rem; font-weight:600; letter-spacing:.16em;
-  text-transform:uppercase; color:var(--ink-3);
-}
-.cat__t{ font-family:var(--f-head); font-size:1.12rem; font-weight:600; line-height:1.18; text-wrap:pretty; }
-.cat__d{ font-size:.86rem; line-height:1.48; color:var(--ink-2); text-wrap:pretty; }
-.cat__go{ font-size:.95rem; color:var(--ink-3); margin-top:.2rem; }
-.cat:hover .cat__t{ text-decoration:underline; text-underline-offset:3px; }
-.cat:hover .cat__go{ color:var(--ink); }
-@media (max-width:720px){
-  .cat + .cat{ border-left:0; padding-left:0; }
-}
+
 
 /* =================================================== ARTICLE COMPOSITION ===
    The reading column was pinned to the left of a 1080px container, which left a
@@ -624,4 +599,52 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
   ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*){ animation:none !important; }
+}
+
+/* ----------------------------------------------------------------- rack ---
+   Three channels, set the way the cover sets its plates: grotesque, bracketed,
+   ruled off, and given far more air than a card would normally be allowed. It
+   runs the full width of the page rather than the width of a line of text,
+   because it is a contents page and not a paragraph.                         */
+.rack{
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:0; margin:clamp(2.6rem,6vw,4.5rem) 0 clamp(2.6rem,6vw,4.2rem);
+  border-top:1px solid var(--ink);
+}
+.rk{
+  display:flex; flex-direction:column; align-items:flex-start;
+  gap:.5rem; color:var(--ink);
+  padding:clamp(1.1rem,2.4vw,1.7rem) clamp(1rem,2.2vw,1.6rem) clamp(1.5rem,3vw,2.1rem) 0;
+  border-bottom:1px solid var(--ink);
+}
+.rk + .rk{ border-left:1px solid var(--rule); padding-left:clamp(1rem,2.2vw,1.6rem); }
+.rk__n{
+  font-family:var(--f-grot); font-weight:500; font-size:.58rem;
+  letter-spacing:.14em; color:var(--ink-3); font-variant-numeric:tabular-nums;
+}
+.rk__k{
+  font-family:var(--f-grot); font-weight:800; font-size:clamp(1.05rem,2.1vw,1.45rem);
+  letter-spacing:-.03em; text-transform:uppercase; line-height:1; color:var(--ink);
+}
+.rk__t{
+  font-family:var(--f-head); font-size:clamp(.94rem,1.6vw,1.06rem);
+  line-height:1.25; color:var(--ink); text-wrap:pretty; margin-top:.1rem;
+}
+.rk__d{
+  font-family:var(--f-grot); font-weight:400; font-size:.76rem; line-height:1.5;
+  color:var(--ink-2); text-wrap:pretty;
+}
+.rk__m{
+  margin-top:auto; padding-top:.9rem;
+  font-family:var(--f-grot); font-weight:500; font-size:.56rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3);
+}
+.rk:hover .rk__k{ text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:2px; }
+.rk:hover .rk__m{ color:var(--ink); }
+.rk:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+
+@media (max-width: 860px){
+  .rack{ grid-template-columns:1fr; }
+  .rk + .rk{ border-left:0; padding-left:0; }
+  .rk{ padding-right:0; }
 }

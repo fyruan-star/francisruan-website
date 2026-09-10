@@ -105,7 +105,7 @@ def venn(w=900, h=700):
 PYRAMID = [
   # One word where one word will do. Why opens, the fun closes it out.
   ("my-why-title-sq.jpg",      "Why",                     "my-why.html"),
-  ("who-am-i-sq.jpg",          "I",                       "who-am-i.html"),
+  ("who-am-i-wide.jpg",        "I",                       "who-am-i.html"),
   ("fight-on-sq.jpg",          "Fight On",                "fight-on.html"),
   ("origin-curiosity.jpg",     "Curiosity",               "curiosity.html"),
   ("origin-leadership.jpg",    "Leadership",              "leadership.html"),
@@ -961,58 +961,63 @@ FIN = f"""<div class="wrap">
 
 <p>I should be honest about the route here, because it was not the obvious one. I did not grow up anywhere near this. What I grew up around was a household in which the arithmetic was never abstract, where somebody was awake at the wrong end of the clock so that a number would come out right at the end of the month, and where I learned early to read a room for the thing nobody was saying out loud. Finance turned out to be that same habit pointed at companies rather than at my own kitchen, which is why the question that holds me is not what a business earns but what it is quietly worth to somebody who has understood it better than its accounts have.</p>
 
-<p>It runs in three places that feed one another, so that the arithmetic I do privately in the study has to survive being written down in the paper where somebody can disagree with it in public, and both of them in turn have to survive the show, where I go and ask the people it is actually happening to whether any of it resembles their Tuesday.</p>
+<p>It runs in three places that feed one another, so that an argument I make in writing has to survive being sent to people who will reply to it, and both of those in turn have to survive the show, where I go and ask the people it is actually happening to whether any of it resembles their Tuesday.</p>
+</div>
 
-<div class="cats">
-  <a class="cat" href="#study">
-    <span class="cat__n">01</span>
-    <span class="cat__k">The study</span>
-    <span class="cat__t">Five deals, six weeks, a sevenfold spread</span>
-    <span class="cat__d">Five consumer wellness businesses changed hands this summer at prices seven times apart. I plotted them and worked out what each buyer was really paying for.</span>
-    <span class="cat__go" aria-hidden="true">&darr;</span>
+<div class="rack">
+  <a class="rk" href="#blog">
+    <span class="rk__n">[ 01 ]</span>
+    <span class="rk__k">The blog</span>
+    <span class="rk__t">Where the arithmetic gets done in public</span>
+    <span class="rk__d">Long pieces with the working shown. The five deals and the sevenfold spread between them, and an essay on the assets an AI deployment builds that never reach the balance sheet.</span>
+    <span class="rk__m">Two pieces &middot; live</span>
   </a>
-  <a class="cat" href="#paper">
-    <span class="cat__n">02</span>
-    <span class="cat__k">The paper</span>
-    <span class="cat__t">What I have put in writing</span>
-    <span class="cat__d">Two long pieces: the argument behind the deal spread, and an essay on the assets an AI deployment builds that never reach the balance sheet.</span>
-    <span class="cat__go" aria-hidden="true">&darr;</span>
+  <a class="rk" href="#newsletter">
+    <span class="rk__n">[ 02 ]</span>
+    <span class="rk__k">The newsletter</span>
+    <span class="rk__t">One deal, one question, every week</span>
+    <span class="rk__d">A short letter for people who would rather argue than agree. A single transaction, what the buyer was actually paying for, and the part of my own reasoning I am least sure about.</span>
+    <span class="rk__m">In progress</span>
   </a>
-  <a class="cat" href="#show">
-    <span class="cat__n">03</span>
-    <span class="cat__k">The show</span>
-    <span class="cat__t">Wall Street&rsquo;s Trojan Horse</span>
-    <span class="cat__d">A podcast in progress about how quietly AI already walked into investment banking, told by the analysts living it and the people who built it.</span>
-    <span class="cat__go" aria-hidden="true">&darr;</span>
+  <a class="rk" href="#podcast">
+    <span class="rk__n">[ 03 ]</span>
+    <span class="rk__k">The podcast</span>
+    <span class="rk__t">Wall Street&rsquo;s Trojan Horse</span>
+    <span class="rk__d">How quietly AI already walked into investment banking, told twice over: by the analysts living inside the change, and by the people who built the thing that caused it.</span>
+    <span class="rk__m">In progress</span>
   </a>
 </div>
 
-<h2 id="study">The study</h2>
-<p>Five consumer wellness businesses changed hands in six weeks this summer at prices seven times apart. I plotted them, worked out what each buyer was really paying for, and wrote a note on each.</p>
-{dealgrid()}
-<p><a href="trend.html"><strong>Read the full argument</strong></a>, including the chart and where I think I am wrong.</p>
-
-<h2 id="paper">The paper</h2>
-<p>Everything above is only worth something if I am willing to write it down where somebody can disagree with me. These are the two pieces I would defend.</p>
+<div class="body">
+<h2 id="blog">The blog</h2>
+<p>Everything here is only worth something if I am willing to write it down somewhere a stranger can disagree with me. These are the two I would defend line by line.</p>
 <div class="biglinks">
-  <a href="trend.html"><span class="bl__lg"></span><span class="bl__n">Five Deals, Six Weeks, and a Sevenfold Spread</span><span class="bl__note">The full argument, the chart, the five notes, and the part where I say what would prove me wrong.</span></a>
+  <a href="trend.html"><span class="bl__lg"></span><span class="bl__n">Five Deals, Six Weeks, and a Sevenfold Spread</span><span class="bl__note">Five consumer wellness businesses changed hands this summer at prices seven times apart. The chart, the five notes, and the part where I say what would prove me wrong.</span></a>
   <a href="invisible.html"><span class="bl__lg"></span><span class="bl__n">The Assets AI Builds That Nobody Records</span><span class="bl__note">The essay that came out of the BODi work. The best output of a deployment never lands on the balance sheet.</span></a>
 </div>
+{dealgrid()}
+<p><a href="trend.html"><strong>Read the full argument</strong></a>, including the chart and where I think I am wrong.</p>
 <h3>Where the operating work happened</h3>
 <div class="biglinks">
   <a href="bodi.html"><span class="bl__lg"><img src="assets/logos/bodi.svg" alt=""></span><span class="bl__n">BODi</span><span class="bl__note">Ninety minutes to three. $784K sized and presented to the MD of Accounting.</span></a>
 </div>
 
-<h2 id="show">The show</h2>
+<h2 id="newsletter">The newsletter</h2>
+<p>The blog is where I take a month over something. The newsletter is the other half of that, which is the discipline of having to say something worth a stranger&rsquo;s Sunday every single week, whether or not the week has been generous with material.</p>
+<p>One transaction. What the buyer was actually paying for, stated plainly enough that somebody could tell me I have it wrong. And then the part most writing on this subject leaves out, which is the weakest link in my own reasoning, named by me before anybody else has to find it. I would rather be corrected in a reply than be right in private.</p>
+<p class="quiet">First issues to come. If you would like to be sent them, or you would like to be the person who writes back disagreeing, say so and I will put you on it.</p>
+
+<h2 id="podcast">The podcast</h2>
 <div class="podcast">
   <img class="podcast__art" src="assets/logos/podcast-cover.svg" alt="Wall Street&rsquo;s Trojan Horse, placeholder cover">
   <div class="podcast__body">
-    <p class="podcast__k">Wall Street&rsquo;s Trojan Horse &middot; a podcast, in progress</p>
+    <p class="podcast__k">Wall Street&rsquo;s Trojan Horse</p>
     <p>A show about how quietly AI has already walked into investment banking. Not the version in the headlines, with the press releases and the transformation decks. The version where a first-year analyst stops doing four hours of work on a Tuesday and mentions it to nobody.</p>
     <p>I am collecting perspectives from two groups: first-year analysts who are living inside the change, and the people building the tools that caused it. They describe the same event in almost completely different language, and the distance between those two accounts is the actual show.</p>
     <p class="quiet">Artwork and first episodes to come. If you are a first-year analyst, or you build these tools, I would like to record with you.</p>
   </div>
 </div>
+
 <h2>What I am looking for</h2>
 <p>An analyst seat where the work is genuinely difficult and somebody senior is willing to tell me plainly when I have got something wrong, which is a narrower request than it sounds. The longer ambition, and I am aware how it reads set down in writing, is to use these tools to make investment banking a more human business rather than merely a faster one, on the theory that once the searching becomes cheap the judgement is the only thing left, and judgement has always been the part that needed a person in it.</p>
 {ask("If you work in a bank and have watched this happen from the inside, come on the show.")}
