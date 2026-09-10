@@ -310,90 +310,60 @@ def multiples_chart(w=820, h=300):
 
 # =============================================================== BRAIN ======
 CURIOSITIES = [
-  # label, marker x, y, which side the label sits on
-  ("Creative writing",            452, 152, "L"),
-  ("Education &amp; attention",   372, 210, "L"),
-  ("Inequality",                  360, 262, "L"),
-  ("Interface design",            420, 296, "L"),
-  ("Comedy &amp; timing",         318, 352, "L"),
-  ("Mandarin",                    300, 404, "L"),
-  ("Finance &amp; valuation",     556, 132, "R"),
-  ("Consumer M&amp;A",            632, 176, "R"),
-  ("Decision making under stress",660, 240, "R"),
-  ("Self-quantification",         648, 290, "R"),
-  ("Physiology &amp; recovery",   632, 336, "R"),
-  ("Endurance",                   578, 428, "R"),
+  ("How people are persuaded", [
+    ("Creative writing",  "How a sentence gets somebody to feel something they did not arrive intending to feel."),
+    ("Comedy &amp; timing",   "The same question with a stopwatch on it. Why one beat lands and the identical line half a second later does not."),
+    ("Interface design",  "Persuasion with no words in it at all, which is the hardest version."),
+    ("Mandarin",          "What I can and cannot say to my mother in her own language, and what that gap costs both of us."),
+  ]),
+  ("How value hides", [
+    ("Finance &amp; valuation",  "What a business is quietly worth to somebody who understands it better than its accounts do."),
+    ("Consumer M&amp;A",         "Why two companies on the same shelf clear seven times apart."),
+    ("Education &amp; attention","The most valuable thing a society allocates, handed out by postcode."),
+    ("Inequality",               "Not the fact of it. The machinery that keeps it standing after everyone agrees it should not."),
+  ]),
+  ("How a body holds up", [
+    ("Physiology &amp; recovery",     "Mechanism first, always. Not that sleep matters but what glymphatic clearance actually is."),
+    ("Self-quantification",           "Running bloodwork against my own baselines, which sounds clinical and is really curiosity pointed inward."),
+    ("Decision making under stress",  "What happens to judgement at mile nine, and whether any of it can be trained."),
+    ("Endurance",                     "The only laboratory I have where the variable is me."),
+  ]),
 ]
 
-def brain(w=1180, h=620):
-    ink, line = "var(--ink)", "var(--trust)"
-    o = [f'<svg viewBox="0 0 {w} {h}" role="img" aria-labelledby="bt bd">',
-         '<title id="bt">A diagram of what I am curious about</title>',
-         '<desc id="bd">A head in profile, labelled the way an anatomical plate is, '
-         'with twelve areas of interest instead of anatomy.</desc>',
-         f'<g fill="none" stroke="{line}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">']
-    # skull and face, facing left
-    o.append('<path d="M520 62 C400 64 320 146 305 232 C300 256 292 266 285 276 '
-             'C268 298 250 324 248 340 C247 352 262 356 278 360 C288 362 286 372 282 380 '
-             'C279 388 288 394 296 398 C289 404 285 412 288 420 C292 436 305 452 322 462 '
-             'C345 476 372 486 400 496 C420 504 432 520 436 548 L444 596 L666 596 '
-             'C670 536 674 476 678 426 C696 376 706 296 692 226 C678 146 610 70 520 62 Z"/>')
-    # brain mass
-    o.append('<path d="M340 238 C340 148 420 102 510 102 C600 102 666 148 669 233 '
-             'C671 273 651 298 611 303 C541 310 431 308 376 298 C349 290 338 268 340 238 Z"/>')
-    o.append(f'</g><g fill="none" stroke="{line}" stroke-width="1.05" stroke-opacity=".75" stroke-linecap="round">')
-    # gyri
-    for d in ["M362 232 C398 200 452 196 486 224 C516 248 556 246 584 220",
-              "M356 268 C400 244 456 244 492 268 C528 292 580 288 614 262",
-              "M380 292 C420 274 470 274 508 292 C544 308 588 306 620 288",
-              "M392 178 C428 152 486 148 522 172 C556 194 606 190 636 166",
-              "M420 138 C452 118 500 116 532 134"]:
-        o.append(f'<path d="{d}"/>')
-    o.append("</g>")
-    # cerebellum and stem
-    o.append(f'<g fill="none" stroke="{line}" stroke-width="1.4"><circle cx="632" cy="336" r="40"/>'
-             '<path d="M560 300 C566 340 570 392 578 428 C582 450 584 470 582 492"/></g>')
-    o.append(f'<g fill="none" stroke="{line}" stroke-width=".8" stroke-opacity=".65">'
-             '<path d="M600 320 C616 330 640 334 664 330"/><path d="M600 344 C618 350 642 352 666 346"/>'
-             '<path d="M606 362 C622 368 642 368 660 362"/></g>')
-
-    left  = [c for c in CURIOSITIES if c[3] == "L"]
-    right = [c for c in CURIOSITIES if c[3] == "R"]
-    o.append(f'<g font-family="var(--f-agate)" font-size="13" fill="{ink}">')
-    o.append(f'<g stroke="{ink}" stroke-width=".9" fill="none" stroke-opacity=".55">')
-    lines, labels, dots = [], [], []
-    for side, group in (("L", left), ("R", right)):
-        n = len(group)
-        span = h - 190
-        for i, (lab, mx, my, _) in enumerate(group):
-            ly = 108 + (span / max(n - 1, 1)) * i
-            lx = 214 if side == "L" else w - 214
-            elbow = 262 if side == "L" else w - 262
-            lines.append(f'<path d="M{mx} {my} L{elbow} {ly} L{lx + (14 if side=="L" else -14)} {ly}"/>')
-            anc = "end" if side == "L" else "start"
-            tx = lx if side == "L" else lx
-            labels.append(f'<text x="{tx}" y="{ly + 4}" text-anchor="{anc}">'
-                          f'<tspan font-weight="600">{i + 1 + (0 if side=="L" else len(left))}.</tspan>'
-                          f'<tspan dx="6">{lab}</tspan></text>')
-            dots.append(f'<circle cx="{mx}" cy="{my}" r="3.4" fill="{ink}" stroke="none"/>')
-    o += lines
-    o.append("</g>")
-    o += dots
-    o += labels
-    o.append("</g></svg>")
-    return "".join(o)
+def plate():
+    """The twelve, grouped by the question underneath them rather than pinned to a
+    picture of a head. Numbered and ruled, in the cover's language."""
+    out, n = ['<div class="plate">'], 0
+    for group, rows in CURIOSITIES:
+        out.append(f'<section class="pl__g"><h3 class="pl__h">{group}</h3><ol class="pl__l">')
+        for label, note in rows:
+            n += 1
+            out.append(f'<li class="pl__i"><span class="pl__n">[ {n:02d} ]</span>'
+                       f'<span class="pl__t">{label}</span>'
+                       f'<span class="pl__d">{note}</span></li>')
+        out.append("</ol></section>")
+    out.append("</div>")
+    return "".join(out)
 
 
 CURIO = f"""<div class="wrap">
 <header class="phead">
   <p class="eyebrow">Intellectual curiosity</p>
-  <h1>A Plate of What I Am Curious About</h1>
+  <h1>Twelve Things I Keep Going Back To</h1>
 </header>
 <div class="body">
 {soundtrack("curiosity.html")}
-<p class="kicker">Anatomical plates label a head by what each part does. This one labels it by what I keep going back to. The placements are a conceit. The list is not.</p>
+<figure class="defn">
+  <p class="defn__w">curiosity</p>
+  <div class="defn__b">
+    <p class="defn__d">not the wish to know a thing, which is appetite and passes, but the refusal to accept the headline as the answer. the suspicion that every explanation you were handed is the shortened version, and the willingness to be the only person in the room still asking after everybody else has moved on.</p>
+    <p class="defn__p">[ kyoor-ee-<em>os</em>-i-tee ]</p>
+  </div>
+</figure>
 
-<div class="brainwrap">{brain()}</div>
+<p>Most people are taught it as a childhood trait, something you have plenty of at six and are expected to grow out of by twenty, as though the questions were a phase rather than the point. I have come to think it is closer to a discipline, and an unfashionable one, because it costs you something socially to keep asking after the conversation has agreed to stop. What follows is not everything I find interesting. It is the twelve I keep going back to, and what I have noticed is that they are really only three questions wearing different clothes.</p>
+
+{plate()}
 
 <h2>Published</h2>
 <div class="pubs">
@@ -1031,13 +1001,14 @@ page("finance.html","Finance | Francis Ruan",
 print("finance.html")
 
 # ================================================================= HUBS =====
-def hub(fn, eyebrow, title, lede, blocks, active):
+def hub(fn, eyebrow, title, lede, blocks, active, sub=""):
     if 'class="ask"' not in blocks:
         blocks = blocks + ask()
+    subline = f'\n  <p class="dedication">{sub}</p>' if sub else ""
     body = f"""<div class="wrap">
 <header class="phead">
   <p class="eyebrow">{eyebrow}</p>
-  <h1>{title}</h1>
+  <h1>{title}</h1>{subline}
 </header>
 <div class="body">
 {soundtrack(fn)}
@@ -1142,7 +1113,7 @@ hub("building.html", "Engineer", "What I Have Built",
     'the balance sheet can see them. That has become the question I keep circling.</p>',
     "Engineer")
 
-hub("my-why.html", "My why", "My Mother Works Nights",
+hub("my-why.html", "Why", "For Qiwen Ye",
     "",
     '<div class="videos">'
     '<figure><video controls preload="metadata" playsinline poster="assets/video/mom-1-poster.jpg">'
@@ -1221,7 +1192,8 @@ hub("my-why.html", "My why", "My Mother Works Nights",
     '<p><a href="https://www.paloaltoonline.com/short-story/2025/07/17/short-story-contest-2025-the-dinner-table/" '
     'target="_blank" rel="noopener"><strong>The Dinner Table</strong></a>, Palo Alto Online, July 2025.</p>'
     + ask("If you have a mother who did something like this, I would genuinely like to hear about her."),
-    "Why")
+    "Why",
+    sub="&#25105;&#30340;&#22920;&#22920; &middot; w&#466; de m&#257;ma &middot; my mother")
 
 LOVES = [
   ("Little Women",        "Greta Gerwig, 2019",     "film", "little-women"),
@@ -1395,15 +1367,28 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     + ask("If you have made it this far you may as well introduce yourself."),
     "I")
 
-hub("fight-on.html", "Fight on", "Nobody Came Until Nine",
+hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
     "",
     '<figure class="lead"><img src="assets/photos/fight-on.jpg" '
     'alt="Francis Ruan as a young boy, grinning, holding up a peace sign" width="1200" height="1600">'
     '<figcaption>Roughly the era in question.</figcaption></figure>'
 
-    '<p class="kicker">School let out at three. My mother&rsquo;s shift did not end when other people&rsquo;s '
-    'shifts ended, so most days I had six hours to fill and no phone to fill them with, which meant I had '
-    'six hours and a campus.</p>'
+    '<p class="kicker">The bell went at three, and for about ten minutes the front of that school was the '
+    'busiest place in the world.</p>'
+
+    '<p>The cars started lining up before the bell had even finished, a long patient row of them curling '
+    'around the loop with their engines running, and mothers got out and leaned on the doors with their '
+    'arms folded, and there was a particular sound the whole thing made, three hundred children coming out '
+    'of a building at once and finding, every single one of them, the exact car they were looking for. '
+    'Somebody&rsquo;s dad always had the window down. Somebody&rsquo;s mum always had a snack ready in the '
+    'passenger seat, which I thought was the most extraordinary act of forethought I had ever witnessed. '
+    'And within about ten minutes the loop was empty and the engines were gone and the sound went with '
+    'them, and what was left was a very large campus, a low sun, and me.</p>'
+
+    '<p>My mother was a nurse and her shift did not end when other people&rsquo;s shifts ended. She was '
+    'standing somewhere under a fluorescent light while all of that was happening, and she would keep '
+    'standing there for another six hours. So I had six hours to fill and no phone to fill them with, '
+    'which meant that what I actually had was six hours and an entire school to myself.</p>'
 
     '<p>I learned that place the way you learn a house in the dark. I knew which trees held weight and which '
     'ones dropped you. I knew the patch of concrete behind the cafeteria that stayed warm until five and took '
@@ -1600,6 +1585,37 @@ hub("fight-on.html", "Fight on", "Nobody Came Until Nine",
     'you go cheerfully, because bitterness is enormously heavy and I could never afford to carry '
     'any.</p>'
 
+    '<h2>On lemons</h2>'
+
+    '<p>Everyone knows the line. If life gives you lemons, make lemonade, and it is a perfectly good '
+    'sentiment for people who are being given lemons. The trouble with it, and nobody ever says this part '
+    'out loud, is that it quietly assumes a delivery. It assumes somebody arrives at your door with a '
+    'crate, and that your only real problem is deciding what to do with what has already been handed to '
+    'you.</p>'
+
+    '<p>Nobody came to our door. So the sentence had to be extended, and I have spent a long time '
+    'extending it. If life gives you lemons, make lemonade. If life gives you nothing, then go and find '
+    'the lemons, and accept that they will sit further away than they sit for other people and that you '
+    'will be walking. If there are none to find, plant them, and understand while you are kneeling in the '
+    'dirt that a lemon tree takes somewhere between three and six years to fruit, which means you are '
+    'working on behalf of a version of yourself you have not met yet and will have to trust. If the soil '
+    'will not take a seed, then spend a season making soil, which is the least romantic labour there is '
+    'and the only labour that makes any of the rest of it possible. And if you have no land at all, go and '
+    'be useful in somebody else&rsquo;s orchard until you know enough about lemons that the next stranger '
+    'with a field wants you standing in it.</p>'
+
+    '<p class="pull">Fight on has never meant the lemons are coming. It means you go looking anyway, and '
+    'you plant anyway, and you stay cheerful about the digging, because the digging was always going to be '
+    'the job.</p>'
+
+    '<p>That is the whole of it, and I want to be precise, because it is not optimism, which sits and '
+    'waits with a pleasant expression, and it is not grit, which grinds and calls the grinding a virtue. '
+    'It is closer to a decision made early and re-made most mornings: that the absence of a crate at the '
+    'door is information about the world rather than a verdict on me, and that there is a lemon somewhere '
+    'with my name on it if I am willing to go the distance the other children were never asked to go. I '
+    'have never resented that distance for very long. It is the one part of all this I would not trade, '
+    'because the walking is where I learned everything I actually have.</p>'
+
     '<p>There is a version of this story where the boy is bitter, and I understand how you get there. All the '
     'ingredients are present. But I have met bitter people and they are so tired, and being tired is the one '
     'thing my mother never got to be, so it always felt like a strange thing to spend her money on.</p>'
@@ -1789,6 +1805,31 @@ hub("fun.html", "The art of fun", "The Unserious Half",
     '<p>I invent recipes and make my friends eat the failed ones. I hold strong and mostly unwelcome '
     'positions on bulgogi, on grilled cheese, and on the correct Arnold Palmer ratio, which is more '
     'lemonade than anyone will admit.</p>'
+
+    '<h2>Why I am always trying to make you laugh</h2>'
+
+    '<p>I should be honest about where the jokes come from, because people tend to read them as confidence '
+    'and they did not start out that way at all. They started as a door I could get through. When you are '
+    'the smallest boy on the field and the worst one on it, and you are still working out the language, '
+    'there are not many currencies available to you, and it turns out that making somebody laugh is the '
+    'one thing nobody checks your credentials for. Nobody has ever asked me whether I was qualified to be '
+    'funny. They simply laughed or they did not, and the transaction settled instantly, which for a child '
+    'with very little else to trade was an enormous discovery.</p>'
+
+    '<p>So I got fast at it, and I got fast at it specifically under pressure, which is the part I have '
+    'come to find interesting. I am nervous more often than anybody watching would guess. The difference '
+    'is only that my nerves come out as a joke rather than as silence, and I have stopped apologising for '
+    'that, because a laugh is a genuinely useful thing to do with adrenaline. It lets the air out of a '
+    'room that was holding its breath. It tells everybody else present that they are permitted to be '
+    'human here, which is often the only thing standing between a group of people and an actual '
+    'conversation.</p>'
+
+    '<p>The other half of it is simpler and less strategic. If somebody in the room is having a worse day '
+    'than I am, I want to find the thing that fixes it, and I want to find it fast, and I have never once '
+    'regretted the four seconds it costs me to try. Failing at that is cheap. You make the joke, it lands '
+    'flat, everybody moves on, and the only casualty is a small piece of your dignity, which I stopped '
+    'guarding at around age nine and have not missed since. That is a spectacular return on risk and I do '
+    'not understand why more people are not taking it.</p>'
 
     '<h2>Making things nobody asked for</h2>'
     '<p>Stand-up comedy. Small films with no audience. A journal nobody has read. I document my life '
