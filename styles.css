@@ -276,17 +276,17 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 }
 .track__meta{ display:flex; flex-direction:column; gap:.05rem; min-width:0; }
 .track__t{
-  font-family:var(--f-head); font-style:italic; font-size:.95rem;
-  line-height:1.15; color:var(--ink);
+  font-family:var(--f-head); font-style:italic; font-size:.8rem;
+  line-height:1.1; color:var(--ink);
 }
 .track__ar{
-  font-family:var(--f-agate); font-size:.62rem; letter-spacing:.11em;
+  font-family:var(--f-agate); font-size:.5rem; letter-spacing:.08em;
   text-transform:uppercase; color:var(--ink-3);
 }
-.track__p{ width:100%; height:32px; display:block; filter:grayscale(1); opacity:.85; }
+.track__p{ width:100%; height:22px; display:block; filter:grayscale(1); opacity:.85; }
 .track__p:hover{ opacity:1; }
 .track__l{
-  font-family:var(--f-agate); font-size:.6rem; letter-spacing:.12em;
+  font-family:var(--f-agate); font-size:.5rem; letter-spacing:.1em;
   text-transform:uppercase; color:var(--ink-3);
 }
 .track__l:hover{ color:var(--ink); }
@@ -294,17 +294,26 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 @media (min-width: 900px){
   .wrap{ position:relative; }
   .track{
-    position:absolute; top:clamp(2rem,5vw,3.3rem); right:0;
-    width:236px; margin:0; z-index:2;
+    position:fixed; bottom:1.2rem; right:1.2rem;
+    width:128px; margin:0; z-index:10;
+    background:rgba(255,255,255,.95); padding:.4rem;
+    border:1px solid var(--rule-2); border-radius:2px;
   }
 }
 
-/* on the poster it sits under the nameplate, ranged right with everything else */
+/* on the poster it hides in the bottom right, tiny */
 .poster .track{
-  position:static; width:236px; margin:1.1rem 0 0 auto; align-items:flex-end;
+  position:fixed; bottom:1.2rem; right:1.2rem; width:120px;
+  margin:0; z-index:10; align-items:flex-end; background:rgba(255,255,255,.95);
+  padding:.4rem; border:1px solid var(--rule-2); border-radius:2px;
 }
-.poster .track__top{ flex-direction:row-reverse; }
-.poster .track__meta{ align-items:flex-end; text-align:right; }
+.poster .track__top{ flex-direction:column-reverse; gap:.2rem; }
+.poster .track__art{ width:28px; height:28px; }
+.poster .track__meta{ align-items:flex-start; text-align:left; }
+.poster .track__t{ font-size:.75rem; line-height:1.1; }
+.poster .track__ar{ font-size:.5rem; }
+.poster .track__p{ height:24px; }
+.poster .track__l{ font-size:.5rem; }
 
 .whoami{ display:grid; grid-template-columns:minmax(160px,230px) 1fr; gap:.75rem 1.5rem;
   align-items:baseline; margin:1.4rem 0 0; max-width:var(--read); }
