@@ -759,7 +759,7 @@ def spiderweb(W=1060, H=680):
 
 RECORD = [
   ("Academic", [
-    ("Valedictorian", "Ranked 1 of 553, Los Altos High School"),
+    ("Valedictorian", "Top 5 of 553, Los Altos High School"),
     ("AI for Business, USC", "Joint Marshall and Viterbi degree. 1 of 35 admitted, under 1% acceptance, third cohort"),
     ("GPA", "3.92 at USC. 4.0 in high school"),
     ("SAT", "1540"),
@@ -1267,19 +1267,49 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     '<p class="kicker">A fair question, asked of me often enough that I have had to develop an answer. '
     'The honest one is that I do not think I am one thing, and I have stopped apologizing for it.</p>'
 
-    '<p>People get read as one-dimensional. The finance guy. The athlete. The funny one. Two dimensions '
-    'if you are lucky, and three if somebody bothers to stay in the room. I would like to make the case '
-    'that I am at minimum four, and that the fourth one is the interesting one, because it is the part '
-    'that connects the other three and it is the part almost nobody asks about.</p>'
+    '<p>People get read as one-dimensional, and I know roughly which dimension I get read as, because I '
+    'have heard the sentence. Oh, the short Asian guy? Who is also, and I want this on the record, super '
+    'awesome and handsome. Oh, that class clown kid? Yeah, him. Two dimensions if you are lucky, three if '
+    'somebody bothers to stay in the room long enough to find one. I would like to make the case that I am '
+    'at minimum four, and that the fourth is the interesting one, because it is the part that connects the '
+    'other three and it is the part almost nobody thinks to ask about.</p>'
 
     '<h2>My spirit animal is a monkey who talked back to heaven</h2>'
-    '<p>Sun Wukong. The Monkey King. His defining traits are appetite, cleverness, and mischief of the '
-    'particular kind that makes trouble and makes people love him anyway. He is enormously capable and '
-    'enormously undisciplined about it. He argues with heaven. He gets pinned under a mountain for five '
-    'hundred years and comes out the same creature, still funny, still impossible, but finally pointed '
-    'somewhere.</p>'
-    '<p>I did not pick him to be flattering. I picked him because the appetite is real, the mischief is '
-    'real, and I have had my own much shorter stint under a mountain.</p>'
+
+    '<p>Sun Wukong. The Monkey King. Appetite, cleverness, and mischief of the particular kind that makes '
+    'trouble and makes people love him anyway, enormously capable and enormously undisciplined about it. '
+    'He argues with heaven, and that is the part I want to sit on for a second, because he does not argue '
+    'with heaven by shouting at it. He reads the paperwork. He finds the clause. He gets himself written '
+    'into the register of immortals on a technicality and then looks genuinely wounded when anybody '
+    'objects.</p>'
+
+    '<p>I did not pick him because he is flattering. I picked him because I recognised the method.</p>'
+
+    '<p>I was, by any fair accounting, a menace. In and out of detention the whole way through high '
+    'school, and I would like to claim lunch detention hall of fame, which is not an honour anybody hands '
+    'out and which I have therefore awarded to myself. Freshman year I got caught mooning somebody, which '
+    'I am now putting in writing on my own website, which should tell you roughly how much peace I have '
+    'made with it. Pranks constantly. And a suspension in middle school that I later stood up and told '
+    'five hundred people about in my commencement speech, because I have never once been able to tell the '
+    'story of how I got somewhere without including the part where I was nearly asked to leave.</p>'
+
+    '<p>Here is what I want to be precise about, though, because it matters to me. Almost none of it was '
+    'defiance. I was not angry at anybody and I was not trying to burn anything down. I was doing the '
+    'thing Wukong does, which is looking straight at a rule, understanding exactly what it is for, and '
+    'then noticing with enormous delight that it does not quite say what it thinks it says. That instinct '
+    'got me in a spectacular amount of trouble as a child. It is also, unchanged and unrepentant, the '
+    'instinct that makes me useful now when somebody hands me a process and asks why it takes ninety '
+    'minutes.</p>'
+
+    '<p>I talk to God most days. I have also, and I am aware of precisely how this sounds, said a few '
+    'words to the other one, not out of any allegiance but because it seemed impolite to argue with only '
+    'one side of something I do not pretend to understand. That is arguing with heaven. That is the whole '
+    'trait, and I have stopped trying to grow out of it.</p>'
+
+    '<p>He gets pinned under a mountain for five hundred years and comes out the same creature, still '
+    'funny, still impossible, but finally pointed somewhere. Mine was considerably shorter and involved '
+    'no mountain. But I know what it is to be stopped, and to find out afterwards that being stopped had '
+    'not touched the appetite at all. It had only given it a direction.</p>'
 
     '<h2>The paperwork</h2>'
     '<dl class="keyval whoami">'
@@ -1460,15 +1490,6 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
     '<p>I got very good at not making it a moment. I am genuinely unsure whether that was healthy. I am quite '
     'sure it has been useful.</p>'
 
-    '<h2>What it meant on a Tuesday morning</h2>'
-
-    '<p>I showed up to school in a shirt inside out more than once. Backward too, which is a different and '
-    'meaningfully worse mistake. Nobody had checked, because the person who would have checked got home at '
-    'seven and needed to sleep before she did it again.</p>'
-
-    '<p>So you learn to laugh first, and loudly, before anyone else can get there. If you say it, it is a joke. '
-    'If they say it, it is something else entirely. I have used that reflex approximately every day since.</p>'
-
     '<h2>What it meant in sixth grade</h2>'
 
     '<p>I started answering my mother&rsquo;s email in sixth grade. Not forwarding it to her. Answering it. '
@@ -1478,12 +1499,6 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
     'signed it with her name.</p>'
 
     '<p>I did not experience that as unusual. I experienced it as my job. I think I was proud of it.</p>'
-
-    '<h2>What it meant at the stove</h2>'
-
-    '<p>I learned to cook young because the alternative was not eating. There was nothing charming about it. '
-    'No adult stood behind me explaining heat. I burned things, and then over some months I stopped burning '
-    'things, and nobody was there for either milestone.</p>'
 
     '<h2>What it meant for playdates</h2>'
 
@@ -1505,38 +1520,34 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
 
     '<p>Roughly in order.</p>'
 
-    '<p>I could not swim. Not slowly, not badly, I simply could not do it, because swimming is a thing '
-    'somebody pays for and then drives you to twice a week for a year. I could not throw a football with '
-    'a spiral on it. I could not dribble a basketball with my left hand, or with any real conviction '
-    'using my right. I had never stood in a batter&rsquo;s box. Soccer I understood mostly as a rumour, '
-    'something other boys seemed to have been issued along with their shin pads. I could not hit a '
-    'spikeball, and I was laughed at for that repeatedly, by people who were not being cruel so much as '
-    'accurate. I picked up a lacrosse stick for the first time at a tryout, in front of boys who had been '
-    'holding one since they were eight, and the sound a group makes while it watches you fail at '
+    '<p>I could not swim, because swimming is a thing somebody pays for and then drives you to twice a '
+    'week for a year. I could not throw a spiral. I could not dribble a basketball with my left hand or '
+    'with any conviction using my right. I had never stood in a batter&rsquo;s box, and soccer I '
+    'understood mostly as a rumour, something other boys seemed to have been issued with their shin pads. '
+    'I could not hit a spikeball and was laughed at for it repeatedly, by people who were not being cruel '
+    'so much as accurate. I picked up a lacrosse stick for the first time at a tryout, in front of boys '
+    'who had been holding one since they were eight, and the sound a group makes watching you fail at '
     'something easy is not a sound you forget.</p>'
 
     '<p>I was fat, and I was told so, in the specific unhurried way children tell each other things. I '
-    'was picked last often enough that it stopped registering as an event and began registering as '
-    'information, which I have come to think is the part that actually does the damage. Nobody was being '
-    'vicious. They were being correct, and by about nine I had quietly accepted the account they had '
-    'given me, which was that I was unathletic, ungifted, and the fat kid, and that these were facts '
-    'about my nature rather than about my circumstances. It is remarkable how fast a child will take '
-    'somebody else&rsquo;s arithmetic and file it as truth about himself.</p>'
+    'was picked last often enough that it stopped registering as an event and started registering as '
+    'information, which is the part that actually does the damage. Nobody was being vicious. They were '
+    'being correct, and by about nine I had accepted the account: unathletic, ungifted, the fat kid, and '
+    'all of it a fact about my nature rather than about my circumstances. It is remarkable how fast a '
+    'child will take somebody else&rsquo;s arithmetic and file it as truth about himself.</p>'
 
-    '<p>School offered no rescue either. I went to summer school every summer of elementary school. My '
-    'English was still arriving, and I spent those Junes being taught again what I had not managed to '
-    'hold the first time, and I did not think of myself as somebody who was good at learning, because '
-    'nothing in the available evidence suggested that I was.</p>'
+    '<p>School offered no rescue either. I went to summer school every summer of elementary school, my '
+    'English still arriving, being taught again each June what I had not managed to hold the first time, '
+    'and nothing in the available evidence suggested I was any good at learning.</p>'
 
     '<p>None of which made me miserable, and I would be lying by omission if I let this read as a sad '
-    'childhood, because it was not one. I had friends, a great many of them, because I worked out '
-    'extremely early that if you are going to be the worst athlete on the field you had better be the '
-    'funniest person on it. Fart noises, I discovered, are universal. They translate across every '
-    'language barrier a seven-year-old is ever going to meet, and mine was considerable. I once '
-    'microwaved a plastic baby in the pretend kitchen of a kindergarten classroom and got a laugh so '
-    'total, so unanimous, that I have been chasing it in one form or another ever since. I could not '
-    'catch anything, but I could make a room go, and a room that is laughing does not much care what you '
-    'cannot do.</p>'
+    'childhood, because it was not one. I had friends, a great many of them, because I worked out early '
+    'that if you are going to be the worst athlete on the field you had better be the funniest person on '
+    'it. Fart noises, I discovered, are universal. They cross every language barrier a seven-year-old is '
+    'going to meet, and mine was considerable. I once microwaved a plastic baby in the pretend kitchen of '
+    'a kindergarten classroom and got a laugh so total that I have been chasing it ever since. I could '
+    'not catch anything, but I could make a room go, and a room that is laughing does not much care what '
+    'you cannot do.</p>'
 
     '<p>Add it up and the fair summary of me at eleven is: not good at anything yet.</p>'
 
@@ -1564,40 +1575,37 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
 
     '<h2>What nobody had told me</h2>'
 
-    '<p>Here is the thing I did not understand until years later, and it has reorganised how I look at '
-    'more or less everything since.</p>'
+    '<p>Here is what I did not understand until years later, and it has reorganised how I look at very '
+    'nearly everything since.</p>'
 
     '<p>The boys who could throw a spiral had been throwing one in a garden with somebody since they were '
     'four. The boy who moved fluidly through a lacrosse drill had six years of muscle memory behind him '
     'that I could not see, because muscle memory is invisible and from the outside it looks exactly like '
-    'talent. The same was true in basketball, in baseball, in soccer, in the water. They were not gifted '
-    'and I was not deficient. They were early, and early compounds, and I had been comparing my first '
-    'week against their sixth year and drawing conclusions about my nature from the gap.</p>'
+    'talent. Same in basketball, in baseball, in soccer, in the water. They were not gifted and I was not '
+    'deficient. They were early, and early compounds, and I had been comparing my first week against '
+    'their sixth year and drawing conclusions about my nature from the gap.</p>'
 
-    '<p>What I had instead was video games, which nobody counts as anything at all. But a game teaches one '
-    'specific and enormously transferable discipline, which is that dying is information. You die, and you '
-    'ask what killed you, and you change a single variable, and you go again, and the loop tightens every '
-    'time you run it. Thousands of hours of that is not nothing. It is a childhood spent rehearsing the '
-    'one thing most people never rehearse, which is looking directly at your own failure without '
-    'flinching and asking it a question.</p>'
+    '<p>What I had instead was video games, which nobody counts as anything. But a game teaches one '
+    'enormously transferable discipline, which is that dying is information. You die, you ask what killed '
+    'you, you change a single variable, you go again, and the loop tightens every time you run it. That '
+    'is a childhood spent rehearsing the one thing most people never rehearse, which is looking directly '
+    'at your own failure without flinching and asking it a question.</p>'
 
-    '<p>It is also, and I did not see the connection for a long time, the reason I got better at school. I '
-    'was never the boy who simply knew. I was the boy who went back afterwards and worked out precisely '
-    'where the understanding had broken, and that turned out to be worth considerably more than knowing, '
-    'because it kept working after the material got hard and the boys who simply knew ran out of '
-    'road.</p>'
+    '<p>It is also, and I missed this connection for years, why I got better at school. I was never the '
+    'boy who simply knew. I was the boy who went back afterwards and found exactly where the '
+    'understanding had broken, which turned out to be worth far more than knowing, because it kept '
+    'working after the material got hard and the boys who simply knew ran out of road.</p>'
 
-    '<p>Everybody talks about getting up, and getting up is the cheap half of it. What changes the next '
-    'repetition is getting up while knowing exactly what put you down, and that is the only version of '
-    'resilience I have ever found that actually accumulates instead of merely repeating.</p>'
+    '<p>Everybody talks about getting up, and getting up is the cheap half. What changes the next '
+    'repetition is getting up while knowing what put you down, and that is the only resilience I have '
+    'found that accumulates instead of merely repeating.</p>'
 
-    '<p>So I keep notes now. After a session I write down what I could not do and why, and I look for the '
-    'bottleneck rather than the failure, and then I train the bottleneck rather than the sport. I am, and '
-    'I promise this is not a boast because it cost an absurd number of hours, now the best spikeball '
-    'player I know. I am better than most of my friends at a good many things they used to beat me at '
-    'without trying. And I found surfing, which almost none of them compounded as children either, so we '
-    'all began at zero on the same morning and I finally got to see what happens when the starting line '
-    'is honest.</p>'
+    '<p>So I keep notes now. After a session I write down what I could not do and why, and I train the '
+    'bottleneck rather than the sport. I am, and this cost an absurd number of hours so I am claiming it, '
+    'now the best spikeball player I know, and better than most of my friends at things they used to beat '
+    'me at without trying. And I found surfing, which almost none of them compounded as children either, '
+    'so we all began at zero on the same morning and I finally saw what happens when the starting line is '
+    'honest.</p>'
 
     '<p>None of which made me talented. It made me suspicious of the word. I no longer believe there is '
     'any such thing as simply smarter or simply more athletic. There is only experience that compounded '
@@ -1613,11 +1621,10 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
     'thousand people who mostly mean it as encouragement for a football team, which is a perfectly good thing '
     'to mean by it.</p>'
 
-    '<p>I remember hearing it the first time and feeling something complicated, because it does not mean a '
-    'cheer to me. It means nine o&rsquo;clock in an empty parking lot. It means not asking at Ranch 99. It '
-    'means an inside-out shirt and getting to the joke before anybody else can. It means writing your '
-    'mother&rsquo;s email in sixth grade, and learning the stove by yourself, and running a mile because '
-    'asking for a ride costs something you have decided not to spend.</p>'
+    '<p>I remember hearing it the first time and feeling something complicated, because it has never been '
+    'a cheer to me. It means nine o&rsquo;clock in an empty parking lot. It means not asking at Ranch 99. '
+    'It means writing your mother&rsquo;s email in sixth grade, and running a mile because asking for a '
+    'ride costs something you have decided not to spend.</p>'
 
     '<p class="pull">It means nobody is coming to make this easier, and you go anyway, and '
     'you go cheerfully, because bitterness is enormously heavy and I could never afford to carry '
@@ -1625,11 +1632,10 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
 
     '<h2>On lemons</h2>'
 
-    '<p>Everyone knows the line. If life gives you lemons, make lemonade, and it is a perfectly good '
-    'sentiment for people who are being given lemons. The trouble with it, and nobody ever says this part '
-    'out loud, is that it quietly assumes a delivery. It assumes somebody arrives at your door with a '
-    'crate, and that your only real problem is deciding what to do with what has already been handed to '
-    'you.</p>'
+    '<p>Everyone knows the line. If life gives you lemons, make lemonade, which is a fine sentiment for '
+    'people who are being given lemons. The trouble, and nobody says this part out loud, is that it '
+    'assumes a delivery. It assumes somebody arrives at your door with a crate, and that your only real '
+    'problem is what to do with what has already been handed to you.</p>'
 
     '<p>Nobody came to our door. So the sentence had to be extended, and I have spent a long time '
     'extending it. If life gives you lemons, make lemonade. If life gives you nothing, then go and find '
@@ -1646,13 +1652,13 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
     'you plant anyway, and you stay cheerful about the digging, because the digging was always going to be '
     'the job.</p>'
 
-    '<p>That is the whole of it, and I want to be precise, because it is not optimism, which sits and '
-    'waits with a pleasant expression, and it is not grit, which grinds and calls the grinding a virtue. '
-    'It is closer to a decision made early and re-made most mornings: that the absence of a crate at the '
-    'door is information about the world rather than a verdict on me, and that there is a lemon somewhere '
-    'with my name on it if I am willing to go the distance the other children were never asked to go. I '
-    'have never resented that distance for very long. It is the one part of all this I would not trade, '
-    'because the walking is where I learned everything I actually have.</p>'
+    '<p>That is the whole of it, and I want to be precise, because it is not optimism, which waits with a '
+    'pleasant expression, and it is not grit, which grinds and calls the grinding a virtue. It is a '
+    'decision made early and re-made most mornings: that the absence of a crate at the door is '
+    'information about the world rather than a verdict on me, and that there is a lemon somewhere with my '
+    'name on it if I will go the distance the other children were never asked to go. I have never '
+    'resented that distance for long. It is the one part of all this I would not trade, because the '
+    'walking is where I learned everything I actually have.</p>'
 
     '<p>There is a version of this story where the boy is bitter, and I understand how you get there. All the '
     'ingredients are present. But I have met bitter people and they are so tired, and being tired is the one '
