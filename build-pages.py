@@ -1077,9 +1077,29 @@ def biglinks(items):
 
 hub("building.html", "Engineer", "What I Have Built",
     "",
-    '<p class="kicker">Every one of these began the same way, with somebody doing a thing by hand that '
-    'did not need a person in it, and a suspicion on my part that the person was in there for a reason '
-    'nobody had bothered to name.</p>'
+    '<p class="kicker">Somebody, about two and a half million years ago, hit a rock with another rock '
+    'until the first rock was sharper.</p>'
+
+    '<p>That is the whole Oldowan toolkit and the oldest thing our species ever made. Nobody '
+    'commissioned it. There was no brief, and no obvious reason to spend an afternoon on it instead of '
+    'the several more urgent things available to a hominin in the Pliocene.</p>'
+
+    '<p>What gets me is what happened next, because we did not stop at good enough. Most of a million '
+    'years later we were making Acheulean handaxes, and those things are symmetrical. Beautifully, '
+    'excessively symmetrical, far past anything a cutting edge functionally needs, and archaeologists '
+    'have argued about why for a century. Some say display. Some say the maker simply preferred it that '
+    'way. A number have been dug up showing no wear at all, having never cut anything.</p>'
+
+    '<p>So the first object we ever engineered, we immediately over-engineered, for reasons that look '
+    'partly aesthetic and possibly romantic.</p>'
+
+    '<p>I find that enormously reassuring. Building was never purely about the problem. There is always '
+    'somebody at the bench going further than the job required, because the going further is what they '
+    'turned up for.</p>'
+
+    '<p>Which brings me to the things on this page. Every one of them began the same way, with somebody '
+    'doing a thing by hand that did not need a person in it, and a suspicion on my part that the person '
+    'was in there for a reason nobody had bothered to name.</p>'
 
     '<h2>Ninety minutes down to three</h2>'
     '<p>At BODi I was the AI intern on the finance and growth side, which in practice meant sitting close '
