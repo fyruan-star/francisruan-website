@@ -151,36 +151,46 @@ def pieces_page():
     return "".join(out)
 
 TRACKS = {
-  # page                track                artist            sleeve
-  "my-why.html":    ("Cool",              "Daniel Caesar",   "my-why"),
-  "fight-on.html":  ("Hold On",           "Alabama Shakes",  "fight-on"),
-  "leadership.html":("Ivy",               "Frank Ocean",     "leadership"),
-  "finance.html":   ("Cantaloupe Island", "Herbie Hancock",  "finance"),
-  "curiosity.html": ("Lujon",             "Henry Mancini",   "curiosity"),
-  "building.html":  ("Electric Feel",     "MGMT",            "building"),
-  "awards.html":    ("Golden",            "Harry Styles",    "awards"),
-  "fun.html":       ("Sundown",           "LEISURE",         "fun"),
-  "who-am-i.html":  ("Orange Blood",      "Mt Joy",          "who-am-i"),
-  "trend.html":     ("Cantaloupe Island", "Herbie Hancock",  "finance"),
-  "invisible.html": ("Lujon",             "Henry Mancini",   "curiosity"),
+  # page, track, artist, sleeve, and the licensed preview stream Apple serves
+  # for this recording. Nothing here is hosted by us and nothing is a full track.
+  "index.html":       ("Clocks", "Coldplay", "index", "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d2/9b/17/d29b173f-546a-606b-378f-8f3c333e81f1/mzaf_3952108508633208951.plus.aac.p.m4a"),
+  "my-why.html":      ("Cool", "Daniel Caesar", "my-why", ""),
+  "fight-on.html":    ("Sparks", "Coldplay", "fight-on", "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/47/db/ce/47dbce82-d89c-0897-0da7-26d06ae7e2f2/mzaf_14852507599380441353.plus.aac.p.m4a"),
+  "leadership.html":  ("Ivy", "Frank Ocean", "leadership", ""),
+  "finance.html":     ("Cantaloupe Island", "Herbie Hancock", "finance", "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/96/4f/d0/964fd064-c457-7aeb-d8cd-1c20b05bd82f/mzaf_10273878739295878154.plus.aac.p.m4a"),
+  "curiosity.html":   ("Lujon", "Henry Mancini", "curiosity", "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f1/49/9b/f1499b91-e67a-046d-d8b5-35bac9fb4b54/mzaf_919471457877370426.plus.aac.p.m4a"),
+  "building.html":    ("Electric Feel", "MGMT", "building", "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/47/4a/00/474a0001-c9af-5e52-af16-695889678761/mzaf_2030537019671750043.plus.aac.p.m4a"),
+  "awards.html":      ("Golden", "Harry Styles", "awards", "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ea/30/a6/ea30a68d-a13a-39fe-2b03-6d568c8cf735/mzaf_15210582114357314440.plus.aac.p.m4a"),
+  "fun.html":         ("Sundown", "LEISURE", "fun", "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/40/1d/9e/401d9e53-bfdf-5de6-9de4-f9fc03a88444/mzaf_1416381691062382667.plus.aac.p.m4a"),
+  "who-am-i.html":    ("Bubbly", "Colbie Caillat", "who-am-i", "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/78/7f/ca/787fca5f-4ce3-7817-37b8-981833738ac2/mzaf_3992405577716362448.plus.aac.p.m4a"),
+  "trend.html":       ("Cantaloupe Island", "Herbie Hancock", "finance", "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/96/4f/d0/964fd064-c457-7aeb-d8cd-1c20b05bd82f/mzaf_10273878739295878154.plus.aac.p.m4a"),
+  "invisible.html":   ("Lujon", "Henry Mancini", "curiosity", "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f1/49/9b/f1499b91-e67a-046d-d8b5-35bac9fb4b54/mzaf_919471457877370426.plus.aac.p.m4a"),
 }
 
 def soundtrack(fn):
-    """The sleeve and the title, small, in the top right corner of the page. No
-    instruction to the reader and no musical note; a record cover is legible on
-    its own and does not need to be captioned."""
+    """The sleeve, the title, and where a licensed preview exists, a real player.
+    The audio is Apple's own thirty second preview stream for that recording, served
+    from their CDN: we host no music and redistribute nothing. The element is a
+    plain <audio controls>, which is the only way to hand somebody a play button
+    without JavaScript, and no browser will start audio without a click anyway."""
     t = TRACKS.get(fn)
     if not t: return ""
-    title, artist, sleeve = t
+    title, artist, sleeve, preview = t
     from urllib.parse import quote
     q = quote(f"{title} {artist}")
+    player = (f'<audio class="track__p" controls preload="none" src="{preview}"></audio>'
+              if preview else "")
     return ('<div class="track">'
-            f'<a class="track__l" href="https://open.spotify.com/search/{q}" target="_blank" rel="noopener">'
+            '<div class="track__top">'
             f'<img class="track__art" src="assets/tracks/{sleeve}.jpg" alt="" loading="lazy" width="300" height="300">'
             '<span class="track__meta">'
             f'<span class="track__t">{title}</span>'
-            f'<span class="track__a">{artist}</span>'
-            '</span></a></div>')
+            f'<span class="track__ar">{artist}</span>'
+            '</span></div>'
+            + player +
+            f'<a class="track__l" href="https://open.spotify.com/search/{q}" target="_blank" rel="noopener">'
+            'Full track &rarr;</a>'
+            '</div>')
 
 def ask(line="If any of this is worth an argument, I would like to have it."):
     return ('<div class="ask"><p>' + line +
@@ -224,6 +234,7 @@ INDEX = f"""<div class="sheet">
     <header class="poster">
       <h1 class="poster__name">Francis<br>Ruan</h1>
       <p class="poster__sub">student at university of southern california</p>
+      {soundtrack("index.html")}
     </header>
 
     {belt()}
