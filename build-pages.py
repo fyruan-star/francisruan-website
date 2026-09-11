@@ -132,14 +132,23 @@ PIECES = [
 ]
 
 def pieces_box():
-    """A small collection on the cover, kept between the marks and the contact
-    line. Numbered in brackets like everything else on this page."""
-    out = ['<div class="pieces"><p class="pieces__k">[ Small pieces ]</p><ol class="pieces__l">']
+    """On the cover this is only a door. The collection itself lives on its own
+    page, because three paragraphs of quotation do not belong on a poster."""
+    return ('<a class="pieces" href="pieces.html">'
+            '<span class="pieces__k">[ Small pieces ]</span>'
+            f'<span class="pieces__c">{len(PIECES)} things I wrote down and kept</span>'
+            '<span class="pieces__go" aria-hidden="true">&rarr;</span>'
+            '</a>')
+
+def pieces_page():
+    out = ['<div class="pcs">']
     for i, (href, text) in enumerate(PIECES, 1):
-        out.append(f'<li class="pieces__i"><a href="{href}">'
-                   f'<span class="pieces__n">{i:02d}</span>'
-                   f'<span class="pieces__t">{text}</span></a></li>')
-    out.append('</ol></div>')
+        out.append(f'<article class="pcs__i">'
+                   f'<p class="pcs__n">[ {i:02d} ]</p>'
+                   f'<blockquote class="pcs__q"><p>{text}</p></blockquote>'
+                   f'<p class="pcs__s"><a href="{href}">Where this came from &rarr;</a></p>'
+                   f'</article>')
+    out.append('</div>')
     return "".join(out)
 
 TRACKS = {
@@ -1283,7 +1292,15 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     'into the register of immortals on a technicality and then looks genuinely wounded when anybody '
     'objects.</p>'
 
-    '<p>I did not pick him because he is flattering. I picked him because I recognised the method.</p>'
+    '<p>I did not pick him because he is flattering. I picked him because I recognised the method, and '
+    'also, if we are being thorough, the appetite.</p>'
+
+    '<p>I was a fat kid. I am not going to dress that up, and there is no photograph of it on this site, '
+    'partly out of vanity and partly because you do not need one. What happened is that somewhere in '
+    'elementary school the American diet found me and I put up no resistance whatsoever. The Monkey King '
+    'steals the peaches of immortality, eats every single one, and is then astonished that heaven has '
+    'taken this personally. I have been at that banquet. I know exactly what he was thinking, which is '
+    'nothing, because the peaches were right there.</p>'
 
     '<p>I was, by any fair accounting, a menace. In and out of detention the whole way through high '
     'school, and I would like to claim lunch detention hall of fame, which is not an honour anybody hands '
@@ -1306,12 +1323,20 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     'one side of something I do not pretend to understand. That is arguing with heaven. That is the whole '
     'trait, and I have stopped trying to grow out of it.</p>'
 
-    '<p>He gets pinned under a mountain for five hundred years and comes out the same creature, still '
-    'funny, still impossible, but finally pointed somewhere. Mine was considerably shorter and involved '
-    'no mountain. But I know what it is to be stopped, and to find out afterwards that being stopped had '
-    'not touched the appetite at all. It had only given it a direction.</p>'
+    '<p>And then heaven pins him under a mountain for five hundred years, and he comes out the same '
+    'creature, still funny, still impossible, but finally pointed somewhere.</p>'
 
-    '<h2>The paperwork</h2>'
+    '<p>I have been under a few mountains. Smaller ones, and considerably shorter sentences, but the '
+    'shape is the same: a thing stops you, and you are stuck under it for a while with nothing to do but '
+    'think about how you got there. What I have found, every single time and with a consistency that has '
+    'started to feel like a law, is that I come out of them better than I went in. Not because the '
+    'mountain taught me anything. Mountains are inert. It is that being stopped is the only condition '
+    'under which I reliably do two things I should be doing anyway, which are asking somebody for help '
+    'and sitting still long enough to work out what actually happened.</p>'
+
+    '<p>Being stopped has never once touched the appetite. It has only ever given it a direction.</p>'
+
+    '<h2>The paperwork, for the astrologically curious</h2>'
     '<dl class="keyval whoami">'
     '<dt>Sign</dt><dd>Pisces</dd>'
     '<dt>Lunar year</dt><dd>Golden Pig</dd>'
@@ -1322,7 +1347,7 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     '<dt>Second standing instruction</dt><dd>Talk to strangers</dd>'
     '</dl>'
 
-    '<h2>What Ms. Yu said</h2>'
+    '<h2>What Ms. Yu said, which I have never disputed</h2>'
     '<p>My trigonometry teacher, asked about me for the school paper, described me as the kind of student '
     'who gives the teacher a headache in class, and then the teacher goes home and secretly laughs about '
     'all his antics.</p>'
@@ -1332,26 +1357,26 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
 
     '<h2>Five things that explain me faster than I can</h2>'
     + loves() +
-    '<p>Put them beside one another and the pattern stops being subtle. Every one of them is about '
-    'somebody who was handed a smaller life than the one they turned out to be capable of and who '
-    'declined it, politely in Austen&rsquo;s case and considerably less politely in Rudy&rsquo;s. They are '
-    'also, all five, arguments that feeling things deeply is a form of competence rather than a failure '
-    'of nerve, which is not the lesson boys are usually issued and is precisely the one I needed. What I '
-    'take from Maclean and from Gerwig is that the ordinary hours are the prize itself and not the '
-    'waiting room outside it. What I take from Will Hunting is that being clever is the least interesting '
-    'thing about a person and by far the easiest thing to hide behind. And what I take from Elizabeth '
-    'Bennet, who I am fairly sure would have found me exhausting, is that holding out for the correct '
-    'thing costs you something socially and remains worth it anyway.</p>' +
+    '<p>Line them up and the pattern is not what you would call subtle. Every one of them is about '
+    'somebody handed a smaller life than they turned out to be capable of, who declined it, politely in '
+    'Austen&rsquo;s case and with considerably less ceremony in Rudy&rsquo;s. They are also, all five, '
+    'arguing that feeling things deeply is a competence rather than a nerve failure, which is not the '
+    'lesson boys are generally issued at birth and is precisely the one I required. From Maclean and '
+    'Gerwig: the ordinary hours are the prize, not the waiting room outside it. From Will Hunting: being '
+    'clever is the least interesting thing about a person and by a distance the easiest thing to hide '
+    'behind. And from Elizabeth Bennet, who I am reasonably confident would have found me exhausting '
+    'within ten minutes, that holding out for the correct thing costs you socially and is worth it '
+    'anyway.</p>' +
         '<h2>Embracing your corny</h2>'
-    '<p>I have decided to be corny deliberately, which I would recommend to anybody, because the '
-    'alternative is a lifetime spent performing a coolness that not one person has ever actually enjoyed '
-    'having performed at them. It is an enormous amount of work to seem unmoved, and the return on it is '
-    'nothing.</p>'
-    '<p>I am a poet some distance before I am an analyst. I like the beach, and I like reflecting on the '
-    'beach, and I like finding somebody afterwards to tell about it. Romance films work on me without '
-    'exception and without any resistance worth the name, and I stopped pretending to be above them at '
-    'roughly the same age I stopped pretending not to want things, which turned out to be the same '
-    'decision wearing two coats.</p>'
+    '<p>I am corny on purpose. I would recommend it, because the alternative is a whole life spent '
+    'performing a coolness that, and I have checked, not one person has ever enjoyed having performed at '
+    'them. Seeming unmoved is a full-time job with no salary.</p>'
+    '<p>I am a poet some distance before I am an analyst, which is an unhelpful thing to admit on a '
+    'website about finance and which I am admitting anyway. I like the beach. I like reflecting on the '
+    'beach, which is a separate activity. I like then finding somebody to tell about the reflecting, '
+    'which is a third. Romance films work on me without exception and without any resistance worth '
+    'mentioning, and I stopped pretending to be above them at roughly the same age I stopped pretending '
+    'not to want things, those being the same decision in two different coats.</p>'
     '<p>And I have very specific instructions about how to treat somebody, because my mother taught them '
     'to me and she did not present them as optional. Buy the flowers, and buy them for no occasion, since '
     'an occasion is only a permission slip. Say the compliment out loud rather than thinking it warmly '
@@ -1364,17 +1389,18 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     'for taking it, and then go a little further than that.</p>'
 
     '<h2>And I am also the other thing</h2>'
-    '<p>I look up to bodybuilders, genuinely and without a trace of irony, for the specific reason that '
-    'the whole discipline is a public argument that you can change what you were handed provided you are '
-    'willing to be extremely boring about it for several years running.</p>'
-    '<p>I watch an unreasonable quantity of NFL, and I mean unreasonable in the sense that I have '
-    'developed opinions about offensive line play that nobody asked me for. I watch UFC and will happily '
-    'explain why a fight was decided in the first ninety seconds by somebody&rsquo;s stance rather than by '
-    'the thing everybody in the room was looking at. I know an embarrassing amount about cars, almost all '
-    'of it useless, every bit of it retained without effort while the periodic table went straight '
-    'through me. I was a captain on a football team and I am the person yelling in the huddle, and I like '
-    'being that person a great deal. I still know more about dinosaurs than any grown man has a defensible '
-    'reason to know, and I have made my peace with that.</p>'
+    '<p>I look up to bodybuilders. Genuinely, no irony, and for a specific reason: the entire discipline '
+    'is a public argument that you can change what you were handed, provided you are willing to be '
+    'staggeringly boring about it for several consecutive years. That is the whole sport. Boredom, '
+    'applied.</p>'
+    '<p>I watch an unreasonable quantity of NFL, and I mean unreasonable in the technical sense that I '
+    'hold opinions about offensive line play which nobody has ever requested. I watch UFC and will '
+    'explain, at length, unprompted, that the fight was decided in the first ninety seconds by '
+    'somebody&rsquo;s stance and not by the thing everyone in the room was looking at. I know an '
+    'embarrassing amount about cars, essentially none of it useful, all of it retained without effort, '
+    'while the periodic table passed through me like light through a window. I was a captain on a '
+    'football team and I am the one yelling in the huddle and I enjoy it enormously. I also still know '
+    'more about dinosaurs than any grown man can defend, and I have stopped trying to.</p>'
     '<p>None of which is in tension with a single sentence of the section above it, and that is the whole '
     'of what I am trying to say. These are supposed to be two different men, the one who cries at Little '
     'Women and the one who wants to talk about the offensive line, and they were never two men at all. '
@@ -1382,10 +1408,12 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     'standing in and how safe that room has made itself.</p>'
 
     '<h2>Things I will read about until three in the morning</h2>'
-    '<p>Human pathogenesis. Biology and anatomy, mechanism-first, always. I keep profiles on myself and '
-    'run bloodwork against them, which sounds clinical and is actually just curiosity pointed inward.</p>'
-    '<p>Then: human history. Archaeology. Ancient civilizations. What people did before they had any of '
-    'this. It is the same appetite that made me an insufferable dinosaur child, pointed at a longer stretch of time.</p>'
+    '<p>Human pathogenesis. Biology and anatomy, mechanism first, always. I keep profiles on myself and '
+    'run bloodwork against them, which sounds clinical and is in fact just being nosy about my own '
+    'body.</p>'
+    '<p>Then human history, archaeology, ancient civilisations, what people were doing before they had '
+    'any of this. Same appetite that made me an insufferable dinosaur child, simply aimed at a longer '
+    'stretch of time and with marginally better manners.</p>'
     '<p>Here is the one I bring up at dinner and refuse to let go of. For most of recorded European '
     'history people did not sleep the way we do. They slept in two shifts. You went down not long after '
     'dark for roughly four hours, then woke naturally around midnight into an interval people simply '
@@ -1402,16 +1430,21 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     'normal is about two hundred years old and wearing a very convincing costume.</p>'
 
     '<h2>The small operations</h2>'
-    '<p>There is a whole method to this that I have set out <a href="fun.html">in the fun section</a>, '
-    'about crumbs and operating expenses and why contentment is cheaper to build than joy. What belongs '
-    'here is only the residue of it, the habits somebody would actually notice if they lived with me.</p>'
-    '<p>I care about clothes. I like talking to strangers and I will do it in any queue, anywhere. And the '
-    'genuine highlight of a given week is the part where all my roommates and I finally clean the '
-    'apartment, and somebody puts music on, and everybody is loose and slightly stupid and dancing badly '
-    'in a kitchen that is finally not disgusting. I have never wanted a better evening than that one.</p>'
-    '<p>And once a day, every day, I send somebody a genuine compliment. It costs nothing and it '
-    'returns more than anything else I do.</p>'
-    '<p>I love waking up. I have never once been sorry that a day started.</p>'
+    '<p>There is an entire method behind this, involving crumbs and operating expenses and an argument '
+    'that contentment is cheaper to build than joy, and I have put it <a href="fun.html">in the fun '
+    'section</a> rather than here. What belongs here is the residue: the habits somebody would actually '
+    'notice if they had to live with me.</p>'
+    '<p>I care about clothes, which I mention because people assume the finance thing means I own four '
+    'identical shirts. I talk to strangers in queues, all queues, with no provocation required. And the '
+    'genuine high point of a given week is the evening my roommates and I finally clean the apartment '
+    'and somebody puts music on and everybody goes slightly stupid and dances badly in a kitchen that is '
+    'at last not disgusting. I have never wanted a better evening than that, and I am aware that this '
+    'makes me sound about seventy.</p>'
+    '<p>Once a day, every day, I send somebody a real compliment. Costs nothing, returns more than '
+    'anything else I do, and remains somehow the least popular strategy available to the general '
+    'public.</p>'
+    '<p>I love waking up. Not in a wellness way. I have simply never been sorry a day started, which I '
+    'understand is an irritating way to be and which I have no plans to correct.</p>'
 
     '<h2>The rules I actually keep</h2>'
     '<ul>'
@@ -1420,8 +1453,9 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     '<li>I will spread encouragement to the people around me, on purpose, out loud.</li>'
     '<li>I will be more afraid of not trying than of failing.</li>'
     '</ul>'
-    '<p>Those are written down in a note on my phone, which I realize is a slightly ridiculous place to '
-    'keep a moral code. They have held up.</p>'
+    '<p>Those live in a note on my phone, between a grocery list and a half-finished joke, which I '
+    'accept is a ridiculous place to keep a moral code. They have held up better than most things I have '
+    'stored there.</p>'
 
     '<h2>And three cats</h2>'
     '<div class="mosaic">'
@@ -1429,9 +1463,10 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     '<figure class="m2"><img src="assets/photos/cat-1.jpg" alt="A tuxedo cat sitting beside a parcel" loading="lazy"></figure>'
     '<figure class="m3"><img src="assets/photos/cat-3.jpg" alt="A cat stretched out on a counter" loading="lazy"></figure>'
     '</div>'
-    '<p>Who have supervised, between them, most of the homework in this house. One of them appears in the '
-    '<a href="my-why.html">first photograph on the site</a>, which tells you roughly how long this '
-    'arrangement has been going on.</p>'
+    '<p>Between them they have supervised most of the homework ever completed in this house, and '
+    'contributed nothing. One of them turns up in the <a href="my-why.html">first photograph on the '
+    'site</a>, which should tell you how long this arrangement has been running and how little say I '
+    'had in it.</p>'
     + ask("If you have made it this far you may as well introduce yourself."),
     "I")
 
@@ -1999,3 +2034,11 @@ one belt you can push sideways.</p>
 """
 (ROOT / "404.html").write_text(NOTFOUND, encoding="utf-8")
 print("404.html")
+
+hub("pieces.html", "Small pieces", "Things I Wrote Down and Kept",
+    "",
+    '<p class="kicker">Lines I have found myself coming back to, pulled out of longer pieces where '
+    'they were doing quieter work. Each one links to the room it came from.</p>'
+    + pieces_page()
+    + ask("If one of these is wrong, I would genuinely like to be told."),
+    "")
