@@ -129,7 +129,7 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 
 /* the counter, driven by the belt's own scroll rather than by script -------- */
 .belt__count{
-  display:flex; align-items:baseline; gap:.34rem; margin:1.1rem 0 0;
+  display:flex; align-items:baseline; gap:.34rem; width:100%; margin:1.1rem 0 0;
   font-family:var(--f-grot); font-weight:500; font-size:.6rem;
   letter-spacing:.09em; text-transform:uppercase; color:var(--ink-2);
   font-variant-numeric:tabular-nums;
@@ -158,28 +158,21 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 
 /* ------------------------------------------------------------------ foot -- */
 .cover__foot{
-  display:grid; grid-template-columns:auto minmax(0,1fr) auto;
-  align-items:start; gap:1rem clamp(1.1rem,2.6vw,2.2rem);
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  gap:1rem clamp(1.1rem,2.6vw,2.2rem);
   margin:clamp(1.6rem,4vw,2.8rem) 0 0;
 }
 
 /* ---------------------------------------------------------------- pieces --
-   On the cover this is a door, not the collection. Sized to sit quietly
-   between the marks and the contact line without lengthening the poster.    */
+   Left on the counter line under the belt, which is the least announced piece
+   of furniture on the page. Nobody reads a page counter, which makes it the
+   right place to leave something for whoever is actually looking.           */
 .pieces{
-  justify-self:center; display:flex; flex-direction:column; gap:.3rem;
-  padding:.7rem .9rem .75rem; border:1px solid var(--rule-2); color:var(--ink-2);
-  max-width:280px;
-}
-.pieces__k{
+  margin-left:auto; color:var(--ink-3);
   font-family:var(--f-grot); font-weight:500; font-size:.54rem;
-  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3);
+  letter-spacing:.13em; text-transform:uppercase; white-space:nowrap;
 }
-.pieces__c{ font-family:var(--f); font-style:italic; font-size:.8rem; color:var(--ink); line-height:1.3; }
-.pieces__go{ font-size:.8rem; color:var(--ink-3); }
-.pieces:hover{ border-color:var(--ink); }
-.pieces:hover .pieces__c{ text-decoration:underline; text-underline-offset:3px; }
-.pieces:hover .pieces__go{ color:var(--ink); }
+.pieces:hover{ color:var(--ink); }
 
 /* and the collection on its own page */
 .pcs{ max-width:none; margin:2rem 0 1rem; }
@@ -199,8 +192,7 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 .pcs__s a:hover{ color:var(--ink); border-bottom-color:var(--ink); }
 
 @media (max-width: 860px){
-  .cover__foot{ grid-template-columns:1fr; }
-  .pieces{ justify-self:start; max-width:none; }
+  .cover__foot{ justify-content:flex-start; }
 }
 .marks__row{
   list-style:none; margin:0; padding:0;

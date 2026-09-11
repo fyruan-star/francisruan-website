@@ -117,11 +117,13 @@ PYRAMID = [
 
 PIECES = [
   ("fun.html",
-   "Most people run happiness off the top line. Bigger wins, better news, more of everything, and almost "
-   "none of that line is theirs to control. The cost side is. The grudge, the comparison, the thing left "
-   "unsaid, the room you will not clean, every one of them a fixed cost accruing against you daily whether "
-   "or not the day delivers. Drive the costs near zero and the smallest revenue clears. You do not need a "
-   "good day. You need a day with nothing subtracting from it."),
+   "Most people try to raise their happiness by growing Revenue. Bigger wins, better news, more of "
+   "everything. Almost none of that line is yours to control, and all of it is expensive to move. "
+   "Operating Expense is entirely yours. The grudge you are still carrying. The comparison you keep "
+   "running. The thing you have not said to somebody. The room you will not clean. Every one of them is "
+   "a fixed cost, debited daily, whether or not the day hands you anything at all. Take Operating "
+   "Expense near zero and any Revenue clears. You stop needing a good day. You need a day with nothing "
+   "subtracting from it, and then the crumbs are enough on their own."),
   ("fun.html",
    "I am nervous more often than anybody watching would guess. My nerves come out as a joke rather than as "
    "silence, and I have stopped apologising for that, because a laugh is a genuinely useful thing to do "
@@ -131,14 +133,11 @@ PIECES = [
    "False modesty is only bragging with better manners."),
 ]
 
-def pieces_box():
-    """On the cover this is only a door. The collection itself lives on its own
-    page, because three paragraphs of quotation do not belong on a poster."""
-    return ('<a class="pieces" href="pieces.html">'
-            '<span class="pieces__k">[ Small pieces ]</span>'
-            f'<span class="pieces__c">{len(PIECES)} things I wrote down and kept</span>'
-            '<span class="pieces__go" aria-hidden="true">&rarr;</span>'
-            '</a>')
+def pieces_door():
+    """Not a box any more. A marginal note on the counter line under the belt,
+    which is the least announced piece of furniture on the page and therefore
+    the right place to leave something for whoever is actually looking."""
+    return '<a class="pieces" href="pieces.html">[ things I wrote down and kept ]</a>' 
 
 def pieces_page():
     out = ['<div class="pcs">']
@@ -214,7 +213,8 @@ def belt():
             f'<div class="belt">{"".join(rows)}</div>'
             '<p class="belt__count" aria-hidden="true">'
             f'<span class="belt__win"><span class="belt__roll">{ticker}</span></span>'
-            f'<span class="belt__of">of {n:02d}</span></p>'
+            f'<span class="belt__of">of {n:02d}</span>'
+            + pieces_door() + '</p>'
             f'<p class="belt__sr">Nine sections, pushed sideways.</p>'
             '</div>')
 
@@ -233,8 +233,6 @@ INDEX = f"""<div class="sheet">
         <li><img class="mk mk--usc"   src="assets/logos/uscmarshall-black.png" alt="USC Marshall"></li>
         <li><img class="mk mk--vuori" src="assets/logos/vuori.svg"             alt="Vuori"></li>
       </ul>
-
-      {pieces_box()}
 
       <p class="cover__links">
         <a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a>
