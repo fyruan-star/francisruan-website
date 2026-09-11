@@ -71,13 +71,13 @@ body.index{ height:100dvh; overflow:hidden; }
 body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--ground); }
 .sheet{
   background:var(--paper);
-  max-width:var(--sheet); margin:clamp(0px,3.2vw,54px) auto;
-  min-height:calc(100dvh - clamp(0px,6.4vw,108px));
+  max-width:var(--sheet); margin:clamp(0px,2.2vw,34px) auto;
+  min-height:calc(100dvh - clamp(0px,4.4vw,68px));
   display:flex; flex-direction:column;
 }
 .cover{
   flex:1 1 auto; display:flex; flex-direction:column;
-  padding:clamp(2.2rem,7vw,5.5rem) clamp(1.2rem,4.4vw,4rem) clamp(1.6rem,4vw,3rem);
+  padding:clamp(1.6rem,4.2vw,3.4rem) clamp(1.2rem,4.4vw,4rem) clamp(1.2rem,2.6vw,2rem);
 }
 
 /* ------------------------------------------------------------- nameplate -- */
@@ -96,7 +96,7 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 /* ------------------------------------------------------------------ belt -- */
 .beltwrap{
   --vis:3;
-  margin:clamp(3rem,9vw,7rem) 0 auto;
+  margin:clamp(2rem,6vw,4.4rem) 0 auto;
   timeline-scope:--belt;
 }
 .belt{
@@ -158,8 +158,46 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 
 /* ------------------------------------------------------------------ foot -- */
 .cover__foot{
-  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
-  gap:1rem 2rem; margin:clamp(2.4rem,7vw,4.5rem) 0 0;
+  display:grid; grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:start; gap:1rem clamp(1.1rem,2.6vw,2.2rem);
+  margin:clamp(1.6rem,4vw,2.8rem) 0 0;
+}
+
+/* ---------------------------------------------------------------- pieces --
+   A small collection kept on the cover between the marks and the contact line.
+   Set very small on purpose: it is a margin note, not a section.            */
+.pieces{ max-width:min(560px, 100%); justify-self:center; }
+.pieces__k{
+  font-family:var(--f-grot); font-weight:500; font-size:.54rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3);
+  margin:0 0 .55rem; padding-bottom:.45rem; border-bottom:1px solid var(--rule);
+}
+/* capped and scrollable, so the collection can grow without the poster growing */
+.pieces__l{
+  list-style:none; margin:0; padding:0 .5rem 0 0;
+  display:flex; flex-direction:column; gap:.48rem;
+  max-height:clamp(84px, 12vh, 156px); overflow-y:auto;
+  scrollbar-width:thin; scrollbar-color:var(--rule-2) transparent;
+  overscroll-behavior-y:contain;
+}
+.pieces__l::-webkit-scrollbar{ width:3px; }
+.pieces__l::-webkit-scrollbar-thumb{ background:var(--rule-2); }
+.pieces__l::-webkit-scrollbar-track{ background:transparent; }
+.pieces__i{ margin:0; }
+.pieces__i a{ display:grid; grid-template-columns:auto minmax(0,1fr); gap:.55rem; color:var(--ink-2); }
+.pieces__n{
+  font-family:var(--f-grot); font-weight:500; font-size:.5rem; letter-spacing:.1em;
+  color:var(--ink-3); font-variant-numeric:tabular-nums; padding-top:.22rem;
+}
+.pieces__t{
+  font-family:var(--f); font-size:.655rem; line-height:1.38; text-wrap:pretty;
+}
+.pieces__i a:hover .pieces__t{ color:var(--ink); }
+.pieces__i a:hover .pieces__n{ color:var(--ink); }
+
+@media (max-width: 860px){
+  .cover__foot{ grid-template-columns:1fr; }
+  .pieces{ justify-self:start; max-width:none; }
 }
 .marks__row{
   list-style:none; margin:0; padding:0;
@@ -180,7 +218,6 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 @media (max-width: 900px){ .beltwrap{ --vis:2; } }
 @media (max-width: 620px){
   .beltwrap{ --vis:1; }
-  .cover__foot{ flex-direction:column; align-items:flex-start; }
 }
 
 /* ------------------------------------------------------------- hub bits -- */

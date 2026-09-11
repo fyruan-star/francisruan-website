@@ -115,6 +115,33 @@ PYRAMID = [
   ("origin-fun.jpg",           "The Art Of Having Fun",   "fun.html"),
 ]
 
+PIECES = [
+  ("fun.html",
+   "Most people run happiness off the top line. Bigger wins, better news, more of everything, and almost "
+   "none of that line is theirs to control. The cost side is. The grudge, the comparison, the thing left "
+   "unsaid, the room you will not clean, every one of them a fixed cost accruing against you daily whether "
+   "or not the day delivers. Drive the costs near zero and the smallest revenue clears. You do not need a "
+   "good day. You need a day with nothing subtracting from it."),
+  ("fun.html",
+   "I am nervous more often than anybody watching would guess. My nerves come out as a joke rather than as "
+   "silence, and I have stopped apologising for that, because a laugh is a genuinely useful thing to do "
+   "with adrenaline. It lets the air out of a room that was holding its breath, and tells everybody "
+   "present that they are permitted to be human here."),
+  ("awards.html",
+   "False modesty is only bragging with better manners."),
+]
+
+def pieces_box():
+    """A small collection on the cover, kept between the marks and the contact
+    line. Numbered in brackets like everything else on this page."""
+    out = ['<div class="pieces"><p class="pieces__k">[ Small pieces ]</p><ol class="pieces__l">']
+    for i, (href, text) in enumerate(PIECES, 1):
+        out.append(f'<li class="pieces__i"><a href="{href}">'
+                   f'<span class="pieces__n">{i:02d}</span>'
+                   f'<span class="pieces__t">{text}</span></a></li>')
+    out.append('</ol></div>')
+    return "".join(out)
+
 TRACKS = {
   # page                track                artist            sleeve
   "my-why.html":    ("Cool",              "Daniel Caesar",   "my-why"),
@@ -197,6 +224,9 @@ INDEX = f"""<div class="sheet">
         <li><img class="mk mk--usc"   src="assets/logos/uscmarshall-black.png" alt="USC Marshall"></li>
         <li><img class="mk mk--vuori" src="assets/logos/vuori.svg"             alt="Vuori"></li>
       </ul>
+
+      {pieces_box()}
+
       <p class="cover__links">
         <a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a>
         <a href="https://www.linkedin.com/in/francisruan" target="_blank" rel="noopener">LinkedIn</a>
@@ -925,9 +955,17 @@ FIN = f"""<div class="wrap">
 <div class="body">
 
 {soundtrack("finance.html")}
-<p class="kicker">The through-line in all of this is one stubborn question: where does value sit when the accounts cannot see it?</p>
+<p class="kicker">You ran a valuation this morning and did not notice you were doing it.</p>
 
-<p>I noticed it first in a supplement aisle, where two businesses selling more or less the same thing to more or less the same person cleared at six times revenue and at barely one within eight weeks of each other, which is not a rounding error so much as an argument about what was actually being bought. Then I ran into it again inside a finance workflow whose saving was real enough to measure in hours and yet had nowhere on a balance sheet to sit. It is the same question wearing different clothes each time, and I have not got to the bottom of it, though I have stopped treating that as a failure and started treating it as the reason to keep going.</p>
+<p>Somebody offered you something and you priced it in about four hundred milliseconds. Is this friendship accretive, or has it been quietly dilutive for a year and you have not wanted to say so out loud. Is the extra hour of sleep worth more than the extra hour of work, and worth more to which version of you, the one at eleven at night or the one at six in the morning, because those two are running very different discount rates. We do this constantly, we do it silently, and we almost never write any of it down, which is the only reason it does not look like finance.</p>
+
+<p>I worked it out at a Catan table, of all places. A brick is worth nothing to the player holding four of them and very nearly everything to the player sitting one brick short of a city, and the entire game turns on holding both of those facts at once and knowing which one is true of the person you are trading with. Monopoly taught me the uglier version, which is that a property is worth what the person across from you can be talked into believing it is worth, and that the price printed on the card is mostly a suggestion. And the lunch table taught me the one that actually stuck, because a seat is worth wildly different amounts to different people on different days and the currency was never money, it was who noticed you sat down. I had no language for any of this at eleven. I just kept noticing that the same object changed price depending on who was holding it and what they happened to need that week.</p>
+
+<p>Companies are that, except the board refuses to sit still. A business has a price today that depends on what a buyer believes it will produce in five years, which depends on what customers will want by then, which depends on a competitor&rsquo;s decision that has not been made yet, which depends on capital priced off a rate somebody will set next quarter. It is a puzzle where every piece moves while you are looking at the others, solved in public, by thousands of people at once, with real money on it. I find that genuinely thrilling and I have stopped pretending it is a strange thing to find thrilling.</p>
+
+<p>Which is where the question I actually care about lives. Not what a company earns, because that is arithmetic and anybody can do arithmetic. What it is quietly worth to somebody who has understood it better than its own accounts have. The accounts are the price printed on the card, and the interesting number has never once been on the card.</p>
+
+<p>I saw it most clearly in a supplement aisle, where two businesses selling more or less the same thing to more or less the same person cleared at six times revenue and at barely one within eight weeks of each other, which is not a rounding error so much as an argument about what was actually being bought. Then I ran into it again inside a finance workflow whose saving was real enough to measure in hours and yet had nowhere on a balance sheet to sit.</p>
 
 <p>I should be honest about the route here, because it was not the obvious one. I did not grow up anywhere near this. What I grew up around was a household in which the arithmetic was never abstract, where somebody was awake at the wrong end of the clock so that a number would come out right at the end of the month, and where I learned early to read a room for the thing nobody was saying out loud. Finance turned out to be that same habit pointed at companies rather than at my own kitchen, which is why the question that holds me is not what a business earns but what it is quietly worth to somebody who has understood it better than its accounts have.</p>
 
@@ -937,30 +975,30 @@ FIN = f"""<div class="wrap">
 <div class="rack">
   <a class="rk" href="#blog">
     <span class="rk__n">[ 01 ]</span>
-    <span class="rk__k">The blog</span>
-    <span class="rk__t">Where the arithmetic gets done in public</span>
-    <span class="rk__d">Long pieces with the working shown. The five deals and the sevenfold spread between them, and an essay on the assets an AI deployment builds that never reach the balance sheet.</span>
+    <span class="rk__k">The brain dump</span>
+    <span class="rk__t">Everything I have not finished thinking about</span>
+    <span class="rk__d">The blog. Long pieces with the working left in, the wrong turns included, and the part at the end where I say what would change my mind.</span>
     <span class="rk__m">Two pieces &middot; live</span>
   </a>
   <a class="rk" href="#newsletter">
     <span class="rk__n">[ 02 ]</span>
-    <span class="rk__k">The newsletter</span>
-    <span class="rk__t">One deal, one question, every week</span>
-    <span class="rk__d">A short letter for people who would rather argue than agree. A single transaction, what the buyer was actually paying for, and the part of my own reasoning I am least sure about.</span>
+    <span class="rk__k">The journal</span>
+    <span class="rk__t">Entries on whichever deal will not leave me alone</span>
+    <span class="rk__d">The newsletter. Not analysis so much as a diary kept in public: one transaction a week, what the buyer was really paying for, and the part of my own reasoning I trust least.</span>
     <span class="rk__m">In progress</span>
   </a>
   <a class="rk" href="#podcast">
     <span class="rk__n">[ 03 ]</span>
     <span class="rk__k">The podcast</span>
     <span class="rk__t">Wall Street&rsquo;s Trojan Horse</span>
-    <span class="rk__d">How quietly AI already walked into investment banking, told twice over: by the analysts living inside the change, and by the people who built the thing that caused it.</span>
+    <span class="rk__d">What I think is happening to banking and M&amp;A now that AI is inside the building, told twice over: by the analysts living through it, and by the people who built the thing.</span>
     <span class="rk__m">In progress</span>
   </a>
 </div>
 
 <div class="body">
-<h2 id="blog">The blog</h2>
-<p>Everything here is only worth something if I am willing to write it down somewhere a stranger can disagree with me. These are the two I would defend line by line.</p>
+<h2 id="blog">The brain dump</h2>
+<p>This is the blog, and I call it a brain dump because that is honestly what it is. None of it is worth anything unless I am willing to put it somewhere a stranger can disagree with me, so the working stays in, including the parts where I changed my mind halfway down. These are the two I would defend line by line.</p>
 <div class="biglinks">
   <a href="trend.html"><span class="bl__lg"></span><span class="bl__n">Five Deals, Six Weeks, and a Sevenfold Spread</span><span class="bl__note">Five consumer wellness businesses changed hands this summer at prices seven times apart. The chart, the five notes, and the part where I say what would prove me wrong.</span></a>
   <a href="invisible.html"><span class="bl__lg"></span><span class="bl__n">The Assets AI Builds That Nobody Records</span><span class="bl__note">The essay that came out of the BODi work. The best output of a deployment never lands on the balance sheet.</span></a>
@@ -972,8 +1010,8 @@ FIN = f"""<div class="wrap">
   <a href="bodi.html"><span class="bl__lg"><img src="assets/logos/bodi.svg" alt=""></span><span class="bl__n">BODi</span><span class="bl__note">Ninety minutes to three. $784K sized and presented to the MD of Accounting.</span></a>
 </div>
 
-<h2 id="newsletter">The newsletter</h2>
-<p>The blog is where I take a month over something. The newsletter is the other half of that, which is the discipline of having to say something worth a stranger&rsquo;s Sunday every single week, whether or not the week has been generous with material.</p>
+<h2 id="newsletter">The journal</h2>
+<p>The brain dump is where I take a month over something. The journal is the other half of it, which is a newsletter but mostly a diary I happen to send: entries on whichever deal has refused to leave me alone that week, written whether or not the week has been generous with material.</p>
 <p>One transaction. What the buyer was actually paying for, stated plainly enough that somebody could tell me I have it wrong. And then the part most writing on this subject leaves out, which is the weakest link in my own reasoning, named by me before anybody else has to find it. I would rather be corrected in a reply than be right in private.</p>
 <p class="quiet">First issues to come. If you would like to be sent them, or you would like to be the person who writes back disagreeing, say so and I will put you on it.</p>
 
@@ -1626,84 +1664,108 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
     + ask("If any of this sounds like your childhood too, I would like to hear from you."),
     "Fight On")
 
-hub("leadership.html", "Greatest leadership", "The Sideline Is a Vantage, Not a Consolation",
+hub("leadership.html", "Leadership", "The Sideline Is a Vantage, Not a Consolation",
     "",
     '<figure class="lead"><img src="assets/photos/origin-leadership.jpg" '
-    'alt="Francis Ruan as a boy dressed as George Washington" width="900" height="900">'
+    'alt="Francis Ruan as a small boy in front of a flag" width="900" height="900">'
     '<figcaption>An early and unsubtle interest in standing in front of people.</figcaption></figure>'
 
-    '<p class="kicker">Everyone on that field was bigger than me, and I have come to think of that as one of '
-    'the luckier things that has happened to me.</p>'
+    '<p class="kicker">Everyone on that field was bigger than me. I mean everyone, including at least one '
+    'kicker, and I have come to think of it as one of the luckier things that ever happened to me, though '
+    'it took about two years to start looking like luck.</p>'
 
-    '<p>I was undersized. I was one of very few Asian kids in the program. I had never played a down in my life '
-    'when I signed up freshman year, and my friends told me, kindly and often, that I was the worst guy out '
-    'there. They were not being cruel. They were being accurate. I was nowhere near a starter for a long time '
-    'and I never became the story, and for about two years I found that genuinely painful in the small daily '
-    'way that things are painful when you are fifteen.</p>'
+    '<p>Here is what I actually signed up for. Freshman year, never played a down in my life, one of very '
+    'few Asian kids in the programme, and genuinely the worst guy out there, which my friends told me '
+    'often and kindly and which was simply accurate. I was nowhere near starting. I was not going to be '
+    'the story that season or the one after it. And for about two years that hurt in the specific way '
+    'things hurt when you are fifteen, which is not dramatically, just constantly, a little every day at '
+    'practice.</p>'
 
-    '<p>Then something better happened, which is that I stopped watching the ball.</p>'
+    '<p>Then something shifted, and I have spent a long time trying to name it. The closest I can get is '
+    'that I stopped watching the ball.</p>'
 
     '<h2>What you can see from four feet off the field</h2>'
 
-    '<p>A player sees his assignment. He sees the man across from him and the next two seconds, and that '
-    'narrowness is not a failing, it is the entire job, and the good ones protect it fiercely. But somebody has '
-    'to be looking at the whole thing. Somebody has to notice that the left tackle has gone quiet since the '
-    'second quarter. That the safety is pressing because he is angry, not because the coverage asked him to. '
-    'That the sophomores have stopped talking to each other, which is always, always the first sign.</p>'
+    '<p>Nobody tells you this about a sideline. A player out there sees his assignment. He sees the man '
+    'across from him and the next two seconds, and I want to be clear that this is not a limitation, it is '
+    'the entire job, and the good ones guard that tunnel like it is their wallet.</p>'
 
-    '<p>Nobody assigns you that. You just start doing it, and one day you realize you have been doing it for '
-    'months, and that it is a kind of work.</p>'
+    '<p>But somebody has to be watching the whole thing, and that somebody turns out to be whoever happens '
+    'to have the time.</p>'
+
+    '<p>So I started noticing. That the left tackle had gone quiet somewhere in the second quarter and '
+    'nobody had clocked it. That the safety was pressing because he was angry about something from before '
+    'the game, not because the coverage had asked him to. That the sophomores had stopped talking to each '
+    'other, which I eventually worked out is always, always the first sign that something has gone wrong '
+    'underneath. Nobody assigns you that. There is no meeting where it gets handed out. You start doing it '
+    'because you can see it, and then one day you notice you have been doing it for months and that it is '
+    'real work.</p>'
 
     '<h2>People arrive one at a time</h2>'
 
-    '<p class="pull">A team is not a unit. It is forty separate difficult conversations '
-    'wearing the same colour.</p>'
+    '<p class="pull">A team is not a unit. It is forty separate difficult conversations wearing the same '
+    'colour.</p>'
 
-    '<p>The corner '
-    'who just got beaten deep does not want a speech, he wants somebody to sit down next to him and say nothing '
-    'for a minute while the humiliation finishes moving through him. The lineman who is furious needs to be '
-    'furious somewhere else first, before he says the sentence he will not be able to take back.</p>'
+    '<p>That reads like a line, but I mean it operationally. The corner who has just been beaten deep does '
+    'not want a speech. He wants somebody to sit down next to him and say absolutely nothing for a minute '
+    'while the humiliation finishes moving through him, and if you talk during that minute you have made '
+    'it worse. The lineman who is furious needs to be furious somewhere else first, before he says the '
+    'sentence he will not be able to take back. Those are two entirely different people needing two '
+    'entirely different things from about nine feet apart.</p>'
 
-    '<p>I got good at working out which of those I had in front of me before I opened my mouth. That skill has '
-    'turned out to be worth more than anything I learned in a weight room, and I use it roughly every day.</p>'
+    '<p>I got good at working out which one I had in front of me before I opened my mouth. Honestly that is '
+    'the most useful thing football ever gave me, well ahead of anything that happened in a weight room, '
+    'and I use it constantly now, including in rooms with no helmets in them.</p>'
 
     '<h2>Monday is the whole job</h2>'
 
-    '<p>Losing is not the hard part. Friday is loud and then it ends. Monday is quiet and it does not. Getting '
-    'forty people who were humiliated in front of their families to come back and run it again, properly, in '
-    'the cold, when nothing has changed except that they now hold evidence they are not as good as they hoped, '
-    'is the actual work of leading anything at all.</p>'
+    '<p>People assume the hard part is losing. It is not. Friday night is loud and then it is over.</p>'
 
-    '<p>Anybody is useful when it is going well. I got very good at Mondays, and I have never once regretted it.</p>'
+    '<p>Monday is the hard part, because Monday is quiet and Monday does not end. You have forty people who '
+    'were beaten in front of their families, and now it is cold, and nothing has changed except that every '
+    'one of them is carrying fresh evidence that they might not be as good as they had hoped. Getting that '
+    'group back out to run it again properly is the actual work of leading anything at all, and I do not '
+    'think I am overstating it.</p>'
+
+    '<p>Anybody is useful when it is going well. I got very good at Mondays, and I have never once regretted '
+    'the trade.</p>'
 
     '<h2>The game is bigger than the player</h2>'
 
-    '<p>This is the one that rearranged me. My snap count was never going to be the story, and I spent two '
-    'years letting that fact make me smaller. Then it simply stopped mattering, the way things sometimes do, '
-    'without ceremony. Once I quit measuring my worth in reps I became far more useful, because I could finally '
-    'see the entire field instead of my own small rectangle of it.</p>'
+    '<p>This is the part that rearranged me, and I want to say it without making it sound tidier than it '
+    'was.</p>'
 
-    '<p>There is a real freedom in working out that you are not the protagonist. It hands you back every bit of '
-    'attention you had been spending on yourself, and there is a great deal of it, and you can spend it on '
-    'almost anything.</p>'
+    '<p>My snap count was never going to be the story. I knew that. And I spent two years letting that fact '
+    'make me smaller, which is such a waste of two years that I get mildly annoyed thinking about it now. '
+    'Then at some point it simply stopped mattering. There was no moment, no speech, nothing cinematic. It '
+    'just quietly stopped being the thing I was measuring myself with.</p>'
 
-    '<p class="pull">They voted me team captain. I did not play much.</p>'
+    '<p>And the second I stopped counting reps I became dramatically more useful, because I could finally '
+    'see the whole field instead of my own small rectangle of it. There is a real and badly underrated '
+    'freedom in working out that you are not the protagonist. It hands you back all the attention you had '
+    'been spending on yourself, and that turns out to be an enormous amount of attention, and you can '
+    'spend it on very nearly anything.</p>'
 
-    '<p>I think about that more than any award I have, because it is the only one I did not get by being good '
-    'at something. The spotlight and the leadership turned out to be two different jobs, and plenty of people '
-    'holding one never hold the other. You do not need the ball to carry a squad. You need to be the person '
-    'everybody looks at when it goes badly, and you need to have decided, well before it goes badly, exactly '
-    'what you intend to be like when it does.</p>'
+    '<p>They voted me team captain. I did not play much.</p>'
+
+    '<p>I think about that more than any award I have, and there is a whole page of those, because it is '
+    'the only one I did not get by being good at something. The spotlight and the leadership turned out to '
+    'be two different jobs, and plenty of people who hold one never hold the other. You do not need the '
+    'ball to carry a squad. You need to be the person everybody looks at when it goes badly, and you need '
+    'to have decided, well before it goes badly, exactly who you intend to be when it does.</p>'
 
     '<h2>Where it turns out I still am</h2>'
+
     '<p>I am the alumni chair for USC men&rsquo;s lacrosse, which makes me responsible to roughly three '
     'hundred and fifty alumni across fifty-one graduating classes and for a budget somewhere near $165K, '
-    'and it has turned out to be the same job in different weather. Nobody in that group is obliged to '
-    'answer me. They have careers and families and an entirely reasonable claim on their own Saturdays, '
-    'so the only thing that moves them is whether the person asking has bothered to understand what a '
-    'given season meant to the people who played in it. That is Monday again, only now Monday is spread '
-    'across five decades, and I find I am still considerably better at that than at anything likely to '
-    'get my own name read out.</p>'
+    'and it has turned out to be exactly the same job in different weather.</p>'
+
+    '<p>Not one person in that group is obliged to answer me. They have careers and families and an '
+    'entirely reasonable claim on their own Saturdays. The only thing that moves them is whether the '
+    'person asking has bothered to understand what a particular season actually meant to the people who '
+    'played in it, which means the work is the same work, just spread across five decades instead of one '
+    'locker room. That is Monday again. And I find I am still considerably better at that than at anything '
+    'likely to get my own name read out.</p>'
 
     '<p>Four years, three on varsity. <a href="awards.html">The rest of the record is here</a>, though it is '
     'much less interesting than this.</p>'
