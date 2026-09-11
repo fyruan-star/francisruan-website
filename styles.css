@@ -267,7 +267,7 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
    The sleeve, the title, and a player. The audio is Apple's own licensed
    preview stream for the recording, so nothing is hosted here and nothing is a
    full track. <audio controls> is the only way to hand somebody a play button
-   with no JavaScript, and no browser starts audio without a click regardless. */
+   and it starts itself where the browser allows it. */
 .track{ margin:0 0 1.6rem; max-width:var(--measure); display:flex; flex-direction:column; gap:.45rem; }
 .track__top{ display:flex; align-items:center; gap:.6rem; }
 .track__art{

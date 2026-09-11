@@ -167,19 +167,42 @@ TRACKS = {
   "invisible.html":   ("Lujon", "Henry Mancini", "curiosity", "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f1/49/9b/f1499b91-e67a-046d-d8b5-35bac9fb4b54/mzaf_919471457877370426.plus.aac.p.m4a"),
 }
 
+AUTOPLAY = (
+  '<script>'
+  '(function(){'
+  'var a=document.querySelector("audio[data-auto]");if(!a)return;'
+  'a.volume=0.7;var stopped=false;'
+  'a.addEventListener("pause",function(){stopped=true;});'
+  'function go(){if(stopped)return;var p=a.play();if(p&&p.catch)p.catch(function(){});}'
+  'go();'
+  'if(document.readyState!=="complete")window.addEventListener("load",go,{once:true});'
+  '["pointerdown","keydown","touchstart","wheel","scroll"].forEach(function(e){'
+  'window.addEventListener(e,go,{once:true,passive:true});});'
+  '})();'
+  '</script>'
+)
+
 def soundtrack(fn):
-    """The sleeve, the title, and where a licensed preview exists, a real player.
-    The audio is Apple's own thirty second preview stream for that recording, served
-    from their CDN: we host no music and redistribute nothing. The element is a
-    plain <audio controls>, which is the only way to hand somebody a play button
-    without JavaScript, and no browser will start audio without a click anyway."""
+    """The sleeve, the title, and a player that starts itself.
+
+    The audio is Apple's own licensed thirty second preview for that exact
+    recording, streamed from their CDN, so this site hosts no music and
+    redistributes nothing. It loops, because thirty seconds of silence halfway
+    down a page is worse than a repeat.
+
+    Every browser blocks audible autoplay until a site has earned it or the
+    visitor has touched the page, and that is enforced above the document where
+    no markup can reach. So this does both: it asks to play on load, which works
+    for anyone the browser already trusts, and it asks again on the first click,
+    key, or scroll, which covers everybody else. Pausing it once stops it asking.
+    """
     t = TRACKS.get(fn)
     if not t: return ""
     title, artist, sleeve, preview = t
     from urllib.parse import quote
     q = quote(f"{title} {artist}")
-    player = (f'<audio class="track__p" controls preload="none" src="{preview}"></audio>'
-              if preview else "")
+    player = (f'<audio class="track__p" data-auto autoplay loop controls '
+              f'preload="auto" src="{preview}"></audio>' if preview else "")
     return ('<div class="track">'
             '<div class="track__top">'
             f'<img class="track__art" src="assets/tracks/{sleeve}.jpg" alt="" loading="lazy" width="300" height="300">'
@@ -190,7 +213,8 @@ def soundtrack(fn):
             + player +
             f'<a class="track__l" href="https://open.spotify.com/search/{q}" target="_blank" rel="noopener">'
             'Full track &rarr;</a>'
-            '</div>')
+            + (AUTOPLAY if preview else "")
+            + '</div>')
 
 def ask(line="If any of this is worth an argument, I would like to have it."):
     return ('<div class="ask"><p>' + line +
@@ -206,7 +230,7 @@ def belt():
     """Three plates across, pushed sideways. Every image is held in black and white
     here and only takes its colour once you have opened it, which is done with a CSS
     animation on the destination page rather than with script. The counter under the
-    belt is driven by a scroll-linked animation, so it too runs without JavaScript
+    belt is driven by a scroll-linked animation, so the counter itself needs no script
     and simply rests on 01 in browsers that do not support one."""
     rows = []
     n = len(PYRAMID)

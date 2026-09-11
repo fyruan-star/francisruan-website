@@ -1,8 +1,10 @@
 # francisruan.com
 
 A personal site. Twenty static pages, one typeface (Newsreader), pure white,
-charcoal ink. **No JavaScript anywhere**. The horizontal belt on the
-index is CSS scroll-snap, not a carousel script.
+charcoal ink. The horizontal belt on the index is CSS scroll-snap, not a
+carousel script, and the counter under it is a scroll-linked CSS animation.
+The only script on the site is eleven lines in the soundtrack player, which
+exist because browsers refuse to start audio from markup alone.
 
 Live at **https://francisruan.com**.
 
