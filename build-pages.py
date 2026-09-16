@@ -19,7 +19,7 @@ def topbar(active=""):
            ("fight-on.html","Fight On"),("curiosity.html","Curiosity"),
            ("leadership.html","Leadership"),("finance.html","Finance"),
            ("building.html","Engineer"),("awards.html","Lucky"),
-           ("fun.html","Fun"),("Ruan_Francis_Resume.pdf","Resume")]
+           ("fun.html","Fun")]
     li="".join(f'<li><a href="{h}"{" target=_blank rel=noopener" if h.endswith(".pdf") else ""}'
                f'{" style=color:var(--ink)" if t==active else ""}>{t}</a></li>' for h,t in items)
     return ('<header class="topbar"><div class="wrap topbar__in">'
