@@ -272,7 +272,6 @@ INDEX = f"""<div class="sheet">
       <p class="cover__links">
         <a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a>
         <a href="https://www.linkedin.com/in/francisruan" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="Ruan_Francis_Resume.pdf" target="_blank" rel="noopener">Resume</a>
       </p>
     </footer>
 
@@ -1929,7 +1928,7 @@ hub("fun.html", "The art of fun", "The Unserious Half",
     'never once let me down on a Tuesday.</p>'
 
     '<div class="band">'
-    '<figure><img src="assets/photos/fun-house.jpg" alt="Francis Ruan with friends in front of a painted Trojan mural" loading="lazy"></figure>'
+    '<figure><img src="assets/photos/fun-corridor.jpg" alt="Friends sitting along a corridor, laughing at something on a phone" loading="lazy"></figure>'
     '<figure><img src="assets/photos/fun-river.jpg" alt="Francis Ruan tubing the Salt River with friends" loading="lazy"></figure>'
     '<figure><img src="assets/photos/fun-dorm.jpg" alt="A room full of friends, one playing guitar" loading="lazy"></figure>'
     '</div>'
@@ -1992,24 +1991,16 @@ hub("fun.html", "The art of fun", "The Unserious Half",
     '<figure class="m3"><img src="assets/photos/fun-flash.jpg" alt="Two friends, flash photograph at night" loading="lazy"></figure>'
     '</div>'
 
-    '<h2>Recent moments</h2>'
-    '<div class="gallery-grid gallery-grid--tall">'
-    '<figure class="g-portrait"><img src="assets/photos/fun-friends-night.jpg" alt="Friends posing together at night" loading="lazy"></figure>'
-    '<figure class="g-portrait"><img src="assets/photos/fun-trio-suits.jpg" alt="Three friends in suits on a terrace" loading="lazy"></figure>'
-    '<figure class="g-portrait"><img src="assets/photos/fun-beach-sunset.jpg" alt="Francis with arms raised at the beach at sunset" loading="lazy"></figure>'
+    '<figure class="wide"><img src="assets/photos/fun-zbot-group.jpg" alt="A large group of friends in suits outside a house at night" loading="lazy"></figure>'
+
+    '<div class="trio">'
+    '<figure><img src="assets/photos/fun-friends-night.jpg" alt="Four friends posing on a rooftop at night" loading="lazy"></figure>'
+    '<figure><img src="assets/photos/fun-venue.jpg" alt="Friends in white shirts at an outdoor venue" loading="lazy"></figure>'
+    '<figure><img src="assets/photos/fun-parking-friends.jpg" alt="Three friends in suits at the end of a night" loading="lazy"></figure>'
     '</div>'
 
-    '<div class="gallery-grid gallery-grid--two">'
-    '<figure><img src="assets/photos/fun-sushi.jpg" alt="Friends at a sushi restaurant" loading="lazy"></figure>'
-    '<figure><img src="assets/photos/fun-parking-friends.jpg" alt="Friends together at night" loading="lazy"></figure>'
-    '</div>'
-
-    '<figure class="gallery-full"><img src="assets/photos/fun-zbot-group.jpg" alt="Large group of friends at an event" loading="lazy"></figure>'
-
-    '<div class="gallery-grid gallery-grid--two">'
-    '<figure><img src="assets/photos/fun-concert.jpg" alt="Group of friends at a concert" loading="lazy"></figure>'
-    '<figure><img src="assets/photos/fun-hangout.jpg" alt="Friends gathered indoors" loading="lazy"></figure>'
-    '</div>'
+    '<figure class="wide"><img src="assets/photos/fun-trio-suits.jpg" alt="Francis Ruan between two friends, all three laughing" loading="lazy">'
+    '<figcaption>The people, mostly.</figcaption></figure>'
 
     '<h2>And away from here</h2>'
     '<p>Prague at sunset. A harbour in Catalina. A fire road above the ocean at the end of a day. I take '
@@ -2019,6 +2010,9 @@ hub("fun.html", "The art of fun", "The Unserious Half",
     '<figure><img src="assets/photos/fun-catalina.jpg" alt="Francis Ruan and a friend at a harbour in Catalina" loading="lazy"></figure>'
     '<figure><img src="assets/photos/fun-trail.jpg" alt="Two silhouettes on a trail at sunset" loading="lazy"></figure>'
     '</div>'
+
+    '<figure class="solo"><img src="assets/photos/fun-beach-sunset.jpg" alt="Francis Ruan on the coast at dusk with both arms raised" loading="lazy">'
+    '<figcaption>Santa Cruz, about four minutes of pink.</figcaption></figure>'
 
     '<h2>Reading for the mechanism</h2>'
     '<p>I read pathology and nutrition research for fun, which is a strange thing to put in the fun section. '
