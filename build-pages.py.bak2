@@ -19,7 +19,7 @@ def topbar(active=""):
            ("fight-on.html","Fight On"),("curiosity.html","Curiosity"),
            ("leadership.html","Leadership"),("finance.html","Finance"),
            ("building.html","Engineer"),("awards.html","Lucky"),
-           ("fun.html","Fun")]
+           ("fun.html","Fun"),("Ruan_Francis_Resume.pdf","Resume")]
     li="".join(f'<li><a href="{h}"{" target=_blank rel=noopener" if h.endswith(".pdf") else ""}'
                f'{" style=color:var(--ink)" if t==active else ""}>{t}</a></li>' for h,t in items)
     return ('<header class="topbar"><div class="wrap topbar__in">'
@@ -1990,25 +1990,6 @@ hub("fun.html", "The art of fun", "The Unserious Half",
     '<figure class="m1"><img src="assets/photos/fun-couch.jpg" alt="Friends crowded onto a couch" loading="lazy"></figure>'
     '<figure class="m2"><img src="assets/photos/fun-hallway.jpg" alt="Friends in a hallway" loading="lazy"></figure>'
     '<figure class="m3"><img src="assets/photos/fun-flash.jpg" alt="Two friends, flash photograph at night" loading="lazy"></figure>'
-    '</div>'
-
-    '<h2>Recent moments</h2>'
-    '<div class="gallery-grid gallery-grid--tall">'
-    '<figure class="g-portrait"><img src="assets/photos/fun-friends-night.jpg" alt="Friends posing together at night" loading="lazy"></figure>'
-    '<figure class="g-portrait"><img src="assets/photos/fun-trio-suits.jpg" alt="Three friends in suits on a terrace" loading="lazy"></figure>'
-    '<figure class="g-portrait"><img src="assets/photos/fun-beach-sunset.jpg" alt="Francis with arms raised at the beach at sunset" loading="lazy"></figure>'
-    '</div>'
-
-    '<div class="gallery-grid gallery-grid--two">'
-    '<figure><img src="assets/photos/fun-sushi.jpg" alt="Friends at a sushi restaurant" loading="lazy"></figure>'
-    '<figure><img src="assets/photos/fun-parking-friends.jpg" alt="Friends together at night" loading="lazy"></figure>'
-    '</div>'
-
-    '<figure class="gallery-full"><img src="assets/photos/fun-zbot-group.jpg" alt="Large group of friends at an event" loading="lazy"></figure>'
-
-    '<div class="gallery-grid gallery-grid--two">'
-    '<figure><img src="assets/photos/fun-concert.jpg" alt="Group of friends at a concert" loading="lazy"></figure>'
-    '<figure><img src="assets/photos/fun-hangout.jpg" alt="Friends gathered indoors" loading="lazy"></figure>'
     '</div>'
 
     '<h2>And away from here</h2>'
