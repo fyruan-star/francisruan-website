@@ -346,6 +346,10 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 .band figure{ margin:0; }
 .band img{ width:100%; height:clamp(200px,30vh,340px); object-fit:cover; display:block; }
 .band--three img{ height:clamp(240px,38vh,420px); }
+.band--four{ grid-template-columns:repeat(4,1fr); }
+.band--four img{ height:clamp(240px,36vh,400px); }
+/* a portrait dropped into a landscape band: hold the subject, not the sky */
+.band img.lower{ object-position:center 60%; }
 
 .pair{ display:grid; grid-template-columns:1.15fr 1fr; gap:clamp(.7rem,2vw,1.4rem); align-items:start; margin:2rem 0 2.4rem; max-width:var(--wrap); }
 .pair figure{ margin:0; }
@@ -368,8 +372,8 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 .mosaic .m2 img, .mosaic .m3 img{ height:clamp(140px,20vh,220px); }
 
 @media (max-width:820px){
-  .band, .band--three{ grid-template-columns:1fr 1fr; }
-  .band figure:nth-child(3){ grid-column:1 / -1; }
+  .band, .band--three, .band--four{ grid-template-columns:1fr 1fr; }
+  .band:not(.band--four) figure:nth-child(3){ grid-column:1 / -1; }
   .pair{ grid-template-columns:1fr; }
   .pair__b{ margin-top:0; }
   .mosaic{ grid-template-columns:1fr; }
@@ -786,17 +790,20 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
    Every picture below is pre-cropped to the ratio its slot declares, so the
    rows land on a shared edge instead of drifting. Changing a ratio here means
    re-cropping the file too.                                                  */
-.trio{ display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin:2rem 0 2.4rem; }
+.trio{ display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin:2rem auto 2.4rem; }
 .trio figure{ margin:0; }
 .trio img{ width:100%; aspect-ratio:3/4; object-fit:cover; display:block; }
 
-.wide{ margin:2rem 0 2.4rem; }
+.wide{ margin:2rem auto 2.4rem; }
 .wide img{ width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border:1px solid var(--rule); }
 .wide figcaption{ font-size:.82rem; color:var(--ink-2); margin-top:.6rem; }
 
-.solo{ margin:2rem 0 2.4rem; max-width:420px; }
-.solo img{ width:100%; aspect-ratio:3/4; object-fit:cover; display:block; border:1px solid var(--rule); }
-.solo figcaption{ font-size:.82rem; color:var(--ink-2); margin-top:.6rem; }
+/* two equal tiles, square so one landscape and one portrait can share a row
+   without either being gutted by the crop */
+.duo{ display:grid; grid-template-columns:1fr 1fr; gap:6px; margin:2rem 0 2.4rem; }
+.duo figure{ margin:0; }
+.duo img{ width:100%; aspect-ratio:1/1; object-fit:cover; display:block; }
+@media (max-width:560px){ .duo{ grid-template-columns:1fr; } }
 
 @media (max-width:820px){
   .trio{ grid-template-columns:1fr 1fr; }
