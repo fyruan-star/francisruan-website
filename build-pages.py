@@ -2039,6 +2039,118 @@ hub("fun.html", "The art of fun", "The Unserious Half",
 
 
 
+# ========================================================= TROJAN HORSE ====
+# The blog's own front page. Five deals, short form, one habit: read the
+# structure before the headline. Every figure here is from an announcement,
+# a filing or named trade press, and the sources list says which.
+TROJAN = f"""<div class="wrap">
+<header class="phead">
+  <p class="eyebrow">Trojan Horse / Consumer M&amp;A</p>
+  <h1>Trojan Horse</h1>
+  <p class="meta"><span>Founder and author</span><span>Los Angeles</span><span>September 2026</span></p>
+</header>
+<div class="body">
+{soundtrack("trojan-horse.html")}
+<p class="kicker">Five consumer deals from this year. Every one of them was reported as a single number, and in every one the number is describing something other than the asset. That gap is the entire reason this blog exists.</p>
+
+{rows([
+ ("Unilever / Gr&uuml;ns, June 2026", "~$1.2bn, reported against 80% of the shares"),
+ ("Danone / Huel, March 2026", "~&pound;860m for a brand with 59% gross margin and 8% EBITDA"),
+ ("L Catterton / Good Culture, January 2026", "&gt;$500m, about 2x revenue, from the seller of Thorne at 5.8x"),
+ ("Kimberly-Clark / Kenvue, closing H2 2026", "$48.7bn, of which about $6.7bn is cash"),
+ ("Infinite Epigenetics / Tally Health, April 2026", "Undisclosed, and the asset is a dataset"),
+], cap="Announcement terms. Sources at the foot of the page.")}
+
+<h2>Unilever and Gr&uuml;ns, or why the quoted multiple is wrong</h2>
+
+<p>Unilever completed its acquisition of Gr&uuml;ns on 1 June 2026. Gr&uuml;ns is a greens gummy brand founded in 2023 that reached roughly $300m of revenue in under four years, was profitable inside fourteen months, and sells mostly on subscription.</p>
+
+<p>Almost every write-up ran the same arithmetic. $1.2bn on $300m of revenue, so four times sales. Trade reporting puts that consideration against 80% of the shares, not the whole company. If that is right, the implied whole-company value is closer to $1.5bn and the multiple is nearer five times, not four. A full turn of revenue is not a rounding error. It is the distance between a bolt-on price and a growth price.</p>
+
+<p>I could not confirm the split in Unilever's own half-year 6-K, which notes the completion and not the terms. So I am flagging it rather than banking it.</p>
+
+<p class="pull">Leaving a fifth of the company outstanding is not thrift. It is a retention device.</p>
+
+<p>Unilever is buying a founder-run subscription machine three years old. The unpurchased 20% is the thing that keeps the founder in the building, and it is a deal term doing more work than the headline.</p>
+
+<h2>Danone and Huel, a food company that is really a customer acquisition company</h2>
+
+<p>Announced March 2026, cleared by the CMA in August, around &pound;860m. The numbers underneath are the interesting part. Huel did &pound;214m of revenue in FY2024 at a 59% gross margin, and &pound;18.2m of adjusted EBITDA. Revenue reached &pound;250m in FY2025, up 16%.</p>
+
+<p>Run it. A 59% margin on &pound;214m is about &pound;126m of gross profit. EBITDA landed at &pound;18.2m. So roughly &pound;108m, close to half of all revenue, goes out below the gross line. In a direct-to-consumer subscription business, that is overwhelmingly the cost of finding the next customer.</p>
+
+<p>Huel is not expensive to make. It is expensive to sell.</p>
+
+<p>That is also the synergy case, and it is a real one rather than a slide. Danone owns shelf space. Pushing Huel into retail swaps paid acquisition for distribution Danone already has. Which gives a test that does not need a model: watch whether EBITDA margin climbs from 8% toward the gross margin. If it has not moved in three years, Danone bought revenue at a food multiple and inherited the marketing bill with it.</p>
+
+<h2>L Catterton, twice, in the same year</h2>
+
+<p>In January 2026, L Catterton took a majority of Good Culture, the cottage cheese brand, at a reported value above $500m. Good Culture did about $100m of revenue in 2023, close to double that in 2024, and was tracking near $250m in 2025. Call the entry about two times sales.</p>
+
+<p>In August, the same sponsor sold Thorne to P&amp;G at a reported $3.8bn, roughly 5.8 times forward revenue. I wrote that one up <a href="thorne.html">separately</a>.</p>
+
+<p>Same firm, same year, same broad bet that people are buying health. Buying at two and selling at six.</p>
+
+<p>The spread is not explained by growth, because Good Culture roughly doubled. It is explained by whether the product can be copied. Cottage cheese is a refrigerated commodity with a cold chain, a short shelf life and a private label version sitting on the same shelf. Thorne had a practitioner willing to say the name out loud to a patient.</p>
+
+<p class="pull">The multiple is the answer to one question. Can somebody make this for less, and would anyone notice.</p>
+
+<h2>Kimberly-Clark and Kenvue, where $48.7bn was never a price</h2>
+
+<p>Announced October 2025, approved by both shareholder bases, expected to close in the second half of 2026. Kenvue holders receive $3.50 in cash plus 0.14625 Kimberly-Clark shares for each share held, called $21.01 per share at announcement. That is roughly 280m new Kimberly-Clark shares and about $6.7bn of cash.</p>
+
+<p>So about $6.7bn of a $48.7bn headline is money. The rest is Kimberly-Clark stock.</p>
+
+<p>A stock-funded number is a snapshot, not a price. The $21.01 and the $48.7bn were both true on one day in October 2025, at one Kimberly-Clark share price. Every trading day between then and closing, the real consideration moved, and none of that movement had anything to do with Kenvue.</p>
+
+<p>Anyone dropping $48.7bn into an EV/Revenue comparison is quoting a stale price for Kimberly-Clark and calling it a valuation of Kenvue. It is the cheapest error to avoid in this entire aisle, and I still see it in print most weeks.</p>
+
+<h2>Infinite Epigenetics and Tally Health, where the asset is the scoreboard</h2>
+
+<p>On 29 April 2026, Infinite Epigenetics acquired Tally Health in an asset purchase. Terms were not disclosed. Tally was co-founded in 2023 by David Sinclair and pairs epigenetic biological age testing with supplements. The buyer also owns TruDiagnostic and describes holding among the largest private adult DNA methylation datasets. Tally continues as a standalone brand.</p>
+
+<p>Read what actually changed hands. Not a supplement line. A methylation dataset, and a competing clock.</p>
+
+<p>Biological age is not a measurement in the way height is a measurement. It is a model, and somebody has to decide what counts as a year. If you already hold the largest reference dataset and you buy the most consumer-visible rival clock, you have not added a product. You have consolidated the benchmark that every longevity intervention eventually has to validate against, including the supplements sold by the buyers in all four deals above.</p>
+
+<p>No price was disclosed, so I am not going to invent a multiple for you. The thing I will watch is narrow and checkable: whether Tally's test keeps reporting on its own clock, or quietly migrates onto TruDiagnostic's.</p>
+
+<h2>What actually ties these together</h2>
+
+<p>Five deals, five headline numbers, and in every case the number is pointing at something other than the asset. Four fifths of a company reported as a whole one. A food margin that is really an advertising budget. A two times entry and a six times exit from the same sponsor. A price denominated in the buyer's own stock. A supplement brand bought for its database.</p>
+
+<p>The habit I am trying to build is unglamorous. Read the structure before the headline. What percentage changed hands. What currency it was paid in. What sits in the gap between gross margin and EBITDA. What was left undisclosed, and who that silence benefits.</p>
+
+<h2>Where I would be wrong</h2>
+
+<p>Most of the above leans on announcement language and trade press rather than completed purchase accounting, and that is a real limitation rather than a disclaimer. Until Unilever and Kimberly-Clark publish their allocations, the split between goodwill and identifiable intangibles is unknown, and that split is where a buyer's actual view shows up. A large allocation to goodwill says they paid for a business. A large allocation to brand and customer relationships says they paid for something they were willing to name and amortise.</p>
+
+<p>There is also a decent chance I am reading a financing cycle as a structural shift, which is the standard error in this kind of writing, and I would rather name it than have it named for me. A closed IPO window pushes sponsors toward strategic exits no matter what anybody believes about protein or longevity.</p>
+
+<p>I will come back and correct these when the filings land. The corrections are the interesting part.</p>
+
+<h3>Sources</h3>
+{ul([
+ 'Unilever PLC, Form 6-K, half-year results to 30 June 2026, SEC EDGAR, confirming completion of the Gr&uuml;ns acquisition in June 2026.',
+ 'BeautyMatter and Fitt Insider on the Gr&uuml;ns consideration, stake and revenue scale, June 2026.',
+ 'DairyReporter, CMA clearance of the Danone and Huel transaction at approximately &pound;860m, 20 August 2026, and the March 2026 announcement coverage.',
+ 'Sacra and NutraIngredients on Huel FY2024 and FY2025 revenue, gross margin and adjusted EBITDA.',
+ 'PR Newswire, Good Culture announces majority investment from L Catterton, January 2026, with valuation and revenue scale per DairyReporter and Food Dive.',
+ 'Kenvue Inc. investor relations, Kimberly-Clark to acquire Kenvue, October 2025, for per-share consideration and mix; Kimberly-Clark Form 8-K and shareholder approval releases.',
+ 'PR Newswire and NutraIngredients, Infinite Epigenetics acquires Tally Health, 29 April 2026.',
+ 'P&amp;G and Thorne figures as set out in my <a href="thorne.html">deal note</a>.',
+])}
+{ask("If you cover consumer and think I have one of these backwards, that is the email I most want to get.")}
+</div>
+
+<nav class="nextprev"><a href="trend.html">The five supplement deals &rarr;</a><a href="index.html">Index</a></nav>
+</div>"""
+
+page("trojan-horse.html","Trojan Horse | Francis Ruan",
+     "Five consumer deals from 2026, each reported as one number that describes something other than the asset. Read the structure before the headline.",
+     TROJAN)
+print("trojan-horse.html")
+
 # ================================================================= 404 ======
 # GitHub Pages serves this file for any unmatched path, including deep ones like
 # /a/b/c. Relative URLs would resolve against that phantom directory and 404 in
