@@ -113,7 +113,7 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 .frame{ scroll-snap-align:start; display:block; color:var(--ink); min-width:0; }
 .frame__img{
   display:block; aspect-ratio:4/3; overflow:hidden; background:var(--wash);
-  width:85%; margin-inline:auto;
+  width:63.75%; margin-inline:auto;
 }
 .frame__img img{
   width:100%; height:100%; object-fit:cover; display:block;
@@ -122,7 +122,7 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 }
 .frame__k{
   display:block; margin-top:.62rem; text-align:center;
-  font-family:var(--f-grot); font-weight:500; font-size:.9rem;
+  font-family:var(--f-grot); font-weight:500; font-size:.8rem;
   letter-spacing:.09em; text-transform:uppercase; color:var(--ink);
 }
 .frame:hover .frame__img img{ filter:grayscale(0) contrast(1); transform:scale(1.015); }

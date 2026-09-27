@@ -16,9 +16,9 @@ ICON = ("<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns='http://www.w3.
 
 def topbar(active=""):
     items=[("index.html","Index"),("my-why.html","Why"),("who-am-i.html","I"),
-           ("fight-on.html","Fight On"),("curiosity.html","Curiosity"),
-           ("leadership.html","Leadership"),
-           ("fun.html","Fun")]
+           ("fight-on.html","Fight On"),("curiosity.html","Intellectual Curiosity"),
+           ("leadership.html","Peculiar Leadership"),
+           ("fun.html","Appetite For Life")]
     li="".join(f'<li><a href="{h}"{" target=_blank rel=noopener" if h.endswith(".pdf") or h.startswith("http") else ""}'
                f'{" style=color:var(--ink)" if t==active else ""}>{t}</a></li>' for h,t in items)
     return ('<header class="topbar"><div class="wrap topbar__in">'
@@ -106,43 +106,10 @@ PYRAMID = [
   ("my-why-title-sq.jpg",      "Why",                     "my-why.html"),
   ("who-am-i-wide.jpg",        "I",                       "who-am-i.html"),
   ("fight-on-sq.jpg",          "Fight On",                "fight-on.html"),
-  ("origin-curiosity.jpg",     "Curiosity",               "curiosity.html"),
-  ("origin-leadership.jpg",    "Leadership",              "leadership.html"),
-  ("origin-fun.jpg",           "The Art Of Having Fun",   "fun.html"),
+  ("origin-curiosity.jpg",     "Intellectual Curiosity",  "curiosity.html"),
+  ("origin-leadership.jpg",    "Peculiar Leadership",     "leadership.html"),
+  ("origin-fun.jpg",           "Appetite For Life",       "fun.html"),
 ]
-
-PIECES = [
-  ("fun.html",
-   "Most people try to raise their happiness by growing Revenue. Bigger wins, better news, more of "
-   "everything. Almost none of that line is yours to control, and all of it is expensive to move. "
-   "Operating Expense is entirely yours. The grudge you are still carrying. The comparison you keep "
-   "running. The thing you have not said to somebody. The room you will not clean. Every one of them is "
-   "a fixed cost, debited daily, whether or not the day hands you anything at all. Take Operating "
-   "Expense near zero and any Revenue clears. You stop needing a good day. You need a day with nothing "
-   "subtracting from it, and then the crumbs are enough on their own."),
-  ("fun.html",
-   "I am nervous more often than anybody watching would guess. My nerves come out as a joke rather than as "
-   "silence, and I have stopped apologising for that, because a laugh is a genuinely useful thing to do "
-   "with adrenaline. It lets the air out of a room that was holding its breath, and tells everybody "
-   "present that they are permitted to be human here."),
-]
-
-def pieces_door():
-    """Not a box any more. A marginal note on the counter line under the belt,
-    which is the least announced piece of furniture on the page and therefore
-    the right place to leave something for whoever is actually looking."""
-    return '<a class="pieces" href="pieces.html">[ things I wrote down and kept ]</a>' 
-
-def pieces_page():
-    out = ['<div class="pcs">']
-    for i, (href, text) in enumerate(PIECES, 1):
-        out.append(f'<article class="pcs__i">'
-                   f'<p class="pcs__n">[ {i:02d} ]</p>'
-                   f'<blockquote class="pcs__q"><p>{text}</p></blockquote>'
-                   f'<p class="pcs__s"><a href="{href}">Where this came from &rarr;</a></p>'
-                   f'</article>')
-    out.append('</div>')
-    return "".join(out)
 
 TRACKS = {
   # page, track, artist, sleeve, and the licensed preview stream Apple serves
@@ -243,8 +210,8 @@ def belt():
             '<p class="belt__count" aria-hidden="true">'
             f'<span class="belt__win"><span class="belt__roll">{ticker}</span></span>'
             f'<span class="belt__of">of {n:02d}</span>'
-            + pieces_door() + '</p>'
-            f'<p class="belt__sr">Nine sections, pushed sideways.</p>'
+            + '</p>'
+            f'<p class="belt__sr">{n} sections, pushed sideways.</p>'
             '</div>')
 
 INDEX = f"""<div class="sheet">
@@ -469,7 +436,7 @@ CURIO = f"""<div class="wrap">
 
 page("curiosity.html","Intellectual Curiosity | Francis Ruan",
      "A labelled plate of what Francis Ruan is curious about, and the essays and stories that came out of it.",
-     CURIO, active="Curiosity")
+     CURIO, active="Intellectual Curiosity")
 print("curiosity.html")
 
 # =============================================================== TREND ======
@@ -588,7 +555,7 @@ TREND = f"""<div class="wrap">
 
 page("trend.html","Five Deals, Six Weeks, and a Sevenfold Spread | Francis Ruan",
      "Between July and September 2026 the supplement aisle changed hands five times at prices from one to six times sales. What the buyers were actually paying for.",
-     TREND, active="Curiosity")
+     TREND, active="Intellectual Curiosity")
 print("trend.html")
 print("trend.html")
 
@@ -1656,7 +1623,7 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
     + ask("If any of this sounds like your childhood too, I would like to hear from you."),
     "Fight On")
 
-hub("leadership.html", "Leadership", "The Sideline Is a Vantage, Not a Consolation",
+hub("leadership.html", "Peculiar Leadership", "The Sideline Is a Vantage, Not a Consolation",
     "",
     '<figure class="lead"><img src="assets/photos/origin-leadership.jpg" '
     'alt="Francis Ruan as a small boy in front of a flag" width="900" height="900">'
@@ -1751,9 +1718,9 @@ hub("leadership.html", "Leadership", "The Sideline Is a Vantage, Not a Consolati
     '<p>Which is the same job I had at fifteen, standing on a sideline in the cold. I am just holding a '
     'different stick.</p>'
     + ask("If you are building a team and want to argue about any of this, I am easy to reach."),
-    "Leadership")
+    "Peculiar Leadership")
 
-hub("fun.html", "The art of fun", "The Unserious Half",
+hub("fun.html", "Appetite for life", "The Unserious Half",
     "",
     '<figure class="lead"><img src="assets/photos/origin-fun.jpg" '
     'alt="Francis Ruan as a small boy in a ninja costume with his older brother" width="900" height="900">'
@@ -1934,7 +1901,7 @@ hub("fun.html", "The art of fun", "The Unserious Half",
     'alt="Francis Ruan as a small boy in a barber chair" width="900" height="900" loading="lazy">'
     '<figcaption>First time at the barbershop. Unconvinced.</figcaption></figure>'
     + ask("If you want to be in one of these photographs at some point, that is arranged by email."),
-    "Fun")
+    "Appetite For Life")
 
 
 
@@ -2097,11 +2064,3 @@ one belt you can push sideways.</p>
 """
 (ROOT / "404.html").write_text(NOTFOUND, encoding="utf-8")
 print("404.html")
-
-hub("pieces.html", "Small pieces", "Things I Wrote Down and Kept",
-    "",
-    '<p class="kicker">Lines I have found myself coming back to, pulled out of longer pieces where '
-    'they were doing quieter work. Each one links to the room it came from.</p>'
-    + pieces_page()
-    + ask("If one of these is wrong, I would genuinely like to be told."),
-    "")
