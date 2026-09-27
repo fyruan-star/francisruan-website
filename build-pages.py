@@ -17,8 +17,7 @@ ICON = ("<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns='http://www.w3.
 def topbar(active=""):
     items=[("index.html","Index"),("my-why.html","Why"),("who-am-i.html","I"),
            ("fight-on.html","Fight On"),("curiosity.html","Curiosity"),
-           ("leadership.html","Leadership"),("https://trojanhorse.blog","Finance"),
-           ("building.html","Engineer"),("awards.html","Lucky"),
+           ("leadership.html","Leadership"),
            ("fun.html","Fun")]
     li="".join(f'<li><a href="{h}"{" target=_blank rel=noopener" if h.endswith(".pdf") or h.startswith("http") else ""}'
                f'{" style=color:var(--ink)" if t==active else ""}>{t}</a></li>' for h,t in items)
@@ -109,9 +108,6 @@ PYRAMID = [
   ("fight-on-sq.jpg",          "Fight On",                "fight-on.html"),
   ("origin-curiosity.jpg",     "Curiosity",               "curiosity.html"),
   ("origin-leadership.jpg",    "Leadership",              "leadership.html"),
-  ("origin-relationships.jpg", "Finance",                 "https://trojanhorse.blog"),
-  ("origin-engineer.jpg",      "Engineer",                "building.html"),
-  ("awards.jpg",               "Lucky",                   "awards.html"),
   ("origin-fun.jpg",           "The Art Of Having Fun",   "fun.html"),
 ]
 
@@ -129,8 +125,6 @@ PIECES = [
    "silence, and I have stopped apologising for that, because a laugh is a genuinely useful thing to do "
    "with adrenaline. It lets the air out of a room that was holding its breath, and tells everybody "
    "present that they are permitted to be human here."),
-  ("awards.html",
-   "False modesty is only bragging with better manners."),
 ]
 
 def pieces_door():
@@ -470,7 +464,7 @@ CURIO = f"""<div class="wrap">
 </div>
 {ask("If any of this overlaps with something you are thinking about, write to me.")}
 </div>
-<nav class="nextprev"><a href="index.html">&larr; All nine</a></nav>
+<nav class="nextprev"><a href="index.html">&larr; All six</a></nav>
 </div>"""
 
 page("curiosity.html","Intellectual Curiosity | Francis Ruan",
@@ -861,11 +855,6 @@ HON = f"""<div class="wrap">
 <nav class="nextprev"><a href="fight-on.html">How most of these actually happened &rarr;</a><a href="index.html">Index</a></nav>
 </div>"""
 
-page("awards.html","Awards | Francis Ruan",
-     "Francis Ruan's record: valedictorian, TEDx speaker, Stanford ProCo, USC Presidential and Morgan Stanley scholarships, Dean's List.",
-     HON, active="Lucky")
-print("awards.html")
-print("awards.html")
 
 # ======================================================== WORK + ESSAY ======
 SVG_FLOW = ('<svg viewBox="0 0 800 250" role="img" aria-label="Before, five manual steps taking about ninety minutes. '
@@ -1108,7 +1097,7 @@ def hub(fn, eyebrow, title, lede, blocks, active, sub=""):
 {soundtrack(fn)}
 {blocks}
 </div>
-<nav class="nextprev"><a href="index.html">&larr; All nine</a></nav>
+<nav class="nextprev"><a href="index.html">&larr; All six</a></nav>
 </div>"""
     page(fn, title + " | Francis Ruan", lede.replace('"',''), body, active=active)
     print(fn)
@@ -1121,111 +1110,6 @@ def biglinks(items):
                    f'<span class="bl__note">{note}</span></a>')
     out.append("</div>")
     return "".join(out)
-
-hub("building.html", "Engineer", "What I Have Built",
-    "",
-    '<p class="kicker">Somebody, about two and a half million years ago, hit a rock with another rock '
-    'until the first rock was sharper.</p>'
-
-    '<p>That is the whole Oldowan toolkit and the oldest thing our species ever made. Nobody '
-    'commissioned it. There was no brief, and no obvious reason to spend an afternoon on it instead of '
-    'the several more urgent things available to a hominin in the Pliocene.</p>'
-
-    '<p>What gets me is what happened next, because we did not stop at good enough. Most of a million '
-    'years later we were making Acheulean handaxes, and those things are symmetrical. Beautifully, '
-    'excessively symmetrical, far past anything a cutting edge functionally needs, and archaeologists '
-    'have argued about why for a century. Some say display. Some say the maker simply preferred it that '
-    'way. A number have been dug up showing no wear at all, having never cut anything.</p>'
-
-    '<p>So the first object we ever engineered, we immediately over-engineered, for reasons that look '
-    'partly aesthetic and possibly romantic.</p>'
-
-    '<p>I find that enormously reassuring. Building was never purely about the problem. There is always '
-    'somebody at the bench going further than the job required, because the going further is what they '
-    'turned up for.</p>'
-
-    '<p>Which brings me to the things on this page. Every one of them began the same way, with somebody '
-    'doing a thing by hand that did not need a person in it, and a suspicion on my part that the person '
-    'was in there for a reason nobody had bothered to name.</p>'
-
-    '<h2>Ninety minutes down to three</h2>'
-    '<p>At BODi I was the AI intern on the finance and growth side, which in practice meant sitting close '
-    'enough to recurring invoice and general-ledger review to notice how much of it was spent confirming '
-    'that things were fine. The records were almost always correct. That was precisely the difficulty, '
-    'because the handful of exceptions that genuinely wanted a decision were sitting somewhere inside a '
-    'queue you could only find by reading the whole thing line by line, and so the expensive part of the '
-    'task was never the reviewing at all but the searching that came before it.</p>'
-
-    '<p>The first useful thing I did was refuse to write anything for a while. I went to the FP&amp;A and '
-    'Accounting owners and made them define, out loud and in writing, what actually constituted an '
-    'exception, because the moment I encoded my own guess about that I would have been quietly setting '
-    'policy while telling myself I was only building tooling. Thresholds, controls and sign-off stayed '
-    'with them throughout, I built to their definitions, and they validated every output before anybody '
-    'relied on it. Then I rebuilt the general-ledger cleansing so records arrived in one shape instead of '
-    'several, and ran the automated output against manual review, again and again, until the two agreed '
-    'often enough that I was willing to tighten the thresholds rather than loosen them.</p>'
-
-    '<p>Selected recurring tasks went from roughly ninety minutes to somewhere between one and three, and '
-    'I sized the annualised operating expense reduction at approximately <strong>$784K</strong> and '
-    'presented it to the MD of Accounting. The speed was the least interesting part of it. What held my '
-    'attention was the question underneath, which was what a human being was actually in that seat to '
-    'decide, and how much of what looked like judgement turned out on inspection to be search.</p>'
-
-    '<p>I should say plainly that the figure is a run-rate estimate built from task frequency and loaded '
-    'analyst cost rather than realised profit and loss, and I would volunteer that before anyone thought '
-    'to ask me for it. The thresholds are also still set by hand, which is the part I would go back and '
-    'change first, because they ought to be learned from which flags accountants genuinely act on rather '
-    'than from what I guessed would matter. I would build that feedback loop before optimising another '
-    'thing. <a href="bodi.html">The full write-up is here</a>.</p>'
-
-    '<h2>The price you have to name before anyone has paid you one</h2>'
-    '<p>Suntag was mine end to end, which meant solar viability testing, the interface in Figma, the '
-    'prototype code and the demos I ran mostly so that I could watch people&rsquo;s faces, and it also '
-    'meant there was nobody in the room to hand the pricing question to. Hardware makes you commit tooling '
-    'and a first production order before you have any demand data worth the name, so you price too low and '
-    'delete the margin that funds the second run, or you price too high and end up holding inventory with '
-    'no signal telling you why. We funded it pre-launch on a <strong>$5,000</strong> pre-seed with a '
-    'waitlist above three hundred, and that is validation rather than revenue, and I am not going to '
-    'describe it as more than it was.</p>'
-
-    '<p>I got the important part wrong. I treated the waitlist as demand, when a waitlist only ever '
-    'measures interest at a price of zero and says nothing whatsoever about the price at which that '
-    'interest survives contact with a checkout page. Running it again I would take refundable deposits at '
-    'two different price points before committing a cent to tooling, which converts a soft and flattering '
-    'signal into a number I could defend to somebody sceptical, and costs almost nothing to do. '
-    '<a href="suntag.html">The pricing decision, split into what I measured and what I assumed</a>.</p>'
-
-    '<h2>USC Marshall, AI Builder Hub</h2>'
-    '<div class="biglinks">'
-      '<a href="https://github.com/fyruan-star/usc-catalogue-scraper" target="_blank" rel="noopener">'
-      '<span class="bl__lg"><img src="assets/logos/uscmarshall.png" alt="USC Marshall"></span>'
-      '<span class="bl__n">AI Builder Hub Engineer</span>'
-      '<span class="bl__note">One of four student engineers. Reverse engineered the course '
-      'registration system used by 45,185 students.</span></a>'
-      '</div>'
-    '<p>The piece that is public is the collector underneath it, which pulls one plain-text file per '
-    'undergraduate programme out of USC&rsquo;s online catalogue. That is the input a degree requirements '
-    'validator needs in order to exist at all, and nobody had built it, which is a recurring pattern in '
-    'this kind of work: the unglamorous middle of a system is usually the part that is missing. It parses '
-    '<strong>470</strong> programme descriptions and feeds a rules engine that checks a student&rsquo;s '
-    'courses against what their degree actually demands rather than what they believe it demands.</p>'
-    '<p><a href="https://github.com/fyruan-star/usc-catalogue-scraper" target="_blank" rel="noopener">'
-    'github.com/fyruan-star/usc-catalogue-scraper</a></p>'
-
-    '<h2>Also running</h2>'
-    '<div class="biglinks">'
-      '<a href="#" class="bl--flat"><span class="bl__lg"></span>'
-      '<span class="bl__n">Los Altos Vintage</span>'
-      '<span class="bl__note">Founded and operating.</span></a>'
-      '<a href="#" class="bl--flat"><span class="bl__lg"></span>'
-      '<span class="bl__n">Elevated Youth</span>'
-      '<span class="bl__note">Founded and operating.</span></a>'
-      '</div>'
-
-    '<p>Writing the BODi work up is what pushed me toward '
-    '<a href="invisible.html">an essay about where savings of that kind actually go</a>, which is nowhere '
-    'the balance sheet can see them. That has become the question I keep circling.</p>',
-    "Engineer")
 
 hub("my-why.html", "Why", "For Qiwen Ye",
     "",
@@ -1844,7 +1728,7 @@ hub("leadership.html", "Leadership", "The Sideline Is a Vantage, Not a Consolati
 
     '<p>They voted me captain. I did not play much.</p>'
 
-    '<p>I think about that more than anything on my <a href="awards.html">awards page</a>, because it is '
+    '<p>I think about that more than anything on my awards, because it is '
     'the only one I did not get by being good at something.</p>'
 
     '<h2>And now there is lacrosse</h2>'
