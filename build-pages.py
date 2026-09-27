@@ -2038,7 +2038,7 @@ NOTFOUND = f"""<!doctype html>
 <header class="topbar"><div class="wrap topbar__in">
 <a class="topbar__name" href="/">Francis Ruan</a>
 <ul><li><a href="/">Index</a></li><li><a href="/my-why.html">My Why</a></li>
-<li><a href="/curiosity.html">Curiosity</a></li><li><a href="/who-am-i.html">Who am I</a></li></ul>
+<li><a href="/curiosity.html">Intellectual Curiosity</a></li><li><a href="/who-am-i.html">Who am I</a></li></ul>
 </div></header>
 <main id="main">
 <div class="wrap">
