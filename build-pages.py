@@ -17,10 +17,10 @@ ICON = ("<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns='http://www.w3.
 def topbar(active=""):
     items=[("index.html","Index"),("my-why.html","Why"),("who-am-i.html","I"),
            ("fight-on.html","Fight On"),("curiosity.html","Curiosity"),
-           ("leadership.html","Leadership"),("finance.html","Finance"),
+           ("leadership.html","Leadership"),("https://trojanhorse.blog","Finance"),
            ("building.html","Engineer"),("awards.html","Lucky"),
            ("fun.html","Fun")]
-    li="".join(f'<li><a href="{h}"{" target=_blank rel=noopener" if h.endswith(".pdf") else ""}'
+    li="".join(f'<li><a href="{h}"{" target=_blank rel=noopener" if h.endswith(".pdf") or h.startswith("http") else ""}'
                f'{" style=color:var(--ink)" if t==active else ""}>{t}</a></li>' for h,t in items)
     return ('<header class="topbar"><div class="wrap topbar__in">'
             '<a class="topbar__name" href="index.html">Francis Ruan</a>'
@@ -109,7 +109,7 @@ PYRAMID = [
   ("fight-on-sq.jpg",          "Fight On",                "fight-on.html"),
   ("origin-curiosity.jpg",     "Curiosity",               "curiosity.html"),
   ("origin-leadership.jpg",    "Leadership",              "leadership.html"),
-  ("origin-relationships.jpg", "Finance",                 "finance.html"),
+  ("origin-relationships.jpg", "Finance",                 "https://trojanhorse.blog"),
   ("origin-engineer.jpg",      "Engineer",                "building.html"),
   ("awards.jpg",               "Lucky",                   "awards.html"),
   ("origin-fun.jpg",           "The Art Of Having Fun",   "fun.html"),
@@ -237,8 +237,9 @@ def belt():
     for i, (fname, label, href) in enumerate(PYRAMID, 1):
         pth = ROOT / "assets" / "photos" / fname
         img = f'<img src="assets/photos/{fname}" alt="" loading="lazy">' if pth.exists() else ""
+        ext = ' target=_blank rel=noopener' if href.startswith('http') else ''
         rows.append(
-            f'<a class="frame" href="{href}">'
+            f'<a class="frame" href="{href}"{ext}>'
             f'<span class="frame__img">{img}</span>'
             f'<span class="frame__k">[ {label} ]</span>'
             f'</a>')
@@ -1074,10 +1075,24 @@ FIN = f"""<div class="wrap">
 <nav class="nextprev"><a href="trend.html">The deal essay &rarr;</a><a href="index.html">Index</a></nav>
 </div>"""
 
-page("finance.html","Finance | Francis Ruan",
-     "Deal analysis, operating finance, and a podcast in progress about AI's quiet arrival inside investment banking.",
-     FIN, active="Finance")
-print("finance.html")
+# finance.html is now a redirect. The section lives at https://trojanhorse.blog, and this URL was
+# public long enough to be worth forwarding rather than dropping.
+(ROOT / "finance.html").write_text(f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Finance | Francis Ruan</title>
+<meta http-equiv="refresh" content="0; url=https://trojanhorse.blog">
+<link rel="canonical" href="https://trojanhorse.blog">
+<meta name="robots" content="noindex">
+</head>
+<body>
+<p>The finance writing now lives at <a href="https://trojanhorse.blog">trojanhorse.blog</a>.</p>
+<script>location.replace("https://trojanhorse.blog");</script>
+</body>
+</html>
+""", encoding="utf-8")
+print("finance.html -> redirect to https://trojanhorse.blog")
 
 # ================================================================= HUBS =====
 def hub(fn, eyebrow, title, lede, blocks, active, sub=""):
