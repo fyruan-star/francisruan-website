@@ -16,9 +16,9 @@ ICON = ("<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns='http://www.w3.
 
 def topbar(active=""):
     items=[("index.html","Index"),("my-why.html","Why"),("who-am-i.html","I"),
-           ("fight-on.html","Fight On"),("curiosity.html","Intellectual Curiosity"),
-           ("leadership.html","Peculiar Leadership"),
-           ("fun.html","Appetite For Life")]
+           ("fight-on.html","Fight On"),("curiosity.html","Inquisitive"),
+           ("leadership.html","Stewardship"),
+           ("fun.html","Effervescent")]
     li="".join(f'<li><a href="{h}"{" target=_blank rel=noopener" if h.endswith(".pdf") or h.startswith("http") else ""}'
                f'{" style=color:var(--ink)" if t==active else ""}>{t}</a></li>' for h,t in items)
     return ('<header class="topbar"><div class="wrap topbar__in">'
@@ -106,9 +106,9 @@ PYRAMID = [
   ("my-why-title-sq.jpg",      "Why",                     "my-why.html"),
   ("who-am-i-sq.jpg",          "I",                       "who-am-i.html"),
   ("fight-on-sq.jpg",          "Fight On",                "fight-on.html"),
-  ("origin-curiosity.jpg",     "Intellectual Curiosity",  "curiosity.html"),
-  ("origin-leadership.jpg",    "Peculiar Leadership",     "leadership.html"),
-  ("origin-fun.jpg",           "Appetite For Life",       "fun.html"),
+  ("origin-curiosity.jpg",     "Inquisitive",  "curiosity.html"),
+  ("origin-leadership.jpg",    "Stewardship",     "leadership.html"),
+  ("origin-fun.jpg",           "Effervescent",       "fun.html"),
 ]
 
 TRACKS = {
@@ -379,7 +379,7 @@ def plate():
 
 CURIO = f"""<div class="wrap">
 <header class="phead">
-  <p class="eyebrow">Intellectual curiosity</p>
+  <p class="eyebrow">Inquisitive</p>
   <h1>Twelve Things I Keep Going Back To</h1>
 </header>
 <div class="body">
@@ -413,9 +413,9 @@ CURIO = f"""<div class="wrap">
 <nav class="nextprev"><a href="index.html">&larr; All six</a></nav>
 </div>"""
 
-page("curiosity.html","Intellectual Curiosity | Francis Ruan",
+page("curiosity.html","Inquisitive | Francis Ruan",
      "A labelled plate of what Francis Ruan is curious about, and the essays and stories that came out of it.",
-     CURIO, active="Intellectual Curiosity")
+     CURIO, active="Inquisitive")
 print("curiosity.html")
 
 # =============================================================== TREND ======
@@ -534,7 +534,7 @@ TREND = f"""<div class="wrap">
 
 page("trend.html","Five Deals, Six Weeks, and a Sevenfold Spread | Francis Ruan",
      "Between July and September 2026 the supplement aisle changed hands five times at prices from one to six times sales. What the buyers were actually paying for.",
-     TREND, active="Intellectual Curiosity")
+     TREND, active="Inquisitive")
 print("trend.html")
 print("trend.html")
 
@@ -1342,7 +1342,7 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
     + ask("If any of that landed, I would genuinely like to hear from you."),
     "Fight On")
 
-hub("leadership.html", "Peculiar Leadership", "The Sideline Is a Vantage, Not a Consolation",
+hub("leadership.html", "Stewardship", "The Sideline Is a Vantage, Not a Consolation",
     "",
     '<figure class="lead"><img src="assets/photos/origin-leadership.jpg" '
     'alt="Francis Ruan as a small boy in front of a flag" width="900" height="900">'
@@ -1437,9 +1437,9 @@ hub("leadership.html", "Peculiar Leadership", "The Sideline Is a Vantage, Not a 
     '<p>Which is the same job I had at fifteen, standing on a sideline in the cold. I am just holding a '
     'different stick.</p>'
     + ask("If you are building a team and want to argue about any of this, I am easy to reach."),
-    "Peculiar Leadership")
+    "Stewardship")
 
-hub("fun.html", "Appetite for life", "The Unserious Half",
+hub("fun.html", "Effervescent", "The Unserious Half",
     "",
     '<figure class="lead"><img src="assets/photos/origin-fun.jpg" '
     'alt="Francis Ruan as a small boy in a ninja costume with his older brother" width="900" height="900">'
@@ -1550,26 +1550,50 @@ hub("fun.html", "Appetite for life", "The Unserious Half",
     '<figure><img src="assets/photos/sq/fun-dorm.jpg" alt="A room full of friends, one playing guitar" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/fun-couch.jpg" alt="Friends crowded onto a couch" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/fun-hallway.jpg" alt="Friends in a hallway" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-indoors-group.jpg" alt="A group of friends dressed up indoors" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-dinner.jpg" alt="A long table of friends at the end of a dinner" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-two-friends.jpg" alt="Francis Ruan and a friend close to the camera, both grinning" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-cutout.jpg" alt="Francis Ruan and a friend behind a painted carnival cutout" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/fun-river.jpg" alt="Francis Ruan tubing the Salt River with friends" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/fun-boat.jpg" alt="Francis Ruan on a boat with an arm raised" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-lake-boat.jpg" alt="Friends crowded into the back of a boat on a lake" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/surf.jpg" alt="Francis Ruan riding a board behind a boat" loading="lazy" width="900" height="900"></figure>'
-    '<figure><img src="assets/photos/sq/fun-trail.jpg" alt="Two silhouettes on a trail at sunset" loading="lazy" width="900" height="900"></figure>'
-    '<figure><img src="assets/photos/sq/fun-cutout.jpg" alt="Francis Ruan and a friend behind a painted carnival cutout" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-wave.jpg" alt="A surfer riding a grey winter wave" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-wetsuits.jpg" alt="Two friends in wetsuits beside a car loaded with boards" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-boards-four.jpg" alt="Four friends standing behind surfboards on the sand" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-tower-boards.jpg" alt="Friends with boards in front of a lifeguard tower" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-tower.jpg" alt="Friends climbing a lifeguard tower" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-sand-ball.jpg" alt="Two friends playing on the sand at the water line" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-throw-beach.jpg" alt="Throwing a football on the beach" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-rock-group.jpg" alt="A group of friends standing on a rock above the water" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/fun-zbot-group.jpg" alt="A large group of friends in suits outside a house at night" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/fun-friends-night.jpg" alt="Four friends posing on a rooftop at night" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/fun-venue.jpg" alt="Friends in white shirts at an outdoor venue" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/fun-parking-friends.jpg" alt="Three friends in suits at the end of a night" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/fun-trio-suits.jpg" alt="Francis Ruan between two friends, all three laughing" loading="lazy" width="900" height="900"></figure>'
-    '<figure><img src="assets/photos/sq/fun-prague.jpg" alt="Francis Ruan and a friend on a bridge in Prague at sunset" loading="lazy" width="900" height="900"></figure>'
-    '<figure><img src="assets/photos/sq/fun-catalina.jpg" alt="Francis Ruan and a friend at a harbour in Catalina" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-dock-night.jpg" alt="A line of friends standing on a platform at night" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-campfire.jpg" alt="Friends around a fire after dark" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-tiles-jump.jpg" alt="Francis Ruan and a friend jumping in front of a tiled wall" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-overlook.jpg" alt="A group of friends on a headland above the ocean" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-harbour-two.jpg" alt="Francis Ruan and a friend by the water at sunset" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-runners-sunset.jpg" alt="Two figures running a ridge at sunset" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-throw-dusk.jpg" alt="Throwing something into the dark at dusk" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-trail.jpg" alt="Two silhouettes on a trail at sunset" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-ridge.jpg" alt="A lone figure walking a coastal ridge" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-dusk-silhouettes.jpg" alt="Silhouettes on a beach after the sun has gone" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/fun-beach-sunset.jpg" alt="Francis Ruan on the coast at dusk with both arms raised" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-parasail.jpg" alt="A parasail over the water off a coastline" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-yard.jpg" alt="Friends messing about under trees in a yard" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-prague.jpg" alt="Francis Ruan and a friend on a bridge in Prague at sunset" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-berlin.jpg" alt="A group of friends in front of a painted wall" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/sq/fun-catalina.jpg" alt="Francis Ruan and a friend at a harbour in Catalina" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/football-team.jpg" alt="Los Altos football team with helmets raised" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/lacrosse-team.jpg" alt="USC men&rsquo;s lacrosse team" loading="lazy" width="900" height="900"></figure>'
     '<figure><img src="assets/photos/sq/barbershop.jpg" alt="Francis Ruan as a small boy in a barber chair, unconvinced" loading="lazy" width="900" height="900"></figure>'
     '</div></div>'
 
     + ask("If you want to be in one of these photographs at some point, that is arranged by email."),
-    "Appetite For Life")
+    "Effervescent")
 
 
 
@@ -1706,7 +1730,7 @@ NOTFOUND = f"""<!doctype html>
 <header class="topbar"><div class="wrap topbar__in">
 <a class="topbar__name" href="/">Francis Ruan</a>
 <ul><li><a href="/">Index</a></li><li><a href="/my-why.html">My Why</a></li>
-<li><a href="/curiosity.html">Intellectual Curiosity</a></li><li><a href="/who-am-i.html">Who am I</a></li></ul>
+<li><a href="/curiosity.html">Inquisitive</a></li><li><a href="/who-am-i.html">Who am I</a></li></ul>
 </div></header>
 <main id="main">
 <div class="wrap">
