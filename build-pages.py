@@ -104,7 +104,7 @@ def venn(w=900, h=700):
 PYRAMID = [
   # One word where one word will do. Why opens, the fun closes it out.
   ("my-why-title-sq.jpg",      "Why",                     "my-why.html"),
-  ("who-am-i-wide.jpg",        "I",                       "who-am-i.html"),
+  ("who-am-i-sq.jpg",          "I",                       "who-am-i.html"),
   ("fight-on-sq.jpg",          "Fight On",                "fight-on.html"),
   ("origin-curiosity.jpg",     "Intellectual Curiosity",  "curiosity.html"),
   ("origin-leadership.jpg",    "Peculiar Leadership",     "leadership.html"),
