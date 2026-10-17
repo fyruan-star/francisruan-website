@@ -417,6 +417,9 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 .topbar__in{ display:flex; align-items:baseline; justify-content:space-between; gap:1.4rem; padding-block:1rem; }
 .topbar a{ font-family:var(--f-agate); font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-2); }
 .topbar a:hover{ color:var(--ink); }
+/* The name is the way back to the index, so it needs to feel like one. */
+.topbar__name{ transition:opacity .25s ease; }
+.topbar__name:hover{ opacity:.55; }
 /* eleven sections now, so the wordmark must not be allowed to break and the list
    must stay on one line: it tightens rather than wrapping */
 .topbar__name{ font-family:var(--f-head); font-weight:700; font-size:1.05rem; color:var(--ink)!important; letter-spacing:-.01em; white-space:nowrap; flex:0 0 auto; }

@@ -15,7 +15,8 @@ ICON = ("<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns='http://www.w3.
         "viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Newsreader,Georgia,serif' fill='%231C1C1C'>F</text></svg>\">")
 
 def topbar(active=""):
-    items=[("index.html","Index"),("my-why.html","Why"),("who-am-i.html","I"),
+    # No Index item. The name on the left is the way home.
+    items=[("my-why.html","Why"),("who-am-i.html","I"),
            ("fight-on.html","Fight On"),("curiosity.html","Inquisitive"),
            ("leadership.html","Stewardship"),
            ("fun.html","Effervescent")]
