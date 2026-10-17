@@ -342,29 +342,41 @@ def multiples_chart(w=820, h=300):
 
 # =============================================================== BRAIN ======
 CURIOSITIES = [
-  ("How people are persuaded", [
-    ("Creative writing",  "How a sentence gets somebody to feel something they did not arrive intending to feel."),
-    ("Comedy &amp; timing",   "The same question with a stopwatch on it. Why one beat lands and the identical line half a second later does not."),
-    ("Interface design",  "Persuasion with no words in it at all, which is the hardest version."),
+  ("Right and wrong", [
+    ("Ethics",            "Whether a thing being legal, profitable and completely normal has any bearing on whether it is right. Usually none, and the gap is where everything interesting is."),
+    ("Philosophy",        "Mostly the old questions, asked by people with no internet and apparently far more time to think than anybody has now."),
+    ("Inequality",        "Not the fact of it. The machinery that keeps it standing after everyone agrees it should not."),
+    ("Education &amp; attention", "The most valuable thing a society allocates, handed out by postcode."),
     ("Mandarin",          "What I can and cannot say to my mother in her own language, and what that gap costs both of us."),
   ]),
-  ("How value hides", [
+  ("Things I am trying to make", [
+    ("Script writing",    "Dialogue is the hardest thing I have tried to write, because people almost never say what they mean and the page has to know that."),
+    ("Nineties films",    "The look, specifically. Why a frame shot in 1994 feels warmer than anything a far better camera manages now."),
+    ("Stand-up",          "The same question as the page, with a stopwatch on it and no edit button."),
+    ("Creative writing",  "How a sentence gets somebody to feel something they did not arrive intending to feel."),
+    ("Interface design",  "Persuasion with no words in it at all, which is the hardest version."),
+  ]),
+  ("Questions nobody can answer for me", [
+    ("The history of moustaches", "Yes, really. People decided this, repeatedly, across centuries, and almost nobody wrote down why."),
+    ("Why avocados have pits",    "A seed that size needs something enormous to swallow it whole and wander off. The going theory is that whatever did is extinct."),
+    ("The origins of tangerines", "Nearly every citrus in the shop is a blend of three ancestors, and the family tree reads like a scandal."),
+    ("The terracotta army",       "Thousands of them, no two faces alike, standing in the dark for two thousand years for an audience of nobody."),
+    ("Biphasic sleep",            "For most of recorded European history people slept in two shifts and woke on purpose around midnight. We forgot entirely, then started medicating it."),
+  ]),
+  ("Mechanism, and what things are worth", [
+    ("Pathogenesis",             "Mechanism first, always. Not that sleep matters but what glymphatic clearance actually is."),
+    ("Longevity",                "Looking after the body and the mind I was handed, with a standing suspicion that most of the advice is downstream of somebody selling something."),
+    ("Self-quantification",      "Running bloodwork against my own baselines, which sounds clinical and is really curiosity pointed inward."),
+    ("Endurance",                "The only laboratory I have where the variable is me."),
     ("Finance &amp; valuation",  "What a business is quietly worth to somebody who understands it better than its accounts do."),
     ("Consumer M&amp;A",         "Why two companies on the same shelf clear seven times apart."),
-    ("Education &amp; attention","The most valuable thing a society allocates, handed out by postcode."),
-    ("Inequality",               "Not the fact of it. The machinery that keeps it standing after everyone agrees it should not."),
-  ]),
-  ("How a body holds up", [
-    ("Physiology &amp; recovery",     "Mechanism first, always. Not that sleep matters but what glymphatic clearance actually is."),
-    ("Self-quantification",           "Running bloodwork against my own baselines, which sounds clinical and is really curiosity pointed inward."),
-    ("Decision making under stress",  "What happens to judgement at mile nine, and whether any of it can be trained."),
-    ("Endurance",                     "The only laboratory I have where the variable is me."),
   ]),
 ]
 
 def plate():
-    """The twelve, grouped by the question underneath them rather than pinned to a
-    picture of a head. Numbered and ruled, in the cover's language."""
+    """Numbered and ruled, in the cover's language. The groups are loose on
+    purpose: the jump from the terracotta army to a gross margin is the whole
+    point, so nothing here is arranged to look tidier than it is."""
     out, n = ['<div class="plate">'], 0
     for group, rows in CURIOSITIES:
         out.append(f'<section class="pl__g"><h3 class="pl__h">{group}</h3><ol class="pl__l">')
@@ -381,7 +393,7 @@ def plate():
 CURIO = f"""<div class="wrap">
 <header class="phead">
   <p class="eyebrow">Inquisitive</p>
-  <h1>Twelve Things I Keep Going Back To</h1>
+  <h1>Things I Keep Going Back To</h1>
 </header>
 <div class="body">
 {soundtrack("curiosity.html")}
@@ -393,7 +405,7 @@ CURIO = f"""<div class="wrap">
   </div>
 </figure>
 
-<p>Most people are taught it as a childhood trait, something you have plenty of at six and are expected to grow out of by twenty, as though the questions were a phase rather than the point. I have come to think it is closer to a discipline, and an unfashionable one, because it costs you something socially to keep asking after the conversation has agreed to stop. What follows is not everything I find interesting. It is the twelve I keep going back to, and what I have noticed is that they are really only three questions wearing different clothes.</p>
+<p>Most people are taught it as a childhood trait, something you have plenty of at six and are expected to grow out of by twenty, as though the questions were a phase rather than the point. I have come to think it is closer to a discipline, and an unfashionable one, because it costs you something socially to keep asking after the conversation has agreed to stop.</p><p>What follows does not resolve into a theme. I spent a while trying to make it resolve, and the honest version is that the same appetite that wants to know what a business is quietly worth also wants to know why an avocado has a pit that size. I have stopped apologising for the second one.</p>
 
 {plate()}
 
@@ -407,7 +419,6 @@ CURIO = f"""<div class="wrap">
   <li><a href="trend.html">Five Deals, Six Weeks, and a Sevenfold Spread</a><span class="toc__m">September 2026</span></li>
   <li><a href="invisible.html">The Assets AI Builds That Nobody Records</a><span class="toc__m">2026</span></li>
 </ol>
-<p class="quiet">Three of these live on LinkedIn and need their public links dropped in.</p>
 
 {ask("If any of this overlaps with something you are thinking about, write to me.")}
 </div>
@@ -463,7 +474,7 @@ TREND = f"""<div class="wrap">
 
 <h2>The six weeks, in order</h2>
 <div class="tbl"><table>
-  <caption>Announced 24 July to 2 September 2026.</caption>
+  <caption>Announced 24 July to 2 September 2026. Thorne and Vitabiotics values are trade-press reported rather than confirmed by the parties, and Vitabiotics publishes no revenue, so there is no multiple for it rather than a guessed one.</caption>
   <thead><tr><th>Date</th><th>Buyer / target</th><th class="n">Value</th><th class="n">Basis</th></tr></thead>
   <tbody>
     <tr><td>24 Jul</td><td><a href="vitabiotics.html">Bain Capital / Vitabiotics</a></td><td class="n">~$1.2bn reported</td><td class="n">no public revenue</td></tr>
@@ -473,7 +484,6 @@ TREND = f"""<div class="wrap">
     <tr><td>2 Sep</td><td>cbdMD / Twinlab</td><td class="n">undisclosed</td><td class="n">n/a</td></tr>
   </tbody>
 </table></div>
-<p class="quiet">Thorne and Vitabiotics values are trade-press reported, not confirmed by the parties. Vitabiotics publishes no revenue, so there is no multiple here rather than a guessed one. Two 2025 comparables sit alongside: <a href="celsius.html">Celsius / Alani Nu</a> and <a href="poppi.html">PepsiCo / poppi</a>.</p>
 
 <h2>Three things get bought in this aisle</h2>
 <p><strong>Trust</strong> is what a clinician will put their own name behind. <strong>Audience</strong> is who already listens to you before you have sold them anything. <strong>Distribution</strong> is shelf space, freight, a factory, and all the deeply unglamorous machinery that gets a bottle into a hand. Nobody buys only one. But the price tells you which one they came for.</p>
@@ -880,7 +890,7 @@ workpage("suntag.html","suntag.svg","Suntag Co.",
    '<tr><td>Landed cost</td><td>Quotes at several order sizes</td><td>First run holds quoted tolerances</td></tr>'
    '<tr><td>Price tolerance</td><td>Verbal reactions from demos</td><td>Interest survives a real checkout</td></tr>'
    '<tr><td>Order size</td><td>Supplier tooling and minimums</td><td>Run one funds run two</td></tr>'
-   '</tbody></table></div><p class="quiet">Every row on the right is an assumption a buyer would test. I have not published unit costs or margins, because the numbers are not stable enough to defend.</p>'),
+   '</tbody></table></div>'),
   ("What I got wrong","<p>I treated the waitlist as demand. A waitlist measures interest at zero cost and says nothing about the price at which that interest survives.</p>"
    "<p>Running it again I would take refundable deposits at two price points before committing to tooling. That converts a soft signal into a number I could actually defend, and it costs almost nothing.</p>")],
  ("trend.html","Next: the trend I follow &rarr;"))
