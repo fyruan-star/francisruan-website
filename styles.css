@@ -881,3 +881,32 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
 @media (max-width:900px){
   .topbar ul{ flex-wrap:wrap; justify-content:flex-start; row-gap:.4rem; }
 }
+
+/* ------------------------------------------------------ table of contents ---
+   Titles only. No blurb, no summary, nothing telling a reader what to make of
+   a piece before they have opened it. The number and the rule do the work. */
+.toc{ list-style:none; margin:1.5rem 0 1.2rem; padding:0; counter-reset:toc;
+      border-top:1px solid var(--ink); max-width:var(--measure); }
+.toc li{
+  counter-increment:toc;
+  display:grid; grid-template-columns:2.4rem minmax(0,1fr); gap:0 .4rem;
+  align-items:baseline;
+  padding:1.05rem 0; border-bottom:1px solid var(--rule);
+}
+.toc li::before{
+  content:counter(toc,decimal-leading-zero);
+  font-family:var(--f-agate); font-size:.7rem; letter-spacing:.1em;
+  color:var(--ink-3);
+}
+.toc a, .toc__t{
+  grid-column:2; font-family:var(--f-head); font-weight:600;
+  font-size:clamp(1.05rem,.98rem+.4vw,1.28rem); line-height:1.24;
+  letter-spacing:-.008em; color:var(--ink); text-wrap:pretty;
+}
+.toc a{ border-bottom:1px solid var(--rule-2); padding-bottom:1px; }
+.toc a:hover{ border-bottom-color:var(--ink); }
+.toc__m{
+  grid-column:2; margin-top:.4rem;
+  font-family:var(--f-agate); font-size:.66rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3);
+}

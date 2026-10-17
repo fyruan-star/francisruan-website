@@ -396,37 +396,18 @@ CURIO = f"""<div class="wrap">
 
 {plate()}
 
-<h2>Published</h2>
-<div class="pubs">
-  <article><h3 class="pub__t">The Dinner Table</h3><p class="pub__m">Palo Alto Weekly, 39th Annual Short Story Contest &middot; May 2025 &middot; First place, Young Adult</p>
-    <p>A short story about my mother, our kitchen, and the arithmetic of what she gave up. The judges wrote that it caught the smells, the sounds and the essence of true motherly love in a few paragraphs.</p>
-    <p><a href="https://www.paloaltoonline.com/short-story/2025/07/17/short-story-contest-2025-the-dinner-table/" target="_blank" rel="noopener">Read it</a></p></article>
-
-  <article><h3 class="pub__t">The Hands We No Longer Raise</h3><p class="pub__m">December 2025</p>
-    <p>Through classroom observation and policy frameworks, I argue that the promise of educational technology often obscures deeper questions about attention, autonomy, and what a classroom is actually for.</p></article>
-
-  <article><h3 class="pub__t">The Disunited States: How America Learned to Live with Inequality</h3><p class="pub__m">December 2025</p>
-    <p>An essay on segregation, education, and the architecture of inequality. Not the fact of it, but the machinery that keeps it standing after everyone agrees it should not.</p></article>
-
-  <article><h3 class="pub__t">Longitudinal Self-Quantification of Recovery, Stress, and Well-Being Using Wearable Technology</h3><p class="pub__m">December 2025</p>
-    <p>Does systematically optimizing daily life against physiological recovery data actually make you happier? I wore the sensors and tracked the answer, which is less flattering to the premise than I expected.</p></article>
-</div>
+<h2>Contents</h2>
+<ol class="toc">
+  <li><a href="https://www.paloaltoonline.com/short-story/2025/07/17/short-story-contest-2025-the-dinner-table/" target="_blank" rel="noopener">The Dinner Table</a><span class="toc__m">Palo Alto Weekly &middot; First place, Young Adult &middot; 2025</span></li>
+  <li><span class="toc__t">The Hands We No Longer Raise</span><span class="toc__m">2025</span></li>
+  <li><span class="toc__t">The Disunited States: How America Learned to Live with Inequality</span><span class="toc__m">2025</span></li>
+  <li><span class="toc__t">Longitudinal Self-Quantification of Recovery, Stress, and Well-Being Using Wearable Technology</span><span class="toc__m">2025</span></li>
+  <li><a href="assets/Trade-Build-Settle.pdf" target="_blank" rel="noopener">Trade, Build, Settle</a><span class="toc__m">Essay &middot; 1,600 words</span></li>
+  <li><a href="trend.html">Five Deals, Six Weeks, and a Sevenfold Spread</a><span class="toc__m">September 2026</span></li>
+  <li><a href="invisible.html">The Assets AI Builds That Nobody Records</a><span class="toc__m">2026</span></li>
+</ol>
 <p class="quiet">Three of these live on LinkedIn and need their public links dropped in.</p>
 
-<h2>Essays</h2>
-<div class="pubs">
-  <article><h3 class="pub__t">Trade, Build, Settle</h3>
-    <p class="pub__m">An essay on scarcity &middot; 1,600 words</p>
-    <p>What a cardboard island taught me about the business of capital. Catan is not a game about settling an island. It is a game about creating value under scarcity, uncertainty, competition and dependence on other people, which is also a serviceable description of investment banking.</p>
-    <p>It ends where the analogy does: there is no fiduciary duty in Catan, no regulator, no reputational memory. A board game can model scarcity and negotiation. It cannot model responsibility.</p>
-    <p><a href="assets/Trade-Build-Settle.pdf" target="_blank" rel="noopener">Read the essay</a></p></article>
-</div>
-
-<h2>Where the curiosity goes</h2>
-<div class="biglinks">
-  <a href="trend.html"><span class="bl__lg"></span><span class="bl__n">Five supplement deals in six weeks</span><span class="bl__note">One aisle, one summer, a sevenfold spread in price.</span></a>
-  <a href="invisible.html"><span class="bl__lg"></span><span class="bl__n">The assets AI builds that nobody records</span><span class="bl__note">The best output of a deployment never lands on the balance sheet.</span></a>
-</div>
 {ask("If any of this overlaps with something you are thinking about, write to me.")}
 </div>
 <nav class="nextprev"><a href="index.html">&larr; All six</a></nav>
