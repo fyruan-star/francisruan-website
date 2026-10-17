@@ -18,15 +18,17 @@
   --aud:    #8C2F39;
   --dist:   #3D6350;
 
-  /* Stripe Press sets everything in Ivar (Display / Headline / Text, Letters from
-     Sweden). Craig Mod runs FF Meta Serif. Both are licensed, so this uses Newsreader,
-     which shares Ivar's structure: one family, an optical-size axis, and a real italic.
-     Measure, body size and leading are Craig Mod's actual numbers. */
-  --f-head: "Newsreader", "Ivar Headline", Georgia, "Times New Roman", serif;
-  --f: "Newsreader", "Ivar Text", Georgia, "Times New Roman", serif;
-  --f-agate: "Newsreader", Georgia, serif;
+  /* One family for the whole paper: EB Garamond, after the Evercore wordmark.
+     Classical Roman proportions, real italic, real small caps. The chrome that
+     used to be set in Inter is set in the same face now, in small caps, so the
+     labels read as the same voice as the text rather than a second one.
+     Garamond's x-height is far smaller than Newsreader's, so the body size
+     below is up from 1.26rem to hold the same apparent size on the page. */
+  --f-head: "EB Garamond", "Adobe Garamond Pro", Garamond, Georgia, serif;
+  --f: "EB Garamond", "Adobe Garamond Pro", Garamond, Georgia, serif;
+  --f-agate: "EB Garamond", Garamond, Georgia, serif;
 
-  --f-grot: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --f-grot: "EB Garamond", "Adobe Garamond Pro", Garamond, Georgia, serif;
   --sheet:  1180px;   /* the printed sheet the cover floats on */
   --ground: #EDEDED;
   --wrap:   1080px;
@@ -36,7 +38,10 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html{ -webkit-text-size-adjust:100%; }
+html{ -webkit-text-size-adjust:100%; font-size:111%; }
+/* 111% because EB Garamond's x-height measures 1.109x smaller than the face
+   this replaced. Scaling the root restores the apparent text size everywhere
+   at once, instead of retuning forty rem values by hand. */
 
 body{
   margin:0; background:var(--paper); color:var(--ink);
