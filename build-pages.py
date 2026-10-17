@@ -129,13 +129,16 @@ TRACKS = {
 }
 
 AUTOPLAY = (
+  # Nothing plays for the first two seconds, so a page never opens with sound
+  # on top of it. The element carries no autoplay attribute; this is the only
+  # path to playing, which is what makes the gate hold.
   '<script>'
   '(function(){'
   'var a=document.querySelector("audio[data-auto]");if(!a)return;'
-  'a.volume=0.7;var stopped=false;'
+  'a.volume=0.35;var stopped=false,armed=false;'
   'a.addEventListener("pause",function(){stopped=true;});'
-  'function go(){if(stopped)return;var p=a.play();if(p&&p.catch)p.catch(function(){});}'
-  'go();'
+  'function go(){if(stopped||!armed)return;var p=a.play();if(p&&p.catch)p.catch(function(){});}'
+  'setTimeout(function(){armed=true;go();},2000);'
   'if(document.readyState!=="complete")window.addEventListener("load",go,{once:true});'
   '["pointerdown","keydown","touchstart","wheel","scroll"].forEach(function(e){'
   'window.addEventListener(e,go,{once:true,passive:true});});'
@@ -162,7 +165,7 @@ def soundtrack(fn):
     title, artist, sleeve, preview = t
     from urllib.parse import quote
     q = quote(f"{title} {artist}")
-    player = (f'<audio class="track__p" data-auto autoplay loop controls '
+    player = (f'<audio class="track__p" data-auto loop controls '
               f'preload="auto" src="{preview}"></audio>' if preview else "")
     return ('<div class="track">'
             '<div class="track__top">'
@@ -226,11 +229,6 @@ INDEX = f"""<div class="sheet">
     {belt()}
 
     <footer class="cover__foot">
-      <ul class="marks__row">
-        <li><img class="mk mk--usc"   src="assets/logos/uscmarshall-black.png" alt="USC Marshall"></li>
-        <li><img class="mk mk--vuori" src="assets/logos/vuori.svg"             alt="Vuori"></li>
-      </ul>
-
       <p class="cover__links">
         <a href="mailto:fyruan@usc.edu">fyruan@usc.edu</a>
         <a href="https://www.linkedin.com/in/francisruan" target="_blank" rel="noopener">LinkedIn</a>
@@ -1185,206 +1183,88 @@ def loves():
 
 hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     "",
-    '<div class="videos videos--one videos--feature">'
-    '<figure><video controls preload="metadata" playsinline poster="assets/video/homecoming-poster.jpg">'
-    '<source src="assets/video/homecoming.mp4" type="video/mp4">Your browser cannot play this video.</video>'
+    '<p class="kicker">When I was interviewed for a paper after giving my graduation speech, they '
+    'asked me to choose a teacher who would speak highly of me. I smiled, and chose the teacher who '
+    'seemed least fond of me. My heart smiled when I read her quote.</p>'
+
+    '<figure class="clip">'
+    '<p class="clip__lede">Senior Francis Ruan is hard to miss.</p>'
+    '<blockquote><p>&ldquo;Francis is an instigator, getting everyone riled up and distracted in a very '
+    'enthusiastic way,&rdquo; Trigonometry Honors teacher Jeanne Yu said. &ldquo;He is the kind of '
+    'student who gives the teacher a headache while in class, and then the teacher goes home and '
+    'secretly laughs about all his antics.&rdquo;</p></blockquote>'
     '</figure>'
+
+    '<figure class="lead lead--i"><img src="assets/photos/i-backpack.jpg" '
+    'alt="Francis as a young boy outside school, a lunch box under one arm and a hand on the '
+    'handle of a rolling backpack" width="1200" height="1600" loading="lazy"></figure>'
+
+    '<p>I love life. Not in the polished, greeting-card way, but in the full, messy, wide-open way. I '
+    'love waking up. I love living.</p>'
+
+    '<p>There have been hard days, more than a few, and there will be many more ahead. I welcome them. '
+    'Hard days are how I learned to stand, and every one of them still came with a sunrise. I&rsquo;ve '
+    'found that there can be stress without worry. I love working hard, really hard, the kind of hard '
+    'that leaves you tired and full at the same time. Pressure is a privilege. It means something '
+    'matters.</p>'
+
+    '<p>I am not better than anyone, but no one is better than me. I carry that sentence like a compass. '
+    'It keeps me humble enough to listen and steady enough to stand tall in any room. And in every room, '
+    'I believe each person has something I can learn. The janitor, the CEO, the quiet kid in the back: '
+    'everyone is carrying a story I haven&rsquo;t read yet.</p>'
+
+    '<p>I want to try everything. If I could, I would be everywhere all at once. I never order the same '
+    'thing twice at a restaurant, because how could I, when there&rsquo;s a whole menu of lives I '
+    'haven&rsquo;t tasted yet? Maybe the next dish is a mistake. Good. Now I have a story.</p>'
+
+    '<p>No matter how old I get, I refuse to lose my childishness. I don&rsquo;t believe in that kind of '
+    'growing up. I know the weight of respect, of listening, of showing up with professionalism, and I '
+    'hold all of it close. But none of it asks me to give up my imagination, my dumb curiosity, or my '
+    'love of being gloriously, unapologetically corny. I love being silly. I love the bad pun, the goofy '
+    'dance, the joke that only lands with one person. Life is far too short to take yourself too '
+    'seriously, and far too long to spend it without laughing. And I love laughing. The real kind, the '
+    'kind that sneaks up from your stomach and won&rsquo;t let you breathe.</p>'
+
+    '<p class="pull">I believe the grass is greener wherever it is I step. Not because the ground is '
+    'perfect, but because I&rsquo;ve decided to tend it.</p>'
+
+    '<p>I love people. I love loving. Some call me a pushover, and maybe they&rsquo;re right. But on my '
+    'deathbed, I will smile knowing that I cared, that I gave, that I chose an open hand over a closed '
+    'fist every time I could. I&rsquo;d rather be fooled now and then than live guarded forever.</p>'
+
+    '<p>I love learning about almost everything. The history of moustaches. The terracotta army standing '
+    'silent for two thousand years. The origins of tangerines. Why avocados have pits at all. The world '
+    'is a library with no closing time, and I want to wander every aisle.</p>'
+
+    '<p>I love learning about longevity, about taking care of the body and mind I&rsquo;ve been given. I '
+    'love working out, pushing myself past the edges of what people think I can be. Every rep is a quiet '
+    'conversation with the version of me I haven&rsquo;t met yet, and I&rsquo;m always excited to meet '
+    'him.</p>'
+
+    '<p>I want to be whole and then some. Not finished, never finished, but full. Full of wonder, full '
+    'of gratitude, full of the stubborn belief that tomorrow could be the best day yet.</p>'
+
+    '<p>So here I am. Curious, corny, hungry, hopeful.</p>'
+
+    '<p class="finis">Wildly, wonderfully alive.</p>'
+
+    '<div class="coda">'
+    '<div class="videos videos--one videos--portrait">'
+    '<figure><video controls playsinline preload="metadata" src="assets/video/i-portrait.mp4">'
+    'Your browser cannot play this video.</video></figure>'
+    '</div>'
+    '<div class="gallery">'
+    '<figure><img src="assets/photos/i-court.jpg" alt="Two boys on a school blacktop, Francis mid-gesture" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/i-green.jpg" alt="Francis as a boy in a green shirt on the schoolyard" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/i-boss.jpg" alt="Francis as a boy on a tiled porch with both arms flung wide" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/i-hill.jpg" alt="Friends messing about on a grass hill under an open blue sky" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/i-suits-1.jpg" alt="Francis with two friends in suits at night" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/i-suits-2.jpg" alt="Francis in a pink tie between two friends in suits" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/i-sunset.jpg" alt="Francis with both arms out beside a lamppost at sunset, a stone building behind him" loading="lazy" width="900" height="900"></figure>'
+    '<figure><img src="assets/photos/i-beach.jpg" alt="Francis being carried by three friends on a beach" loading="lazy" width="900" height="900"></figure>'
+    '</div>'
     '</div>'
 
-    '<p class="kicker">A fair question, asked of me often enough that I have had to develop an answer. '
-    'The honest one is that I do not think I am one thing, and I have stopped apologizing for it.</p>'
-
-    '<p>People get read as one-dimensional, and I know roughly which dimension I get read as, because I '
-    'have heard the sentence. Oh, the short Asian guy? Who is also, and I want this on the record, super '
-    'awesome and handsome. Oh, that class clown kid? Yeah, him. Two dimensions if you are lucky, three if '
-    'somebody bothers to stay in the room long enough to find one. I would like to make the case that I am '
-    'at minimum four, and that the fourth is the interesting one, because it is the part that connects the '
-    'other three and it is the part almost nobody thinks to ask about.</p>'
-
-    '<h2>My spirit animal is a monkey who talked back to heaven</h2>'
-
-    '<p>Sun Wukong. The Monkey King. Appetite, cleverness, and mischief of the particular kind that makes '
-    'trouble and makes people love him anyway, enormously capable and enormously undisciplined about it. '
-    'He argues with heaven, and that is the part I want to sit on for a second, because he does not argue '
-    'with heaven by shouting at it. He reads the paperwork. He finds the clause. He gets himself written '
-    'into the register of immortals on a technicality and then looks genuinely wounded when anybody '
-    'objects.</p>'
-
-    '<p>I did not pick him because he is flattering. I picked him because I recognised the method, and '
-    'also, if we are being thorough, the appetite.</p>'
-
-    '<p>I was a fat kid. I am not going to dress that up, and there is no photograph of it on this site, '
-    'partly out of vanity and partly because you do not need one. What happened is that somewhere in '
-    'elementary school the American diet found me and I put up no resistance whatsoever. The Monkey King '
-    'steals the peaches of immortality, eats every single one, and is then astonished that heaven has '
-    'taken this personally. I have been at that banquet. I know exactly what he was thinking, which is '
-    'nothing, because the peaches were right there.</p>'
-
-    '<p>I was, by any fair accounting, a menace. In and out of detention the whole way through high '
-    'school, and I would like to claim lunch detention hall of fame, which is not an honour anybody hands '
-    'out and which I have therefore awarded to myself. Freshman year I got caught mooning somebody, which '
-    'I am now putting in writing on my own website, which should tell you roughly how much peace I have '
-    'made with it. Pranks constantly. And a suspension in middle school that I later stood up and told '
-    'five hundred people about in my commencement speech, because I have never once been able to tell the '
-    'story of how I got somewhere without including the part where I was nearly asked to leave.</p>'
-
-    '<p>Here is what I want to be precise about, though, because it matters to me. Almost none of it was '
-    'defiance. I was not angry at anybody and I was not trying to burn anything down. I was doing the '
-    'thing Wukong does, which is looking straight at a rule, understanding exactly what it is for, and '
-    'then noticing with enormous delight that it does not quite say what it thinks it says. That instinct '
-    'got me in a spectacular amount of trouble as a child. It is also, unchanged and unrepentant, the '
-    'instinct that makes me useful now when somebody hands me a process and asks why it takes ninety '
-    'minutes.</p>'
-
-    '<p>I talk to God most days. I have also, and I am aware of precisely how this sounds, said a few '
-    'words to the other one, not out of any allegiance but because it seemed impolite to argue with only '
-    'one side of something I do not pretend to understand. That is arguing with heaven. That is the whole '
-    'trait, and I have stopped trying to grow out of it.</p>'
-
-    '<p>And then heaven pins him under a mountain for five hundred years, and he comes out the same '
-    'creature, still funny, still impossible, but finally pointed somewhere.</p>'
-
-    '<p>I have been under a few mountains. Smaller ones, and considerably shorter sentences, but the '
-    'shape is the same: a thing stops you, and you are stuck under it for a while with nothing to do but '
-    'think about how you got there. What I have found, every single time and with a consistency that has '
-    'started to feel like a law, is that I come out of them better than I went in. Not because the '
-    'mountain taught me anything. Mountains are inert. It is that being stopped is the only condition '
-    'under which I reliably do two things I should be doing anyway, which are asking somebody for help '
-    'and sitting still long enough to work out what actually happened.</p>'
-
-    '<p>Being stopped has never once touched the appetite. It has only ever given it a direction.</p>'
-
-    '<h2>The paperwork, for the astrologically curious</h2>'
-    '<dl class="keyval whoami">'
-    '<dt>Sign</dt><dd>Pisces</dd>'
-    '<dt>Lunar year</dt><dd>Golden Pig</dd>'
-    '<dt>Trait I am accused of</dt><dd>Quicksilver tongued</dd>'
-    '<dt>Trait I would claim</dt><dd>Intelligent playfulness</dd>'
-    '<dt>Three words for 2026</dt><dd>Effervescent. Wonder-filled. Indomitable.</dd>'
-    '<dt>Standing instruction</dt><dd>Doubt the default</dd>'
-    '<dt>Second standing instruction</dt><dd>Talk to strangers</dd>'
-    '</dl>'
-
-    '<h2>What Ms. Yu said, which I have never disputed</h2>'
-    '<p>My trigonometry teacher, asked about me for the school paper, described me as the kind of student '
-    'who gives the teacher a headache in class, and then the teacher goes home and secretly laughs about '
-    'all his antics.</p>'
-    '<p class="pull">I have never disputed it. I have it more or less framed.</p>'
-    '<p>There were other teachers who got as far as the headache and stopped. She is the one who kept '
-    'reading, and I have thought about the difference between those two teachers for years.</p>'
-
-    '<h2>Five things that explain me faster than I can</h2>'
-    + loves() +
-    '<p>Line them up and the pattern is not what you would call subtle. Every one of them is about '
-    'somebody handed a smaller life than they turned out to be capable of, who declined it, politely in '
-    'Austen&rsquo;s case and with considerably less ceremony in Rudy&rsquo;s. They are also, all five, '
-    'arguing that feeling things deeply is a competence rather than a nerve failure, which is not the '
-    'lesson boys are generally issued at birth and is precisely the one I required. From Maclean and '
-    'Gerwig: the ordinary hours are the prize, not the waiting room outside it. From Will Hunting: being '
-    'clever is the least interesting thing about a person and by a distance the easiest thing to hide '
-    'behind. And from Elizabeth Bennet, who I am reasonably confident would have found me exhausting '
-    'within ten minutes, that holding out for the correct thing costs you socially and is worth it '
-    'anyway.</p>' +
-        '<h2>Embracing your corny</h2>'
-    '<p>I am corny on purpose. I would recommend it, because the alternative is a whole life spent '
-    'performing a coolness that, and I have checked, not one person has ever enjoyed having performed at '
-    'them. Seeming unmoved is a full-time job with no salary.</p>'
-    '<p>I am a poet some distance before I am an analyst, which is an unhelpful thing to admit on a '
-    'website about finance and which I am admitting anyway. I like the beach. I like reflecting on the '
-    'beach, which is a separate activity. I like then finding somebody to tell about the reflecting, '
-    'which is a third. Romance films work on me without exception and without any resistance worth '
-    'mentioning, and I stopped pretending to be above them at roughly the same age I stopped pretending '
-    'not to want things, those being the same decision in two different coats.</p>'
-    '<p>And I have very specific instructions about how to treat somebody, because my mother taught them '
-    'to me and she did not present them as optional. Buy the flowers, and buy them for no occasion, since '
-    'an occasion is only a permission slip. Say the compliment out loud rather than thinking it warmly '
-    'and assuming it arrived. Never go to bed upset, not once, however late that decision makes the '
-    'night. Open the door, every time, for the rest of your life.</p>'
-    '<p>And when something has gone wrong between you, do the harder thing, which is to sit down and work '
-    'out honestly whether this is a you problem, because it very often is, and because it is almost never '
-    'only a you problem either, which is the entire reason the word is we. Take the accountability all '
-    'the way down to the bottom of it, past the point where it stops making you feel good about yourself '
-    'for taking it, and then go a little further than that.</p>'
-
-    '<h2>And I am also the other thing</h2>'
-    '<p>I look up to bodybuilders. Genuinely, no irony, and for a specific reason: the entire discipline '
-    'is a public argument that you can change what you were handed, provided you are willing to be '
-    'staggeringly boring about it for several consecutive years. That is the whole sport. Boredom, '
-    'applied.</p>'
-    '<p>I watch an unreasonable quantity of NFL, and I mean unreasonable in the technical sense that I '
-    'hold opinions about offensive line play which nobody has ever requested. I watch UFC and will '
-    'explain, at length, unprompted, that the fight was decided in the first ninety seconds by '
-    'somebody&rsquo;s stance and not by the thing everyone in the room was looking at. I know an '
-    'embarrassing amount about cars, essentially none of it useful, all of it retained without effort, '
-    'while the periodic table passed through me like light through a window. I was a captain on a '
-    'football team and I am the one yelling in the huddle and I enjoy it enormously. I also still know '
-    'more about dinosaurs than any grown man can defend, and I have stopped trying to.</p>'
-    '<p>None of which is in tension with a single sentence of the section above it, and that is the whole '
-    'of what I am trying to say. These are supposed to be two different men, the one who cries at Little '
-    'Women and the one who wants to talk about the offensive line, and they were never two men at all. '
-    'They have always been the same one, and the only thing that ever changes is which room he is '
-    'standing in and how safe that room has made itself.</p>'
-
-    '<h2>Things I will read about until three in the morning</h2>'
-    '<p>Human pathogenesis. Biology and anatomy, mechanism first, always. I keep profiles on myself and '
-    'run bloodwork against them, which sounds clinical and is in fact just being nosy about my own '
-    'body.</p>'
-    '<p>Then human history, archaeology, ancient civilisations, what people were doing before they had '
-    'any of this. Same appetite that made me an insufferable dinosaur child, simply aimed at a longer '
-    'stretch of time and with marginally better manners.</p>'
-    '<p>Here is the one I bring up at dinner and refuse to let go of. For most of recorded European '
-    'history people did not sleep the way we do. They slept in two shifts. You went down not long after '
-    'dark for roughly four hours, then woke naturally around midnight into an interval people simply '
-    'called <em>the watch</em>, and stayed up for an hour or two. Not anxiously. On purpose. They prayed, '
-    'tended the fire, talked to whoever was next to them, visited neighbours, had sex, interpreted the '
-    'dreams they had just surfaced from. Then a second sleep until dawn.</p>'
-    '<p>The historian A. Roger Ekirch found hundreds of references to it, casually, across centuries, in '
-    'diaries and court records and medical texts, described the way you would describe breakfast. It '
-    'disappeared within a few generations of artificial light, and it disappeared so completely that we '
-    'now diagnose the waking as a disorder and medicate it.</p>'
-    '<p class="pull">We took a thing humans did for a thousand years, forgot it entirely, and started '
-    'treating it as a symptom.</p>'
-    '<p>I think about that constantly, and not only about sleep. I think about how much of what we call '
-    'normal is about two hundred years old and wearing a very convincing costume.</p>'
-
-    '<h2>The small operations</h2>'
-    '<p>There is an entire method behind this, involving crumbs and operating expenses and an argument '
-    'that contentment is cheaper to build than joy, and I have put it <a href="fun.html">in the fun '
-    'section</a> rather than here. What belongs here is the residue: the habits somebody would actually '
-    'notice if they had to live with me.</p>'
-    '<p>I care about clothes, which I mention because people assume the finance thing means I own four '
-    'identical shirts. I talk to strangers in queues, all queues, with no provocation required. And the '
-    'genuine high point of a given week is the evening my roommates and I finally clean the apartment '
-    'and somebody puts music on and everybody goes slightly stupid and dances badly in a kitchen that is '
-    'at last not disgusting. I have never wanted a better evening than that, and I am aware that this '
-    'makes me sound about seventy.</p>'
-    '<p>Once a day, every day, I send somebody a real compliment. Costs nothing, returns more than '
-    'anything else I do, and remains somehow the least popular strategy available to the general '
-    'public.</p>'
-    '<p>I love waking up. Not in a wellness way. I have simply never been sorry a day started, which I '
-    'understand is an irritating way to be and which I have no plans to correct.</p>'
-
-    '<h2>The rules I actually keep</h2>'
-    '<ul>'
-    '<li>I will never raise my voice at my mother, my brother, or anyone in my family.</li>'
-    '<li>I will not gossip, and I will not be disrespectful to friends or to strangers.</li>'
-    '<li>I will spread encouragement to the people around me, on purpose, out loud.</li>'
-    '<li>I will be more afraid of not trying than of failing.</li>'
-    '</ul>'
-    '<p>Those live in a note on my phone, between a grocery list and a half-finished joke, which I '
-    'accept is a ridiculous place to keep a moral code. They have held up better than most things I have '
-    'stored there.</p>'
-
-    '<h2>And three cats</h2>'
-    '<div class="mosaic">'
-    '<figure class="m1"><img src="assets/photos/cat-2.jpg" alt="A tabby cat asleep on a rocking chair" loading="lazy"></figure>'
-    '<figure class="m2"><img src="assets/photos/cat-1.jpg" alt="A tuxedo cat sitting beside a parcel" loading="lazy"></figure>'
-    '<figure class="m3"><img src="assets/photos/cat-3.jpg" alt="A cat stretched out on a counter" loading="lazy"></figure>'
-    '</div>'
-    '<p>Between them they have supervised most of the homework ever completed in this house, and '
-    'contributed nothing. One of them turns up in the <a href="my-why.html">first photograph on the '
-    'site</a>, which should tell you how long this arrangement has been running and how little say I '
-    'had in it.</p>'
     + ask("If you have made it this far you may as well introduce yourself."),
     "I")
 
@@ -1397,230 +1277,88 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
     '<p class="kicker">The bell went at three, and for about ten minutes the front of that school was the '
     'busiest place in the world.</p>'
 
-    '<p>The cars started lining up before the bell had even finished, a long patient row of them curling '
-    'around the loop with their engines running, and mothers got out and leaned on the doors with their '
-    'arms folded, and there was a particular sound the whole thing made, three hundred children coming out '
-    'of a building at once and finding, every single one of them, the exact car they were looking for. '
-    'Somebody&rsquo;s dad always had the window down. Somebody&rsquo;s mum always had a snack ready in the '
-    'passenger seat, which I thought was the most extraordinary act of forethought I had ever witnessed. '
-    'And within about ten minutes the loop was empty and the engines were gone and the sound went with '
-    'them, and what was left was a very large campus, a low sun, and me.</p>'
+    '<p>Cars curled around the loop with their engines running. Somebody&rsquo;s dad always had the window '
+    'down. Somebody&rsquo;s mum always had a snack ready in the passenger seat, which I thought was the '
+    'most extraordinary act of forethought I had ever witnessed. Then the loop was empty, the engines were '
+    'gone, and what was left was a very large campus, a low sun, and me.</p>'
 
-    '<p>My mother was a nurse and her shift did not end when other people&rsquo;s shifts ended. She was '
-    'standing somewhere under a fluorescent light while all of that was happening, and she would keep '
-    'standing there for another six hours. So I had six hours to fill and no phone to fill them with, '
-    'which meant that what I actually had was six hours and an entire school to myself.</p>'
+    '<p>My mother was a nurse, and her shift did not end when other people&rsquo;s did. So I had six hours, '
+    'no phone, and an entire school to myself.</p>'
 
-    '<p>I learned that place the way you learn a house in the dark. I knew which trees held weight and which '
-    'ones dropped you. I knew the patch of concrete behind the cafeteria that stayed warm until five and took '
-    'chalk well, and I drew on it, badly, for years, and rain took all of it and I drew again. I knew every '
-    'sound the building made as it emptied out, which is a strange thing for a nine-year-old to be an expert in.</p>'
+    '<p>I learned that place the way you learn a house in the dark. I knew which trees held weight and '
+    'which ones dropped you. I knew the patch of concrete behind the cafeteria that stayed warm until five '
+    'and took chalk well. I drew on it for years, rain took all of it, and I drew again. Mostly the same '
+    'three things: a stadium, a house with far too many windows, and a car, always with two people in '
+    'it.</p>'
 
-    '<p>And I knew the fields. There were always kids out there after the last bell, in cleats, in club '
-    'uniforms, running the drills that cost money. I watched a great deal of that. I want to be accurate here: '
-    'I did not resent it, or not for long. It was more that I understood early that there were two categories, '
-    'and I could name which one I was in, and the naming was not painful so much as simply factual, like '
-    'knowing your own height.</p>'
+    '<p class="pull">The six hours were never the hard part. A boy in a tree with an entire school to '
+    'himself is closer to a king than a castaway.</p>'
 
-    '<p>What I drew on that concrete was mostly the same three things over and over. A stadium. A house with '
-    'far too many windows. And a car, always a car, always with two people in it, which is not subtle and I '
-    'am not going to pretend I did not notice later what that was about.</p>'
+    '<p>The hard part was nine o&rsquo;clock, when the headlights finally came around the loop, and I got '
+    'in the car and saw her face and understood immediately that her day had been worse than mine.</p>'
 
-    '<p>The hard part was never the six hours. I would like to be very clear about that, because people hear '
-    'this and assume the loneliness was the wound. It was not. I was fine. I was a boy in a tree with a stick '
-    'and an entire school to myself, which at nine years old is closer to a kingdom than a punishment.</p>'
+    '<p>So I made a decision in that passenger seat that I have never unmade. Her day would not get any '
+    'heavier because of me. I would be the easy part. I never mentioned the six hours. I told her something '
+    'funny from recess, and if nothing funny had happened, I made something up. Then I watched her laugh on '
+    'the drive home, and that felt like winning.</p>'
 
-    '<p>The hard part was nine o&rsquo;clock, when the headlights finally came around the loop, and I got in '
-    'the car and saw her face and understood immediately that her day had been worse than mine.</p>'
+    '<p>That decision went everywhere with me after that.</p>'
 
-    '<h2>What it meant at Ranch 99</h2>'
+    '<h2>At Ranch 99</h2>'
+    '<p>It went with me to the grocery store, where a child does a particular arithmetic once he knows the '
+    'family condition. You do not ask. That is the entire skill. You see the thing, you picture that nine '
+    'o&rsquo;clock look on your mother&rsquo;s face, and you keep walking. Above all, you do not make it a '
+    'moment.</p>'
+    '<p>But not asking for things is only half of it. The other half is going and getting them '
+    'yourself.</p>'
 
-    '<p>There is a particular arithmetic a child performs in a grocery store when he already knows the family '
-    'condition. You do not ask. That is the entire skill. You walk the aisle, you see the thing, and you run a '
-    'small silent calculation about whether asking would put a certain look on your mother&rsquo;s face. The '
-    'answer was usually yes. So you keep walking, and you say nothing, and above all you do not make it a moment.</p>'
+    '<h2>In the classroom</h2>'
+    '<p>My English arrived late, so every summer of elementary school I went back to summer school to '
+    'relearn what I had not held the first time. I never thought of it as punishment. I thought of it as '
+    'another lap.</p>'
+    '<p>In middle school I was not placed in the advanced math class. So I asked. Then I asked again. Then '
+    'I walked to my teacher&rsquo;s door and knocked on it myself, a small, stubborn kid with nothing to '
+    'offer but a promise that nobody in that room would outwork me.</p>'
+    '<p>I was never the boy who simply knew. I was the boy who went back, found exactly where my '
+    'understanding broke, and fixed it. Knowing things quickly runs out eventually. Refusing to leave never '
+    'does.</p>'
 
-    '<p>I got very good at not making it a moment. I am genuinely unsure whether that was healthy. I am quite '
-    'sure it has been useful.</p>'
+    '<h2>On the field</h2>'
+    '<p>I was the fat kid, picked last so often it stopped feeling like an event and started feeling like a '
+    'forecast. I picked up a lacrosse stick for the first time at a tryout, in front of boys who had held '
+    'one since they were eight, and I know the exact sound a group makes watching you fail at something '
+    'easy.</p>'
 
-    '<h2>What it meant in sixth grade</h2>'
+    '<p class="pull">I came back the next day anyway.</p>'
 
-    '<p>I started answering my mother&rsquo;s email in sixth grade. Not forwarding it to her. Answering it. '
-    'Permission slips, school forms, fundraiser notices, the endless administrative weather of having children '
-    'in America, all of it arriving in a language she was still fighting with at the end of a fourteen-hour '
-    'shift. So I wrote back as her, carefully, in the politest English an eleven-year-old could manage, and I '
-    'signed it with her name.</p>'
+    '<p>First one out, last one in. Diving for balls nobody else would chase. Knocked down by boys who were '
+    'bigger, faster and six years ahead, and getting up smiling, every time, until getting knocked down '
+    'stopped meaning anything at all.</p>'
+    '<p>Those boys were not gifted. They were early. I had been comparing my first week to their sixth '
+    'year. So I wrote down what beat me and trained only that. I was once laughed at for how badly I played '
+    'spikeball. Today I am the best spikeball player I know. I was never handed talent. I just refused, '
+    'very cheerfully and for a very long time, to go home.</p>'
 
-    '<p>I did not experience that as unusual. I experienced it as my job. I think I was proud of it.</p>'
-
-    '<h2>What it meant for playdates</h2>'
-
-    '<p>Other children were dropped off. I ran. My mother was at work and the distance between our '
-    'apartment and wherever everybody was gathering was a mile or two of identical suburb, so I went on '
-    'foot, in cleats more than once, and arrived warm and slightly out of breath and did not explain '
-    'why.</p>'
-
-    '<p>Sometimes I got lost. I had no phone, the streets in that part of town repeat themselves, and '
-    'more than once a car slowed alongside a boy standing at an intersection trying to work out which '
-    'direction was home. I had my mother&rsquo;s number memorised the way other children memorise a '
-    'song. I would recite it to whoever had stopped, and somebody&rsquo;s father would ring her from his '
-    'own phone, and she would tell him where we lived while I sat in the back of a stranger&rsquo;s car '
-    'being driven home by a man whose name I never learned. She thanked every one of them. I think about '
-    'that more than I expected to, that a working woman&rsquo;s entire contingency plan for her son '
-    'getting lost was the decency of whoever happened to be passing, and that it held.</p>'
-
-    '<h2>The honest inventory</h2>'
-
-    '<p>Roughly in order.</p>'
-
-    '<p>I could not swim, because swimming is a thing somebody pays for and then drives you to twice a '
-    'week for a year. I could not throw a spiral. I could not dribble a basketball with my left hand or '
-    'with any conviction using my right. I had never stood in a batter&rsquo;s box, and soccer I '
-    'understood mostly as a rumour, something other boys seemed to have been issued with their shin pads. '
-    'I could not hit a spikeball and was laughed at for it repeatedly, by people who were not being cruel '
-    'so much as accurate. I picked up a lacrosse stick for the first time at a tryout, in front of boys '
-    'who had been holding one since they were eight, and the sound a group makes watching you fail at '
-    'something easy is not a sound you forget.</p>'
-
-    '<p>I was fat, and I was told so, in the specific unhurried way children tell each other things. I '
-    'was picked last often enough that it stopped registering as an event and started registering as '
-    'information, which is the part that actually does the damage. Nobody was being vicious. They were '
-    'being correct, and by about nine I had accepted the account: unathletic, ungifted, the fat kid, and '
-    'all of it a fact about my nature rather than about my circumstances. It is remarkable how fast a '
-    'child will take somebody else&rsquo;s arithmetic and file it as truth about himself.</p>'
-
-    '<p>School offered no rescue either. I went to summer school every summer of elementary school, my '
-    'English still arriving, being taught again each June what I had not managed to hold the first time, '
-    'and nothing in the available evidence suggested I was any good at learning.</p>'
-
-    '<p>None of which made me miserable, and I would be lying by omission if I let this read as a sad '
-    'childhood, because it was not one. I had friends, a great many of them, because I worked out early '
-    'that if you are going to be the worst athlete on the field you had better be the funniest person on '
-    'it. Fart noises, I discovered, are universal. They cross every language barrier a seven-year-old is '
-    'going to meet, and mine was considerable. I once microwaved a plastic baby in the pretend kitchen of '
-    'a kindergarten classroom and got a laugh so total that I have been chasing it ever since. I could '
-    'not catch anything, but I could make a room go, and a room that is laughing does not much care what '
-    'you cannot do.</p>'
-
-    '<p>Add it up and the fair summary of me at eleven is: not good at anything yet.</p>'
-
-    '<h2>What I actually had</h2>'
-
-    '<p>Three things, and I have spent real time thinking about this.</p>'
-
-    '<p><strong>Spirit</strong>, which is a soft word for a hard thing. I did not stop. Not out of discipline. '
-    'Stopping simply was not on the menu at my house, and by the time I was old enough to notice that other '
-    'houses had it on the menu, I had already lost the taste for it.</p>'
-
-    '<p><strong>A smile</strong>, and a real one. Not a performance. I liked people. I still do, embarrassingly '
-    'much, and it has cost me far less than people warned me it would.</p>'
-
-    '<p><strong>A joke</strong>, always loaded, usually deployed about four seconds after something went badly '
-    'and occasionally while I was still crying. If somebody in the room was having a worse day than I was, I '
-    'would find the thing that made them laugh, and I would find it fast. That was the one skill I had before '
-    'I had any others.</p>'
-
-    '<p class="pull">I never wanted to do anything wrong. That is the part nobody believed.</p>'
-
-    '<p>I wanted, more than almost anything available to want, to be good. Being read as trouble while you are '
-    'trying that hard is a specific ache, and I would not wish it on a child, and I am not sure I would trade '
-    'it either.</p>'
-
-    '<h2>What nobody had told me</h2>'
-
-    '<p>Here is what I did not understand until years later, and it has reorganised how I look at very '
-    'nearly everything since.</p>'
-
-    '<p>The boys who could throw a spiral had been throwing one in a garden with somebody since they were '
-    'four. The boy who moved fluidly through a lacrosse drill had six years of muscle memory behind him '
-    'that I could not see, because muscle memory is invisible and from the outside it looks exactly like '
-    'talent. Same in basketball, in baseball, in soccer, in the water. They were not gifted and I was not '
-    'deficient. They were early, and early compounds, and I had been comparing my first week against '
-    'their sixth year and drawing conclusions about my nature from the gap.</p>'
-
-    '<p>What I had instead was video games, which nobody counts as anything. But a game teaches one '
-    'enormously transferable discipline, which is that dying is information. You die, you ask what killed '
-    'you, you change a single variable, you go again, and the loop tightens every time you run it. That '
-    'is a childhood spent rehearsing the one thing most people never rehearse, which is looking directly '
-    'at your own failure without flinching and asking it a question.</p>'
-
-    '<p>It is also, and I missed this connection for years, why I got better at school. I was never the '
-    'boy who simply knew. I was the boy who went back afterwards and found exactly where the '
-    'understanding had broken, which turned out to be worth far more than knowing, because it kept '
-    'working after the material got hard and the boys who simply knew ran out of road.</p>'
-
-    '<p>Everybody talks about getting up, and getting up is the cheap half. What changes the next '
-    'repetition is getting up while knowing what put you down, and that is the only resilience I have '
-    'found that accumulates instead of merely repeating.</p>'
-
-    '<p>So I keep notes now. After a session I write down what I could not do and why, and I train the '
-    'bottleneck rather than the sport. I am, and this cost an absurd number of hours so I am claiming it, '
-    'now the best spikeball player I know, and better than most of my friends at things they used to beat '
-    'me at without trying. And I found surfing, which almost none of them compounded as children either, '
-    'so we all began at zero on the same morning and I finally saw what happens when the starting line is '
-    'honest.</p>'
-
-    '<p>None of which made me talented. It made me suspicious of the word. I no longer believe there is '
-    'any such thing as simply smarter or simply more athletic. There is only experience that compounded '
-    'somewhere you were not standing to watch it, and the very large difference between a person who has '
-    'been doing a thing for six years and a person who started on Tuesday, which almost everybody, '
-    'including the person starting on Tuesday, mistakes for a difference in kind.</p>'
+    '<h2>With people</h2>'
+    '<p>The third place I refused to quit was people. If you are going to be the worst athlete on the '
+    'field, you had better be the warmest person on it. I learned to find what makes a room laugh, and to '
+    'find it fast, especially for whoever was having a worse day than me. It is what I did in that car at '
+    'nine o&rsquo;clock, and I have never stopped.</p>'
+    '<p>Some people will mistake a soft heart for a weak one. I have loved people who did not love me back '
+    'the same way, and I have never once regretted loving first. I would rather keep my heart open and '
+    'bruised than closed, safe, and small.</p>'
 
     '<h2>And then I got to USC</h2>'
+    '<p>And found they had made a slogan out of it. Fight On, on every wall and every shirt.</p>'
+    '<p>To me it was never a cheer. It means nine o&rsquo;clock in an empty school loop and getting in the '
+    'car smiling anyway. It means nobody is coming to make this easier, and you go anyway, and you go '
+    'cheerfully, because bitterness is heavy and I never had room to carry it.</p>'
+    '<p>I did not learn to fight on at USC. I learned it on warm concrete behind a cafeteria, with a piece '
+    'of chalk and nobody watching. USC just gave me the words.</p>'
 
-    '<p>And found they had made a slogan out of it.</p>'
+    '<p class="finis">I am not the victim of this story. I am the reason it has a good ending.</p>'
 
-    '<p>Fight On. Two words on every wall and every shirt, thrown up with two fingers, chanted by eighty '
-    'thousand people who mostly mean it as encouragement for a football team, which is a perfectly good thing '
-    'to mean by it.</p>'
-
-    '<p>I remember hearing it the first time and feeling something complicated, because it has never been '
-    'a cheer to me. It means nine o&rsquo;clock in an empty parking lot. It means not asking at Ranch 99. '
-    'It means writing your mother&rsquo;s email in sixth grade, and running a mile because asking for a '
-    'ride costs something you have decided not to spend.</p>'
-
-    '<p class="pull">It means nobody is coming to make this easier, and you go anyway, and '
-    'you go cheerfully, because bitterness is enormously heavy and I could never afford to carry '
-    'any.</p>'
-
-    '<h2>On lemons</h2>'
-
-    '<p>Everyone knows the line. If life gives you lemons, make lemonade, which is a fine sentiment for '
-    'people who are being given lemons. The trouble, and nobody says this part out loud, is that it '
-    'assumes a delivery. It assumes somebody arrives at your door with a crate, and that your only real '
-    'problem is what to do with what has already been handed to you.</p>'
-
-    '<p>Nobody came to our door. So the sentence had to be extended, and I have spent a long time '
-    'extending it. If life gives you lemons, make lemonade. If life gives you nothing, then go and find '
-    'the lemons, and accept that they will sit further away than they sit for other people and that you '
-    'will be walking. If there are none to find, plant them, and understand while you are kneeling in the '
-    'dirt that a lemon tree takes somewhere between three and six years to fruit, which means you are '
-    'working on behalf of a version of yourself you have not met yet and will have to trust. If the soil '
-    'will not take a seed, then spend a season making soil, which is the least romantic labour there is '
-    'and the only labour that makes any of the rest of it possible. And if you have no land at all, go and '
-    'be useful in somebody else&rsquo;s orchard until you know enough about lemons that the next stranger '
-    'with a field wants you standing in it.</p>'
-
-    '<p class="pull">Fight on has never meant the lemons are coming. It means you go looking anyway, and '
-    'you plant anyway, and you stay cheerful about the digging, because the digging was always going to be '
-    'the job.</p>'
-
-    '<p>That is the whole of it, and I want to be precise, because it is not optimism, which waits with a '
-    'pleasant expression, and it is not grit, which grinds and calls the grinding a virtue. It is a '
-    'decision made early and re-made most mornings: that the absence of a crate at the door is '
-    'information about the world rather than a verdict on me, and that there is a lemon somewhere with my '
-    'name on it if I will go the distance the other children were never asked to go. I have never '
-    'resented that distance for long. It is the one part of all this I would not trade, because the '
-    'walking is where I learned everything I actually have.</p>'
-
-    '<p>There is a version of this story where the boy is bitter, and I understand how you get there. All the '
-    'ingredients are present. But I have met bitter people and they are so tired, and being tired is the one '
-    'thing my mother never got to be, so it always felt like a strange thing to spend her money on.</p>'
-
-    '<p>I did not learn to fight on at USC. I learned it in a schoolyard at nine at night with a piece of '
-    'chalk and nobody watching. USC only gave me the words for it, and I was glad to finally have them, '
-    'because I had been doing the thing for about twelve years without knowing what to call it.</p>'
-    + ask("If any of this sounds like your childhood too, I would like to hear from you."),
+    + ask("If any of that landed, I would genuinely like to hear from you."),
     "Fight On")
 
 hub("leadership.html", "Peculiar Leadership", "The Sideline Is a Vantage, Not a Consolation",

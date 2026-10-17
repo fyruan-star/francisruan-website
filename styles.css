@@ -113,7 +113,7 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 .frame{ scroll-snap-align:start; display:block; color:var(--ink); min-width:0; }
 .frame__img{
   display:block; aspect-ratio:4/3; overflow:hidden; background:var(--wash);
-  width:63.75%; margin-inline:auto;
+  width:79.69%; margin-inline:auto;
 }
 .frame__img img{
   width:100%; height:100%; object-fit:cover; display:block;
@@ -240,6 +240,19 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 .lead{ margin:1.75rem 0 0; max-width:340px; }
 .lead img{ width:100%; border:1px solid var(--ink); }
 .lead figcaption{ font-size:.8125rem; color:var(--ink-2); margin-top:.7rem; }
+
+/* the coda: clip and contact sheet pulled tight to each other on purpose */
+.coda{ max-width:min(840px,100%); margin:2.4rem auto 0; }
+.gallery{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:6px;
+}
+.gallery figure{ margin:0; }
+.gallery img{
+  width:100%; aspect-ratio:1/1; object-fit:cover; display:block;
+}
+@media (max-width:620px){
+  .gallery{ grid-template-columns:repeat(2,1fr); gap:5px; }
+}
 .tags{ display:flex; flex-wrap:wrap; gap:.4rem; margin:1.6rem 0 0; }
 .tags span{ font-family:var(--f-agate); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;
   color:var(--ink-2); border:1px solid var(--rule); padding:.34em .7em; }
@@ -441,6 +454,33 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
 .pull{ border-top:2px solid var(--ink); border-bottom:1px solid var(--rule); padding:1.05rem 0 1.15rem; margin:2.1rem auto 2.3rem; max-width:var(--measure); }
 .pull, .pull p{ font-family:var(--f-head); font-weight:500; font-size:clamp(1.18rem,1.05rem+.85vw,1.6rem); line-height:1.3; letter-spacing:-.01em; text-wrap:pretty; }
 .pull p{ margin:0; max-width:none; }
+
+/* the newspaper excerpt that opens the I page. .body p is (0,1,1), so the
+   lede needs two classes to beat it on margin and measure. */
+.clip{
+  max-width:var(--measure); margin:0 auto 2.8rem;
+  padding:1.45rem 0 1.5rem;
+  border-top:2px solid var(--ink); border-bottom:1px solid var(--rule);
+}
+.body .clip__lede{
+  font-family:var(--f-head); font-weight:600; letter-spacing:-.01em;
+  font-size:clamp(1.14rem,1.02rem+.6vw,1.42rem); line-height:1.3;
+  margin:0 0 .85rem; max-width:none;
+}
+.clip blockquote{ margin:0; padding:0; border:0; }
+.clip blockquote p{
+  margin:0; max-width:none;
+  font-family:var(--f-head); font-style:italic; font-weight:400;
+  font-size:clamp(1.02rem,.97rem+.38vw,1.18rem); line-height:1.54;
+  color:var(--ink);
+}
+
+/* the last line of the I page, given the room to land */
+.body .finis{
+  font-family:var(--f-head); font-style:italic; font-weight:500;
+  font-size:clamp(1.5rem,1.2rem+1.3vw,2.25rem); line-height:1.18;
+  letter-spacing:-.016em; margin:2.1rem auto .4rem; max-width:var(--measure);
+}
 
 .dealgrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
   border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin:1.75rem 0; }
@@ -813,4 +853,27 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
 @media (max-width:560px){
   .trio{ grid-template-columns:1fr; }
   .trio figure:nth-child(3) img{ aspect-ratio:3/4; }
+}
+
+/* ------------------------------------------------------------- the I page ---
+   Both rules double their class to clear what comes before them: a later
+   .videos{max-width:none} and, inside a breakpoint, .lead{max-width:420px}. */
+
+.lead.lead--i{ max-width:400px; margin:2rem auto 2.8rem; }
+
+/* The clip is 320x568. Capping it at its native width keeps it sharp; the
+   earlier rules were stretching it to 840px and it turned to soup. */
+.videos.videos--portrait{
+  display:block; max-width:320px; margin:0 auto 6px;
+}
+.videos.videos--portrait video{
+  width:100%; height:auto; aspect-ratio:320/568;
+}
+
+/* The nav kept flex-wrap:nowrap from when the sections had short names. With
+   Intellectual Curiosity, Peculiar Leadership and Appetite For Life in it the
+   row measures 596px, so inside a 375px phone it dragged every page sideways.
+   The items keep their own nowrap; it is the row that wraps now. */
+@media (max-width:900px){
+  .topbar ul{ flex-wrap:wrap; justify-content:flex-start; row-gap:.4rem; }
 }
