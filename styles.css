@@ -18,17 +18,21 @@
   --aud:    #8C2F39;
   --dist:   #3D6350;
 
-  /* One family for the whole paper: EB Garamond, after the Evercore wordmark.
+  /* One family for the whole paper: Cormorant Garamond, the closest free
+     match to the Evercore wordmark, whose actual typeface is not published.
      Classical Roman proportions, real italic, real small caps. The chrome that
      used to be set in Inter is set in the same face now, in small caps, so the
      labels read as the same voice as the text rather than a second one.
      Garamond's x-height is far smaller than Newsreader's, so the body size
      below is up from 1.26rem to hold the same apparent size on the page. */
-  --f-head: "EB Garamond", "Adobe Garamond Pro", Garamond, Georgia, serif;
-  --f: "EB Garamond", "Adobe Garamond Pro", Garamond, Georgia, serif;
-  --f-agate: "EB Garamond", Garamond, Georgia, serif;
+  --f-head: "Cormorant Garamond", "Adobe Garamond Pro", Garamond, Georgia, serif;
+  --f: "Cormorant Garamond", "Adobe Garamond Pro", Garamond, Georgia, serif;
+  --f-agate: "Cormorant Garamond", Garamond, Georgia, serif;
 
-  --f-grot: "EB Garamond", "Adobe Garamond Pro", Garamond, Georgia, serif;
+  --f-grot: "Cormorant Garamond", "Adobe Garamond Pro", Garamond, Georgia, serif;
+  /* real small caps, for the places that echo the Evercore wordmark */
+  --f-sc:   "Cormorant SC", "Cormorant Garamond", Garamond, Georgia, serif;
+  --navy:   #1C2675;
   --sheet:  1180px;   /* the printed sheet the cover floats on */
   --ground: #EDEDED;
   --wrap:   1080px;
@@ -38,14 +42,14 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html{ -webkit-text-size-adjust:100%; font-size:111%; }
-/* 111% because EB Garamond's x-height measures 1.109x smaller than the face
-   this replaced. Scaling the root restores the apparent text size everywhere
-   at once, instead of retuning forty rem values by hand. */
+html{ -webkit-text-size-adjust:100%; font-size:129%; }
+/* 129% because Cormorant Garamond's x-height measures 1.163x smaller than
+   the face it replaced, which itself ran 1.109x under the original. Scaling
+   the root restores the apparent text size everywhere at once. */
 
 body{
   margin:0; background:var(--paper); color:var(--ink);
-  font-family:var(--f); font-size:1.26rem; line-height:1.6; font-weight:400;
+  font-family:var(--f); font-size:1.26rem; line-height:1.62; font-weight:500;
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
   font-feature-settings:"ss01";
 }
@@ -194,7 +198,7 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 .pcs__q{ margin:0; border:0; padding:0; }
 .pcs__q p{
   margin:0; max-width:none; font-family:var(--f-head); font-weight:500;
-  font-size:clamp(1.1rem,1rem+.75vw,1.45rem); line-height:1.32; letter-spacing:-.008em;
+  font-size:clamp(1.1rem,1rem + .75vw,1.45rem); line-height:1.32; letter-spacing:-.008em;
   color:var(--ink); text-wrap:pretty;
 }
 .pcs__s{ margin:.9rem 0 0; font-family:var(--f-agate); font-size:.72rem; }
@@ -277,7 +281,7 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 
 .rec{ margin:2.4rem 0 0; }
 .rec__h{ font-family:var(--f-head); font-style:italic; font-weight:500;
-  font-size:clamp(1.25rem,1.1rem+.6vw,1.6rem); margin:0 0 .6rem; }
+  font-size:clamp(1.25rem,1.1rem + .6vw,1.6rem); margin:0 0 .6rem; }
 .rec__l{ margin:0; border-top:1px solid var(--ink); }
 .rec__r{ display:grid; grid-template-columns:minmax(200px,300px) 1fr; gap:.4rem 1.6rem;
   padding:.85rem 0; border-bottom:1px solid var(--rule); align-items:baseline; }
@@ -434,13 +438,13 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 }
 
 .phead{ padding-block:clamp(2rem,5vw,3.25rem) clamp(1.25rem,3vw,1.9rem); border-bottom:1px solid var(--ink); }
-.phead h1{ font-size:clamp(2rem,1.4rem+2.4vw,3.4rem); max-width:22ch; text-wrap:balance; font-weight:600; }
-.phead .lede{ font-size:clamp(1rem,.95rem+.4vw,1.2rem); font-style:italic; color:var(--ink-2); margin:.9rem 0 0; max-width:56ch; line-height:1.5; }
+.phead h1{ font-size:clamp(2rem,1.4rem + 2.4vw,3.4rem); max-width:22ch; text-wrap:balance; font-weight:600; }
+.phead .lede{ font-size:clamp(1rem,.95rem + .4vw,1.2rem); font-style:italic; color:var(--ink-2); margin:.9rem 0 0; max-width:56ch; line-height:1.5; }
 .phead .meta{ display:flex; flex-wrap:wrap; gap:.3rem .9rem; margin:1.1rem 0 0; font-size:.75rem; color:var(--ink-3); }
 
 .body{ padding-block:clamp(1.6rem,4vw,2.4rem) clamp(3rem,7vw,5rem); }
 .body p{ margin:0 0 1.35rem; max-width:var(--measure); text-wrap:pretty; }
-.body h2{ font-size:clamp(1.4rem,1.2rem+.7vw,1.8rem); margin:2.6rem 0 .8rem; }
+.body h2{ font-size:clamp(1.4rem,1.2rem + .7vw,1.8rem); margin:2.6rem 0 .8rem; }
 .body h3{ font-family:var(--f-agate); font-size:.6875rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase; color:var(--ink); margin:2rem 0 .6rem; }
 .body strong{ font-weight:600; }
 .body a{ border-bottom:1px solid var(--rule-2); }
@@ -449,7 +453,7 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
 .body li{ margin-bottom:.35rem; }
 .body li::marker{ color:var(--ink-3); }
 
-.kicker{ font-size:clamp(1.3rem,1.15rem+.8vw,1.7rem); font-style:italic; line-height:1.42; font-weight:400; max-width:var(--read); margin:0 0 1.6rem; color:var(--ink); }
+.kicker{ font-size:clamp(1.3rem,1.15rem + .8vw,1.7rem); font-style:italic; line-height:1.42; font-weight:400; max-width:var(--read); margin:0 0 1.6rem; color:var(--ink); }
 .quiet{ color:var(--ink-2); font-size:.8125rem; max-width:var(--measure); }
 
 .tbl{ overflow-x:auto; margin:1.5rem 0; }
@@ -464,7 +468,7 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
 /* One pull quote per piece, lifted out of the paragraph it was buried in.
    Display serif, rules above and below, set at the reading measure. */
 .pull{ border-top:2px solid var(--ink); border-bottom:1px solid var(--rule); padding:1.05rem 0 1.15rem; margin:2.1rem auto 2.3rem; max-width:var(--measure); }
-.pull, .pull p{ font-family:var(--f-head); font-weight:500; font-size:clamp(1.18rem,1.05rem+.85vw,1.6rem); line-height:1.3; letter-spacing:-.01em; text-wrap:pretty; }
+.pull, .pull p{ font-family:var(--f-head); font-weight:500; font-size:clamp(1.18rem,1.05rem + .85vw,1.6rem); line-height:1.3; letter-spacing:-.01em; text-wrap:pretty; }
 .pull p{ margin:0; max-width:none; }
 
 /* the newspaper excerpt that opens the I page. .body p is (0,1,1), so the
@@ -476,21 +480,21 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
 }
 .body .clip__lede{
   font-family:var(--f-head); font-weight:600; letter-spacing:-.01em;
-  font-size:clamp(1.14rem,1.02rem+.6vw,1.42rem); line-height:1.3;
+  font-size:clamp(1.14rem,1.02rem + .6vw,1.42rem); line-height:1.3;
   margin:0 0 .85rem; max-width:none;
 }
 .clip blockquote{ margin:0; padding:0; border:0; }
 .clip blockquote p{
   margin:0; max-width:none;
   font-family:var(--f-head); font-style:italic; font-weight:400;
-  font-size:clamp(1.02rem,.97rem+.38vw,1.18rem); line-height:1.54;
+  font-size:clamp(1.02rem,.97rem + .38vw,1.18rem); line-height:1.54;
   color:var(--ink);
 }
 
 /* the last line of the I page, given the room to land */
 .body .finis{
   font-family:var(--f-head); font-style:italic; font-weight:500;
-  font-size:clamp(1.5rem,1.2rem+1.3vw,2.25rem); line-height:1.18;
+  font-size:clamp(1.5rem,1.2rem + 1.3vw,2.25rem); line-height:1.18;
   letter-spacing:-.016em; margin:2.1rem auto .4rem; max-width:var(--measure);
 }
 
@@ -640,7 +644,7 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
 /* the opening line of a piece, set a step up so the eye has somewhere to land */
 .body > .kicker{
   max-width:var(--measure); margin-left:auto; margin-right:auto;
-  font-size:clamp(1.06rem,1rem+.5vw,1.32rem); line-height:1.45;
+  font-size:clamp(1.06rem,1rem + .5vw,1.32rem); line-height:1.45;
   color:var(--ink); text-wrap:pretty;
 }
 @media (max-width: 899px){
@@ -757,7 +761,7 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
 /* the line under a dedication: the name is the headline, this is the gloss */
 .dedication{
   margin:.7rem 0 0; font-family:var(--f); font-style:italic;
-  font-size:clamp(.92rem,.88rem+.35vw,1.08rem); color:var(--ink-2);
+  font-size:clamp(.92rem,.88rem + .35vw,1.08rem); color:var(--ink-2);
   letter-spacing:.01em;
 }
 
@@ -908,7 +912,7 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
 }
 .toc a, .toc__t{
   grid-column:2; font-family:var(--f-head); font-weight:600;
-  font-size:clamp(1.05rem,.98rem+.4vw,1.28rem); line-height:1.24;
+  font-size:clamp(1.05rem,.98rem + .4vw,1.28rem); line-height:1.24;
   letter-spacing:-.008em; color:var(--ink); text-wrap:pretty;
 }
 .toc a{ border-bottom:1px solid var(--rule-2); padding-bottom:1px; }
@@ -917,4 +921,55 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
   grid-column:2; margin-top:.4rem;
   font-family:var(--f-agate); font-size:.66rem; letter-spacing:.1em;
   text-transform:uppercase; color:var(--ink-3);
+}
+
+/* ========================================================= NAVY BAND ====
+   The page head as a full-width plate, set in real small caps after the
+   wordmark this was asked to echo. It sits outside .wrap, so it needs no
+   viewport arithmetic to reach the edges. */
+.band{
+  background:var(--navy); color:#fff;
+  padding-block:clamp(3.4rem,7vw,6.4rem) clamp(2.8rem,5.4vw,4.8rem);
+  margin-bottom:clamp(2rem,4vw,3.4rem);
+}
+.band__in{ text-align:left; }
+.band__k{
+  font-family:var(--f-sc); font-weight:500;
+  font-size:clamp(.72rem,.66rem + .3vw,.9rem); letter-spacing:.34em;
+  text-transform:uppercase; color:rgba(255,255,255,.62);
+  margin:0 0 clamp(.9rem,1.6vw,1.5rem);
+}
+.band__t{
+  font-family:var(--f-sc); font-weight:500;
+  font-size:clamp(2.4rem,1.6rem + 3.4vw,5rem); line-height:1.02;
+  letter-spacing:.055em; color:#fff; margin:0;
+  font-variant-caps:small-caps; text-transform:lowercase;
+}
+.band .dedication{ color:rgba(255,255,255,.72); margin-top:1.1rem; }
+
+/* the two-word etymology plate that opens the page */
+.defn--two{ margin:0 0 clamp(2rem,3.4vw,3rem); max-width:none; }
+.defn__pair{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(248px,1fr));
+  gap:0; border-top:1px solid var(--ink);
+  max-width:var(--measure); margin-inline:auto;
+}
+.defn__one{ padding:1.3rem 0 1.5rem; }
+.defn__one + .defn__one{
+  border-left:1px solid var(--rule); padding-left:clamp(1.1rem,2.2vw,1.9rem);
+}
+.defn__pair .defn__w{
+  font-family:var(--f-head); font-size:clamp(2rem, 1.2rem + 2.2vw, 3.1rem);
+  font-weight:500; line-height:1; letter-spacing:-.01em;
+  color:var(--ink); margin:0 0 .5rem;
+}
+.defn__src{
+  margin:0; max-width:34ch;
+  font-size:.92rem; line-height:1.5; color:var(--ink-2);
+}
+@media (max-width:620px){
+  .defn__one + .defn__one{
+    border-left:0; border-top:1px solid var(--rule);
+    padding-left:0; padding-top:1.3rem;
+  }
 }

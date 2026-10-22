@@ -9,10 +9,10 @@ SITE = "https://francisruan.com"
 
 FONT = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-        '<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">')
+        '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500;600;700&display=swap" rel="stylesheet">')
 
 ICON = ("<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' "
-        "viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Newsreader,Georgia,serif' fill='%231C1C1C'>F</text></svg>\">")
+        "viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Cormorant Garamond,Georgia,serif' fill='%231C1C1C'>F</text></svg>\">")
 
 def topbar(active=""):
     # No Index item. The name on the left is the way home.
@@ -1041,15 +1041,27 @@ FIN = f"""<div class="wrap">
 print("finance.html -> redirect to https://trojanhorse.blog")
 
 # ================================================================= HUBS =====
-def hub(fn, eyebrow, title, lede, blocks, active, sub=""):
+def hub(fn, eyebrow, title, lede, blocks, active, sub="", band=False):
+    """band=True puts the page head in a full-width navy plate above the wrap,
+    set in small caps after the wordmark Francis asked this to echo."""
     if 'class="ask"' not in blocks:
         blocks = blocks + ask()
     subline = f'\n  <p class="dedication">{sub}</p>' if sub else ""
-    body = f"""<div class="wrap">
+    if band:
+        head = f"""<header class="band">
+  <div class="wrap band__in">
+    <p class="band__k">{eyebrow}</p>
+    <h1 class="band__t">{title}</h1>{subline}
+  </div>
+</header>
+<div class="wrap">"""
+    else:
+        head = f"""<div class="wrap">
 <header class="phead">
   <p class="eyebrow">{eyebrow}</p>
   <h1>{title}</h1>{subline}
-</header>
+</header>"""
+    body = head + f"""
 <div class="body">
 {soundtrack(fn)}
 {blocks}
@@ -1353,102 +1365,95 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
     + ask("If any of that landed, I would genuinely like to hear from you."),
     "Fight On")
 
-hub("leadership.html", "Stewardship", "The Sideline Is a Vantage, Not a Consolation",
+hub("leadership.html", "Stewardship", "Keeper of the House",
     "",
-    '<figure class="lead"><img src="assets/photos/origin-leadership.jpg" '
-    'alt="Francis Ruan as a small boy in front of a flag" width="900" height="900">'
-    '<figcaption>An early and unsubtle interest in standing in front of people.</figcaption></figure>'
+    '<figure class="defn defn--two">'
+    '<div class="defn__pair">'
+    '<div class="defn__one"><p class="defn__w">leader</p>'
+    '<p class="defn__src">Old English <em>l&aelig;dan</em>, to go before, to show the way. '
+    'A word about position. The leader is in front.</p></div>'
+    '<div class="defn__one"><p class="defn__w">steward</p>'
+    '<p class="defn__src">Old English <em>st&#299;weard</em>, from <em>stig</em>, a hall or '
+    'a house, and <em>weard</em>, a keeper. The one who keeps the house.</p></div>'
+    '</div></figure>'
 
-    '<p class="kicker">Everyone on that field was bigger than me. Everyone. Including, and I did check, a '
-    'kicker.</p>'
+    '<p class="kicker">I want the second word. Not because the first is wrong, but because '
+    'the first describes where you stand and the second describes what you are responsible '
+    'for, and I have found the second more useful.</p>'
 
-    '<p>Freshman year I had never played a down in my life. I was one of very few Asian kids in the '
-    'programme. And I was the worst guy out there, which my friends told me regularly and which was '
-    'simply true. I was nowhere near starting. I was not going to be the story that season or the next '
-    'one.</p>'
+    '<p>A steward is the roommate who washes the dishes. Who plans the trip without '
+    'announcing that he is planning it, books the place, works out who is free on which '
+    'weekend, and follows up with the two people who never replied.</p>'
 
-    '<p>That hurt for about two years. Not in a big dramatic way. In the small daily way, at practice, a '
-    'little bit every afternoon.</p>'
+    '<p>What I am after is narrower than doing those things. It is doing them without '
+    'keeping score. I have known people who do all of it and resent some of it, and the '
+    'resentment is the part that fails, because it arrives eventually and it arrives at the '
+    'worst moment. The version I want is the one where the ledger never opens.</p>'
 
-    '<p>Then I stopped watching the ball, and I still could not tell you the day it happened.</p>'
+    '<p class="pull">If the house is kept and nobody noticed who kept it, that is the whole '
+    'result.</p>'
 
-    '<h2>What you can see from four feet off the field</h2>'
+    '<p>Three places have taught me most of what I know about this.</p>'
 
-    '<p>Nobody tells you this about a sideline. A guy out there sees his assignment. He sees the man '
-    'across from him and the next two seconds, and that is not a flaw, that is the job, and the good ones '
-    'protect that tunnel with their lives.</p>'
+    '<h2>Sports</h2>'
 
-    '<p>But somebody has to watch the whole thing. And it turns out that somebody is whoever has the '
-    'time.</p>'
+    '<p>Everyone on that football field was bigger than me. Everyone, including the kicker, '
+    'and I did check. Freshman year I had never played a down. I was one of very few Asian '
+    'kids in the programme and I was the worst player out there, which my friends confirmed '
+    'at the time and have confirmed since.</p>'
 
-    '<p>So I started seeing things. The left tackle going quiet in the second quarter and nobody catching '
-    'it. The safety pressing because he was angry about something from before the game. The sophomores '
-    'not talking to each other any more, which I learned is always the first sign. Nobody hands you that '
-    'job. You just start doing it, and one day you look up and realise you have been doing it for '
-    'months.</p>'
+    '<p>That hurt for about two years. Not dramatically. In the small daily way, at '
+    'practice, a little bit every afternoon.</p>'
 
-    '<h2>People arrive one at a time</h2>'
+    '<p>Then I stopped watching the ball. I cannot tell you the day it happened. A player on '
+    'the field sees his assignment and the man across from him and the next two seconds, '
+    'which is the correct thing for him to be looking at. Somebody has to watch the whole '
+    'thing, and that somebody is usually whoever has the time. I had the time.</p>'
 
-    '<p class="pull">A team is not a unit. It is forty separate difficult conversations wearing the same '
-    'colour.</p>'
+    '<p>Four years of football, three on varsity, and a stretch as captain. I ran track. I '
+    'play lacrosse at USC now and serve as the alumni chair. The useful part was never the '
+    'playing. It was learning that a team has a second job running underneath the first '
+    'one, and that nobody is assigned to it.</p>'
 
-    '<p>The corner who just got beaten deep does not want a speech. He wants you to sit down next to him '
-    'and say nothing for a minute, and if you talk during that minute you have made it worse. The '
-    'lineman who is furious needs to be furious somewhere else first, before he says the thing he cannot '
-    'take back. Two completely different people, nine feet apart, needing opposite things.</p>'
+    '<h2>Student government</h2>'
 
-    '<p>I got good at working out which one was in front of me before I opened my mouth. That is the most '
-    'useful thing football ever gave me, and it had nothing to do with a weight room.</p>'
+    '<p>I was student body president for four terms and gave the commencement speech. Those '
+    'are the two lines that go on a page, and they are the least representative part of the '
+    'work.</p>'
 
-    '<h2>Monday is the whole job</h2>'
+    '<p>What the job actually was: finding out which room was free, asking the teacher who '
+    'controls that room, remembering that the custodial staff have to be told before you '
+    'move two hundred chairs, chasing the sign-up sheet, and standing somewhere unglamorous '
+    'at seven in the morning so that something could begin at eight.</p>'
 
-    '<p>Everybody thinks the hard part is losing. It is not. Friday is loud and then it is over.</p>'
+    '<p>An election gives you a title. It does not give you anything else. The authority '
+    'comes later and it comes from people deciding, slowly and on their own, that when you '
+    'say a thing will be handled it is handled. I have not found a shortcut to that and I '
+    'have stopped looking.</p>'
 
-    '<p>Monday is the hard part. Monday is quiet and Monday does not end. Forty guys got beaten in front '
-    'of their families, it is cold now, and every one of them is carrying fresh evidence that maybe they '
-    'are not as good as they hoped. Getting that group back out to run it again properly is the whole '
-    'job.</p>'
+    '<h2>Relationships</h2>'
 
-    '<p>Anybody is useful when it is going well. I got good at Mondays.</p>'
+    '<p>My mother gave me a set of instructions and did not present them as optional. Buy '
+    'the flowers, and buy them when there is no occasion, because an occasion is only a '
+    'permission slip. Say the compliment out loud instead of thinking it warmly and '
+    'assuming it arrived. Never go to bed upset, however late that makes the night. Open '
+    'the door, every time, for the rest of your life.</p>'
 
-    '<h2>The game is bigger than the player</h2>'
+    '<p>I send one person a real compliment every day. Specific, unprompted, to somebody who '
+    'was not expecting anything from me that morning. It takes about eleven seconds and I '
+    'have never regretted sending one.</p>'
 
-    '<p>This is the part that changed me and I want to say it plainly. My snap count was never going to '
-    'be the story. I knew that. And I spent two years letting it make me smaller, which still annoys me '
-    'to think about.</p>'
+    '<p>The harder instruction is the one about going wrong. When something has broken '
+    'between two people, sit down and work out honestly how much of it is yours. It usually '
+    'is, partly. It is almost never only yours, which is the entire reason the word is we. '
+    'Take the accountability past the point where taking it still makes you feel good about '
+    'yourself, and then go a little further.</p>'
 
-    '<p>Then it stopped mattering. No moment, no speech, nothing. It just quit being the thing I measured '
-    'myself with. And the second I stopped counting reps I got far more useful, because I could see the '
-    'whole field instead of my own small rectangle of it. There is a real freedom in working out that '
-    'you are not the main character. It hands you back all the attention you had been spending on '
-    'yourself, and that is a lot of attention.</p>'
+    '<p>I have loved people who did not love me back in the same way. Some people read that '
+    'as a weakness and they may be right. I would still rather be the one who went first.</p>'
 
-    '<p>They voted me captain. I did not play much.</p>'
-
-    '<p>I think about that more than anything on my awards, because it is '
-    'the only one I did not get by being good at something.</p>'
-
-    '<h2>And now there is lacrosse</h2>'
-
-    '<p>I play lacrosse at USC now. I picked up a stick for the first time at the tryout, in front of '
-    'people who had been holding one since they were eight, so you can imagine how the opening weeks '
-    'went.</p>'
-
-    '<p>And I am right back to it. I am the one making jokes at practice. I am the one laughing too loud '
-    'and yelling for somebody who just did something good, and I mean genuinely yelling, in a way that '
-    'has been commented on.</p>'
-
-    '<p>Not because I have given up on being good. I train hard. I compete. I want to win badly and I am '
-    'not going to pretend otherwise, because that would be its own kind of lie.</p>'
-
-    '<p>It is only that I worked out a long time ago that being the best was never the thing I was '
-    'actually there for. I was there for the other forty people. I like them. I like watching somebody '
-    'get better at something. I like being the reason a bad practice turned around.</p>'
-
-    '<p>Which is the same job I had at fifteen, standing on a sideline in the cold. I am just holding a '
-    'different stick.</p>'
-    + ask("If you are building a team and want to argue about any of this, I am easy to reach."),
-    "Stewardship")
+    + ask("If you want somebody to handle the logistics, I am genuinely the person for it."),
+    "Stewardship", band=True)
 
 hub("fun.html", "Effervescent", "The Unserious Half",
     "",
