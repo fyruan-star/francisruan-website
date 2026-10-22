@@ -390,11 +390,13 @@ def plate():
     return "".join(out)
 
 
-CURIO = f"""<div class="wrap">
-<header class="phead">
-  <p class="eyebrow">Inquisitive</p>
-  <h1>Things I Keep Going Back To</h1>
+CURIO = f"""<header class="band">
+  <div class="wrap band__in">
+    <p class="band__k">Inquisitive</p>
+    <h1 class="band__t">Things I Keep Going Back To</h1>
+  </div>
 </header>
+<div class="wrap">
 <div class="body">
 {soundtrack("curiosity.html")}
 <figure class="defn">
@@ -1160,7 +1162,7 @@ hub("my-why.html", "Why", "For Qiwen Ye",
     'target="_blank" rel="noopener"><strong>The Dinner Table</strong></a>, Palo Alto Online, July 2025.</p>'
     + ask("If you have a mother who did something like this, I would genuinely like to hear about her."),
     "Why",
-    sub="&#25105;&#30340;&#22920;&#22920; &middot; w&#466; de m&#257;ma &middot; my mother")
+    sub="&#25105;&#30340;&#22920;&#22920; &middot; w&#466; de m&#257;ma &middot; my mother", band=True)
 
 LOVES = [
   ("Little Women",        "Greta Gerwig, 2019",     "film", "little-women"),
@@ -1270,7 +1272,7 @@ hub("who-am-i.html", "So who is Francis", "So Who Is Francis?",
     '</div>'
 
     + ask("If you have made it this far you may as well introduce yourself."),
-    "I")
+    "I", band=True)
 
 hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
     "",
@@ -1363,7 +1365,7 @@ hub("fight-on.html", "Fight On", "What &ldquo;Fight On&rdquo; Means to Me",
     '<p class="finis">I am not the victim of this story. I am the reason it has a good ending.</p>'
 
     + ask("If any of that landed, I would genuinely like to hear from you."),
-    "Fight On")
+    "Fight On", band=True)
 
 hub("leadership.html", "Stewardship", "Keeper of the House",
     "",
@@ -1609,7 +1611,7 @@ hub("fun.html", "Effervescent", "The Unserious Half",
     '</div></div>'
 
     + ask("If you want to be in one of these photographs at some point, that is arranged by email."),
-    "Effervescent")
+    "Effervescent", band=True)
 
 
 
