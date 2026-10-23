@@ -138,7 +138,7 @@ body.index{ height:auto; min-height:100dvh; overflow-x:hidden; background:var(--
   font-family:var(--f-grot); font-weight:500; font-size:.8rem;
   letter-spacing:.09em; text-transform:uppercase; color:var(--ink);
 }
-.frame:hover .frame__img img{ filter:grayscale(1) contrast(1.04); transform:scale(1.015); }
+.frame:hover .frame__img img{ filter:grayscale(0) contrast(1); transform:scale(1.015); }
 .frame:focus-visible{ outline:2px solid var(--ink); outline-offset:4px; }
 
 /* the counter, driven by the belt's own scroll rather than by script -------- */
@@ -963,35 +963,22 @@ tbody tr:last-child td, tbody tr:last-child th{ border-bottom:1px solid var(--ru
 }
 
 /* ===================================================== NAVY ON HOVER ====
-   On the cover, anything carrying ink turns Evercore navy under the
-   cursor. The photographs take it as a duotone: mix-blend-mode color
-   lends the hue and saturation while the greyscale image keeps its own
-   luminance, so the picture stays readable instead of being tinted flat. */
+   Type only. Anything on the cover carrying ink turns Evercore navy
+   under the cursor. The photographs are untouched by this and keep
+   doing what they did, which is drop their greyscale and show their
+   real colour. */
 
 .poster__name, .poster__sub, .belt__count, .frame__k{
   transition:color .32s ease;
 }
 .poster__name:hover, .poster__sub:hover, .belt__count:hover{ color:var(--navy); }
-
-.frame__img{ position:relative; }
-.frame__img::after{
-  content:""; position:absolute; inset:0; pointer-events:none;
-  background:var(--navy); mix-blend-mode:color;
-  opacity:0; transition:opacity .4s ease;
-}
-.frame:hover .frame__img::after{ opacity:1; }
 .frame:hover .frame__k{ color:var(--navy); }
 
 .cover__links a{ transition:color .32s ease, border-color .32s ease; }
 .cover__links a:hover{ color:var(--navy); border-bottom-color:var(--navy); }
 
-/* the record sleeve and its type on the cover */
+/* the record sleeve type on the cover */
 .poster .track__t, .poster .track__ar, .poster .track__l{ transition:color .32s ease; }
 .poster .track:hover .track__t,
 .poster .track:hover .track__ar,
 .poster .track:hover .track__l{ color:var(--navy); }
-
-@media (hover:none){
-  /* nothing hovers on a touch screen, so leave the plates in greyscale */
-  .frame__img::after{ display:none; }
-}
